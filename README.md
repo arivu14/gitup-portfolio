@@ -1,43 +1,68 @@
 # SOC Incident Report: Multi-Stage Attack Detection
-
-## 1. Initial Detection & Dashboard Overview
-I began the investigation by reviewing the Wazuh dashboard for the last 24 hours. The initial surge in alerts indicated a potential brute-force attempt.
-
-**[Image 1: Total Alerts Dashboard]**
-![Dashboard Overview](BF_1.png)
-
-**[Image 2: Alert Distribution]**
-The Pie Chart reveals that Rule 5712 (SSHD Brute Force) accounts for a significant portion of the telemetry.
-![Pie Chart Overview](BF_2.png)
+**Analyst:** [Arivazhagan] | **Date:** Feb 5, 2026 | **Status:** RESOLVED
 
 ---
 
-## 2. Deep Dive: Brute Force Analysis (Rule 5712)
-By filtering specifically for **Rule ID: 5712**, I isolated the malicious traffic from the background noise.
+## 1. Executive Summary
+Between 07:00 and 14:00, the environment was subjected to a coordinated attack. I identified a "low-and-slow" brute force entry followed by an attempt at persistence. 
 
-**[Images 4 & 5: Rule 5712 Analysis]**
-The data shows a "Low-and-Slow" attack pattern designed to bypass simple threshold alerts.
-![Rule 5712 Pie Chart](BF_4.png)
-![Rule 5712 Events List](BF_5.png)
+## 2. Phase I: Initial Detection (Dashboard View)
+I utilized the Wazuh dashboard to identify anomalies in login behavior over a 24-hour period.
 
----
-
-## 3. Threat Actor Attribution & Technical Details
-I pivoted to the event details to identify the Source IP and the targeted destination.
-
-**[Image 6 & 7: Attacker Identification]**
-* **Attacker IP:** `10.48.156.247`
-* **Target:** SSH Service
-* **Method:** Automated credential stuffing
-
-![Event Description Details](BF_6.png)
-![Source IP Filtering](BF_7.png)
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+  <div style="text-align: center;">
+    <img src="BF_1.png" width="350" alt="Total Alerts"><br>
+    <sub><b>Total Alerts (24h)</b></sub>
+  </div>
+  <div style="text-align: center;">
+    <img src="BF_2.png" width="350" alt="Pie Chart Distribution"><br>
+    <sub><b>Alert Distribution</b></sub>
+  </div>
+</div>
 
 ---
 
-## 4. Forensic Evidence (CLI Pivot)
-Because SIEM dashboards can sometimes lag, I verified the activity directly on the host using the `auth.log`. This confirmed the creation of the `persistence_user` backdoor.
+## 3. Phase II: Brute Force Analysis (Rule 5712)
+By drilling down into **Rule ID 5712**, I isolated the attacker's traffic. The pie chart and event list confirm a sustained brute force attempt against the SSH service.
 
-**[Image 3: Detailed Event Logs]**
-![Raw Log Evidence](BF_3.png)
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+  <div style="text-align: center;">
+    <img src="BF_4.png" width="300" alt="Rule 5712 Pie"><br>
+    <sub><b>Rule 5712 Ratio</b></sub>
+  </div>
+  <div style="text-align: center;">
+    <img src="BF_5.png" width="300" alt="Rule 5712 Events"><br>
+    <sub><b>Event Timeline</b></sub>
+  </div>
+  <div style="text-align: center;">
+    <img src="BF_3.png" width="300" alt="Detailed Events"><br>
+    <sub><b>Detailed Log List</b></sub>
+  </div>
+</div>
 
+---
+
+## 4. Phase III: Attacker Attribution (Source IP)
+I identified the malicious Source IP and verified the specific system calls used during the exploit phase.
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+  <div style="text-align: center;">
+    <img src="BF_6.png" width="450" alt="Event Description"><br>
+    <sub><b>Technical Event Description</b></sub>
+  </div>
+  <div style="text-align: center;">
+    <img src="BF_7.png" width="450" alt="IP Filtering"><br>
+    <sub><b>Filtering Attacker IP: 10.48.156.247</b></sub>
+  </div>
+</div>
+
+---
+
+## 5. Challenges & CLI Forensics
+- **SIEM Delay:** The dashboard lagged on User Creation (Rule 5902).
+- **Resolution:** I pivoted to CLI forensics, using `grep` on `/var/log/auth.log` to confirm the creation of the `persistence_user`.
+
+> **Analyst Note:** This attack successfully bypassed standard rate-limiting by using a 10-minute delay between attempts. Hardening recommendations include disabling Root SSH and implementing stricter account lockout policies.
+
+---
+*Next Step: Investigating Lateral Movement signatures (Work in Progress)*
