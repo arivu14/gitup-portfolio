@@ -11,29 +11,29 @@ title: SOC Lab Portfolio
 
 <h3 style="color:#eee; margin-left: 10px;">Evidence Gallery (Click to Investigate)</h3>
 <div class="evidence-strip">
-    <img class="thumb" src="01.png" alt="Dashboard Overview" onclick="openLightbox(0)">
-    <img class="thumb" src="02.png" alt="Severity Levels" onclick="openLightbox(1)">
-    <img class="thumb" src="03.png" alt="Auth Patterns" onclick="openLightbox(2)">
-    <img class="thumb" src="04.png" alt="Attack Simulation" onclick="openLightbox(3)">
-    <img class="thumb" src="06.png" alt="24hr Metrics" onclick="openLightbox(5)">
-    <img class="thumb" src="07.png" alt="User Probing" onclick="openLightbox(6)">
-    <img class="thumb" src="08.png" alt="Log Details" onclick="openLightbox(7)">
-    <img class="thumb" src="09.png" alt="Rule 5712" onclick="openLightbox(8)">
-    <img class="thumb" src="010.png" alt="IP Identification" onclick="openLightbox(9)">
-    <img class="thumb" src="011.png" alt="AbuseIPDB" onclick="openLightbox(10)">
-    <img class="thumb" src="012.png" alt="MITRE Mapping" onclick="openLightbox(11)">
-    <img class="thumb" src="013.png" alt="IP Block" onclick="openLightbox(12)">
-    <img class="thumb" src="014.png" alt="Verification" onclick="openLightbox(13)">
+    <img class="thumb" src="01.png" onclick="openLightbox(0)">
+    <img class="thumb" src="02.png" onclick="openLightbox(1)">
+    <img class="thumb" src="03.png" onclick="openLightbox(2)">
+    <img class="thumb" src="04.png" onclick="openLightbox(3)">
+    <img class="thumb" src="06.png" onclick="openLightbox(5)">
+    <img class="thumb" src="07.png" onclick="openLightbox(6)">
+    <img class="thumb" src="08.png" onclick="openLightbox(7)">
+    <img class="thumb" src="09.png" onclick="openLightbox(8)">
+    <img class="thumb" src="10.png" onclick="openLightbox(9)">
+    <img class="thumb" src="11.png" onclick="openLightbox(10)">
+    <img class="thumb" src="12.png" onclick="openLightbox(11)">
+    <img class="thumb" src="13.png" onclick="openLightbox(12)">
+    <img class="thumb" src="14.png" onclick="openLightbox(13)">
 </div>
 
 <div id="lightbox" class="lightbox-overlay">
     <span class="close-btn" onclick="closeLightbox()">&times;</span>
     
- <a class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</a>
+<a class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</a>
     <a class="nav-btn next" onclick="changeSlide(1)">&#10095;</a>
 
- <div class="lightbox-container">
-        <div style="width:100%; background:#000; display:flex; justify-content:center;">
+<div class="lightbox-container">
+        <div style="width:100%; background:#000; display:flex; justify-content:center; min-height: 400px;">
             <img id="activeImg" src="" alt="Incident Evidence" style="max-width:100%; height:auto; display:block;">
         </div>
         
@@ -128,14 +128,14 @@ function changeSlide(n) {
 function updateContent() {
     const imgElement = document.getElementById("activeImg");
     
-    // Using a relative path helper to ensure the image loads from the correct GitHub folder
-    const imgPath = "BF_" + (currentIndex + 1) + ".png";
-    imgElement.src = imgPath;
+    // logic to handle 01, 02... 09 vs 10, 11... 14
+    let fileNumber = currentIndex + 1;
+    let fileName = (fileNumber < 10) ? "0" + fileNumber + ".png" : fileNumber + ".png";
     
-    // Debugging: Logging to console if image fails
-    imgElement.onerror = function() {
-        console.error("Failed to load image at: " + imgPath);
-    };
+    imgElement.src = fileName;
+    
+    // Debugging check: Open your browser console (F12) to see if it's hitting the right path
+    console.log("Attempting to load: " + fileName);
 
     document.getElementById("detailTitle").innerText = reportData[currentIndex].title;
     document.getElementById("detailText").innerText = reportData[currentIndex].text;
