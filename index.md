@@ -1,84 +1,136 @@
-<div class="gallery-container">
-  <img class="gallery-item" src="01.png" alt="Overview: High-Level Threat Dashboard" onclick="openModal(0)">
-  <img class="gallery-item" src="02.png" alt="Security Posture: Severity & Auth Trends" onclick="openModal(1)">
-  <img class="gallery-item" src="03.png" alt="The Success/Failure Narrative" onclick="openModal(2)">
-  <img class="gallery-item" src="04.png" alt="Simulation: Initiating Terminal Attack" onclick="openModal(3)">
-  <img class="gallery-item" src="06.png" alt="Recovery: Fixing Corrupted ossec.conf" onclick="openModal(4)">
-  <img class="gallery-item" src="07.png" alt="24-Hour Metrics: 1379 Security Events" onclick="openModal(5)">
-  <img class="gallery-item" src="08.png" alt="Rule 5710: Non-Existing User Probing" onclick="openModal(6)">
-  <img class="gallery-item" src="09.png" alt="Rule 5712: Brute Force Threshold Trigger" onclick="openModal(8)">
-  <img class="gallery-item" src="010.png" alt="Attacker Identification: Source IP 141.98.81.37" onclick="openModal(9)">
-  <img class="gallery-item" src="011.png" alt="OSINT: AbuseIPDB Intelligence Check" onclick="openModal(10)">
-  <img class="gallery-item" src="012.png" alt="Mapping: MITRE ATT&CK Framework" onclick="openModal(11)">
-  <img class="gallery-item" src="013.png" alt="Containment: Manual IPTables DROP Rule" onclick="openModal(12)">
-  <img class="gallery-item" src="014.png" alt="Verification: Confirming Blocked Traffic" onclick="openModal(13)">
-</div>
+---
+layout: default
+title: SOC Lab Portfolio
+---
 
-<div id="myModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-  <a class="next" onclick="changeSlide(1)">&#10095;</a>
-  
-  <img class="modal-content" id="img01">
-  
-  <div id="caption-container">
-    <div id="caption-title"></div>
-    <div id="caption-text"></div>
+<style>
+/* Grid Layout for Evidence */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* Individual Card Styling */
+.evidence-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.evidence-card:hover {
+  transform: translateY(-5px);
+  border-color: #007bff;
+}
+
+.evidence-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #333;
+}
+
+/* The Summary Box (Hidden by default) */
+.evidence-summary {
+  padding: 15px;
+  background: #252525;
+  color: #ddd;
+  font-size: 14px;
+  line-height: 1.6;
+  display: none; /* This is the key - it pops up on click */
+  border-top: 2px solid #007bff;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.evidence-title {
+  padding: 12px;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+  background: #1a1a1a;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Active State for clicked cards */
+.evidence-card.active {
+  border-color: #28a745;
+}
+
+.evidence-card.active .evidence-summary {
+  display: block;
+}
+</style>
+
+# SOC Incident Report: Brute Force Analysis
+*Click any screenshot below to reveal the analyst notes and investigation details.*
+
+<div class="evidence-grid">
+
+  <div class="evidence-card" onclick="this.classList.toggle('active')">
+    <img src="01.png" alt="Threat Dashboard">
+    <div class="evidence-title">1. Security Posture Overview</div>
+    <div class="evidence-summary">
+      <b>Analyst Note:</b> Initial monitoring of the Wazuh Dashboard. This screen captures the baseline security posture before the attack began, showing general system health and agent status.
+    </div>
   </div>
+
+  <div class="evidence-card" onclick="this.classList.toggle('active')">
+    <img src="04.png" alt="Terminal Attack">
+    <div class="evidence-title">4. Manual Attack Simulation</div>
+    <div class="evidence-summary">
+      <b>The Struggle:</b> During this phase, the VMware environment crashed, corrupting the <i>ossec.conf</i> file (0 bytes). I had to manually recover the agent configuration and re-establish the manager handshake before the attack could be logged.
+    </div>
+  </div>
+
+  <div class="evidence-card" onclick="this.classList.toggle('active')">
+    <img src="06.png" alt="24hr Dashboard">
+    <div class="evidence-title">6. 24-Hour Event Aggregation</div>
+    <div class="evidence-summary">
+      <b>Findings:</b> A total of 1,379 events were captured. Statistics show 129 Level 12+ alerts, 85 authentication failures, and 13 successful logins (authorized). This volume confirms a persistent brute-force attempt.
+    </div>
+  </div>
+
+  <div class="evidence-card" onclick="this.classList.toggle('active')">
+    <img src="09.png" alt="Rule 5712">
+    <div class="evidence-title">9. Rule 5712: Brute Force Trigger</div>
+    <div class="evidence-summary">
+      <b>Detection:</b> Wazuh Rule 5712 fired after detecting multiple failed SSH attempts in a short window. This confirms the system successfully identified the automated nature of the attack.
+    </div>
+  </div>
+
+  <div class="evidence-card" onclick="this.classList.toggle('active')">
+    <img src="011.png" alt="AbuseIPDB">
+    <div class="evidence-title">11. AbuseIPDB Intelligence</div>
+    <div class="evidence-summary">
+      <b>OSINT:</b> Cross-referenced the attacker's IP with AbuseIPDB. The IP was flagged with a 100% Abuse Confidence Score, confirming it as a known malicious bot scanning for open SSH ports.
+    </div>
+  </div>
+
+  <div class="evidence-card" onclick="this.classList.toggle('active')">
+    <img src="013.png" alt="IP Block">
+    <div class="evidence-title">13. Containment: IP Block</div>
+    <div class="evidence-summary">
+      <b>Mitigation:</b> To stop the attack, I manually executed <code>sudo iptables -I INPUT -s [IP] -j DROP</code>. This immediately severed the connection between the attacker and the target server.
+    </div>
+  </div>
+
 </div>
 
 <script>
-let currentSlideIndex = 0;
-const images = document.getElementsByClassName("gallery-item");
-
-// This array maps exactly to your 14 screenshots
-const summaries = [
-  "STAGE 1: Dashboard overview displaying active security threats and severity levels across the environment.",
-  "STAGE 2: Analyzing the distribution of high-level alerts. This view highlights critical authentication anomalies.",
-  "STAGE 3: The 'Success vs. Failure' story. Note the massive spike in failures compared to zero successful logins.",
-  "STAGE 4: Executing a manual brute force attack from the attacker terminal to verify SIEM detection logic.",
-  "STAGE 5: PROJECT STRUGGLE: Following a VM crash, the ossec.conf was corrupted (0 bytes). This shows the manual restoration of the Wazuh Agent connection.",
-  "STAGE 6: 24-Hour Review: 1,379 total events captured. This includes 129 Level 12+ alerts and 13 successful (authorized) logins.",
-  "STAGE 7: Rule 5710 Analysis. The SIEM detects a scanner attempting to guess usernames that do not exist on the Ubuntu system.",
-  "STAGE 8: Deeper look at Rule 5710. The logs show the sshd service correctly identifying 'Invalid User' attempts.",
-  "STAGE 9: Rule 5712 Alert. The high frequency of failed attempts triggered the 'Brute Force' threshold, escalating to Level 10.",
-  "STAGE 10: Identifying the Adversary. Source IP 141.98.81.37 is flagged as the primary threat actor behind the brute force.",
-  "STAGE 11: OSINT Investigation. AbuseIPDB results confirm the source IP is a known malicious bot with 100% abuse confidence.",
-  "STAGE 12: Tactical Mapping. Applying the MITRE ATT&CK framework: Tactic TA0006 (Credential Access) & Technique T1110 (Brute Force).",
-  "STAGE 13: MITIGATION. Manually implementing a DROP rule in IPTables to sever the attacker's connection to the server.",
-  "STAGE 14: SUCCESS. Final verification in the terminal showing 0 packets reaching the server from the malicious source IP."
-];
-
-function openModal(index) {
-  currentSlideIndex = index;
-  document.getElementById("myModal").style.display = "block";
-  updateModal();
-}
-
-function closeModal() {
-  document.getElementById("myModal").style.display = "none";
-}
-
-function changeSlide(n) {
-  currentSlideIndex += n;
-  if (currentSlideIndex >= images.length) {currentSlideIndex = 0}
-  if (currentSlideIndex < 0) {currentSlideIndex = images.length - 1}
-  updateModal();
-}
-
-function updateModal() {
-  const modalImg = document.getElementById("img01");
-  const captionTitle = document.getElementById("caption-title");
-  const captionText = document.getElementById("caption-text");
-  
-  modalImg.src = images[currentSlideIndex].src;
-  captionTitle.innerHTML = images[currentSlideIndex].alt;
-  captionText.innerHTML = summaries[currentSlideIndex];
-}
-
-// Close modal when clicking outside the image
-window.onclick = function(event) {
-  let modal = document.getElementById("myModal");
-  if (event.target == modal) { closeModal(); }
-}
+// Logic to ensure only one card is expanded at a time (Optional)
+const cards = document.querySelectorAll('.evidence-card');
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => { if(c !== card) c.classList.remove('active'); });
+  });
+});
 </script>
