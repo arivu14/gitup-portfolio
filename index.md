@@ -11,19 +11,19 @@ title: SOC Lab Portfolio
 
 <h3 style="color:#eee;">Evidence Gallery (14 Stages)</h3>
 <div class="evidence-strip">
-    <img class="thumb" src="BF_1.png" onclick="openLightbox(0)">
-    <img class="thumb" src="BF_2.png" onclick="openLightbox(1)">
-    <img class="thumb" src="BF_3.png" onclick="openLightbox(2)">
-    <img class="thumb" src="BF_4.png" onclick="openLightbox(3)">
-    <img class="thumb" src="BF_6.png" onclick="openLightbox(5)">
-    <img class="thumb" src="BF_7.png" onclick="openLightbox(6)">
-    <img class="thumb" src="BF_8.png" onclick="openLightbox(7)">
-    <img class="thumb" src="BF_9.png" onclick="openLightbox(8)">
-    <img class="thumb" src="BF_10.png" onclick="openLightbox(9)">
-    <img class="thumb" src="BF_11.png" onclick="openLightbox(10)">
-    <img class="thumb" src="BF_12.png" onclick="openLightbox(11)">
-    <img class="thumb" src="BF_13.png" onclick="openLightbox(12)">
-    <img class="thumb" src="BF_14.png" onclick="openLightbox(13)">
+    <img class="thumb" src="01.png" onclick="openLightbox(0)">
+    <img class="thumb" src="02.png" onclick="openLightbox(1)">
+    <img class="thumb" src="03.png" onclick="openLightbox(2)">
+    <img class="thumb" src="04.png" onclick="openLightbox(3)">
+    <img class="thumb" src="06.png" onclick="openLightbox(5)">
+    <img class="thumb" src="07.png" onclick="openLightbox(6)">
+    <img class="thumb" src="08.png" onclick="openLightbox(7)">
+    <img class="thumb" src="09.png" onclick="openLightbox(8)">
+    <img class="thumb" src="010.png" onclick="openLightbox(9)">
+    <img class="thumb" src="011.png" onclick="openLightbox(10)">
+    <img class="thumb" src="012.png" onclick="openLightbox(11)">
+    <img class="thumb" src="013.png" onclick="openLightbox(12)">
+    <img class="thumb" src="014.png" onclick="openLightbox(13)">
 </div>
 
 <div id="lightbox" class="lightbox">
