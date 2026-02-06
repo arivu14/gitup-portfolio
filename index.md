@@ -4,147 +4,130 @@ title: SOC Lab Portfolio
 ---
 
 <style>
-/* 1. Page Layout */
-.evidence-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+/* 1. The Horizontal Evidence Strip */
+.evidence-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 20px;
   padding: 20px;
+  background: #121212;
+  border-radius: 12px;
 }
 
-.gallery-item {
+.evidence-item {
+  flex: 0 0 250px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.evidence-item img {
   width: 100%;
   border-radius: 8px;
+  border: 2px solid #333;
   cursor: pointer;
-  transition: 0.3s;
-  border: 1px solid #444;
+  transition: transform 0.3s ease;
 }
 
-.gallery-item:hover {
+/* When active, the image highlights */
+.evidence-item.active img {
+  border-color: #007bff;
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0,123,255,0.5);
 }
 
-/* 2. The Modal (Pop-up) */
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 9999; 
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.8); /* Dark dimming */
-  backdrop-filter: blur(10px); /* This creates the blur effect you wanted */
-  overflow: auto;
-}
-
-/* 3. Modal Content Box */
-.modal-content-container {
-  background: #1e1e1e;
-  margin: 5% auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 900px;
-  border-radius: 12px;
+/* 2. The Pop-Up Summary Box (Appears directly below the clicked image) */
+.detail-popup {
+  display: none;
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(30, 30, 30, 0.95);
   border: 1px solid #007bff;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-radius: 8px;
+  color: #ddd;
+  text-align: left;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  animation: slideDown 0.3s ease-out;
 }
 
-.modal-content-container img {
-  width: 100%;
-  border-radius: 4px;
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* 4. Text Below the Image */
-.modal-summary {
-  color: #eee;
-  padding: 20px;
-  line-height: 1.6;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.summary-title {
-  color: #007bff;
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #333;
-  padding-bottom: 5px;
-}
-
-/* 5. Close Button */
-.close {
-  position: absolute;
-  top: 10px; right: 20px;
-  color: #fff;
-  font-size: 35px;
-  font-weight: bold;
-  cursor: pointer;
-}
+/* Blur effect for the rest of the section when clicking */
+.blurred { filter: blur(4px); pointer-events: none; }
 </style>
 
 # SOC Incident Report: Brute Force Analysis
+*Scroll horizontally to view the 14 stages. Click any image to reveal the analyst notes.*
 
-<div class="evidence-grid">
-  <img class="gallery-item" src="01.png" onclick="openReport(0)">
-  <img class="gallery-item" src="02.png" onclick="openReport(1)">
-  <img class="gallery-item" src="03.png" onclick="openReport(2)">
-  <img class="gallery-item" src="04.png" onclick="openReport(3)">
-  <img class="gallery-item" src="05.png" onclick="openReport(4)">
-  <img class="gallery-item" src="06.png" onclick="openReport(5)">
-  <img class="gallery-item" src="07.png" onclick="openReport(6)">
-  <img class="gallery-item" src="08.png" onclick="openReport(7)">
-  <img class="gallery-item" src="09.png" onclick="openReport(8)">
-  <img class="gallery-item" src="010.png" onclick="openReport(9)">
-  <img class="gallery-item" src="011.png" onclick="openReport(10)">
-  <img class="gallery-item" src="012.png" onclick="openReport(11)">
-  <img class="gallery-item" src="013.png" onclick="openReport(12)">
-  <img class="gallery-item" src="014.png" onclick="openReport(13)">
-</div>
+<div id="master-container" class="evidence-container">
 
-<div id="reportModal" class="modal">
-  <div class="modal-content-container">
-    <span class="close" onclick="closeReport()">&times;</span>
-    <img id="modalImg">
-    <div class="modal-summary">
-      <div id="modalTitle" class="summary-title"></div>
-      <div id="modalText"></div>
+  <div class="evidence-item" id="item-1">
+    <img src="01.png" onclick="toggleDetails(1)">
+    <div id="detail-1" class="detail-popup">
+      <strong style="color:#007bff;">1. Security Overview</strong><br>
+      Initial dashboard view displaying high-level threat metrics and the current security posture of Agent 004.
     </div>
   </div>
-</div>
+
+  <div class="evidence-item" id="item-4">
+    <img src="04.png" onclick="toggleDetails(4)">
+    <div id="detail-4" class="detail-popup">
+      <strong style="color:#007bff;">4. The Struggle: VM Crash</strong><br>
+      Following a VMware crash, the ossec.conf was corrupted (0 bytes). Documenting the manual recovery of the Wazuh Agent connection.
+    </div>
+  </div>
+
+  <div class="evidence-item" id="item-6">
+    <img src="06.png" onclick="toggleDetails(6)">
+    <div id="detail-6" class="detail-popup">
+      <strong style="color:#007bff;">6. 24-Hour Metrics</strong><br>
+      Dashboard stats: 1,379 events detected, including 129 Level 12+ alerts, 85 auth failures, and 13 successful logins.
+    </div>
+  </div>
+
+  <div class="evidence-item" id="item-9">
+    <img src="09.png" onclick="toggleDetails(9)">
+    <div id="detail-9" class="detail-popup">
+      <strong style="color:#007bff;">9. Rule 5712: Brute Force</strong><br>
+      Wazuh detection of multiple authentication failures meeting the high-frequency brute force threshold.
+    </div>
+  </div>
+
+  <div class="evidence-item" id="item-11">
+    <img src="011.png" onclick="toggleDetails(11)">
+    <div id="detail-11" class="detail-popup">
+      <strong style="color:#007bff;">11. OSINT: AbuseIPDB</strong><br>
+      Intelligence verification showing 141.98.81.37 as a 100% Abuse Confidence malicious bot.
+    </div>
+  </div>
+
+  <div class="evidence-item" id="item-13">
+    <img src="013.png" onclick="toggleDetails(13)">
+    <div id="detail-13" class="detail-popup">
+      <strong style="color:#007bff;">13. Mitigation: IP Block</strong><br>
+      Containment action: Manually implemented a DROP rule via IPTables to terminate the attacker's access.
+    </div>
+  </div>
+
+  </div>
 
 <script>
-const reportData = [
-  { title: "Security Overview", text: "Dashboard view displaying high-level threat metrics and the current security posture of Agent 004." },
-  { title: "Severity Distribution", text: "Analysis of alert levels showing a significant volume of Critical (Level 10+) events." },
-  { title: "Authentication Story", text: "Visual contrast between failed and successful login attempts over a 24-hour period." },
-  { title: "Attack Simulation", text: "Terminal view capturing the manual brute force attack initiated against the target system." },
-  { title: "The Struggle: VM Crash", text: "Documentation of the recovery process after a VMware crash caused agent configuration corruption." },
-  { title: "Wazuh Metrics", text: "Dashboard stats: 1,379 events detected, including 85 auth failures and 13 successful logins." },
-  { title: "Rule 5710: User Probing", text: "Alert details for SSH login attempts using non-existent usernames on the server." },
-  { title: "Rule 5710: Log Analysis", text: "Technical breakdown of the syslog data generated by the SSH daemon (sshd)." },
-  { title: "Rule 5712: Brute Force", text: "Wazuh detection of multiple authentication failures meeting the brute force threshold." },
-  { title: "Attacker IP Isolation", text: "Identifying the malicious source IP (141.98.81.37) responsible for the attack." },
-  { title: "OSINT: AbuseIPDB", text: "Intelligence verification showing 141.98.81.37 as a 100% Abuse Confidence malicious bot." },
-  { title: "MITRE Mapping", text: "Tactic: Credential Access (TA0006) | Technique: Brute Force (T1110) mapping." },
-  { title: "Containment: IP Block", text: "Terminal command blocking the attacker via host-based firewall (IPTables)." },
-  { title: "Verification", text: "Final status check confirming the attacker's IP is successfully dropped by the firewall." }
-];
+function toggleDetails(id) {
+  // Hide all other open popups first
+  const allPopups = document.querySelectorAll('.detail-popup');
+  const allItems = document.querySelectorAll('.evidence-item');
+  
+  allPopups.forEach(p => p.style.display = 'none');
+  allItems.forEach(i => i.classList.remove('active'));
 
-function openReport(index) {
-  document.getElementById("reportModal").style.display = "block";
-  document.getElementById("modalImg").src = "BF_" + (index + 1) + ".png";
-  document.getElementById("modalTitle").innerHTML = reportData[index].title;
-  document.getElementById("modalText").innerHTML = reportData[index].text;
-}
-
-function closeReport() {
-  document.getElementById("reportModal").style.display = "none";
-}
-
-// Close if user clicks outside the content box
-window.onclick = function(event) {
-  let modal = document.getElementById("reportModal");
-  if (event.target == modal) { closeReport(); }
+  // Show the specific detail for the clicked image
+  const targetDetail = document.getElementById('detail-' + id);
+  const targetItem = document.getElementById('item-' + id);
+  
+  targetDetail.style.display = 'block';
+  targetItem.classList.add('active');
 }
 </script>
