@@ -1,110 +1,17 @@
----
-layout: default
-title: SOC Lab Portfolio
----
-
-# SOC Incident Report: Brute Force Analysis
-**Analyst:** [Your Name] | **Status:** RESOLVED
-
-<style>
-/* 1. The Lightbox Background (Blur & Dim) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  padding-top: 30px;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* 2. The Pop-up Image */
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 80%;
-  max-height: 65vh;
-  border: 2px solid #444;
-  border-radius: 8px;
-}
-
-/* 3. Navigation & Close Buttons */
-.close {
-  position: absolute;
-  top: 15px; right: 35px;
-  color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 40px;
-  user-select: none;
-  text-decoration: none;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-}
-
-.next { right: 3%; }
-.prev { left: 3%; }
-
-/* 4. The Summary Box below the Image */
-#caption-container {
-  margin: auto;
-  width: 70%;
-  text-align: center;
-  color: white;
-  padding: 20px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 10px;
-  margin-top: 15px;
-}
-
-#caption-title { font-size: 22px; font-weight: bold; color: #007bff; margin-bottom: 5px; }
-#caption-text { font-size: 16px; line-height: 1.5; color: #ddd; }
-
-/* 5. Horizontal Slider Styling */
-.gallery-container {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 20px;
-  background: #1e1e1e;
-  border-radius: 10px;
-}
-
-.gallery-item {
-  flex: 0 0 250px;
-  height: 150px;
-  object-fit: cover;
-  cursor: pointer;
-  border-radius: 6px;
-  opacity: 0.8;
-  transition: 0.3s;
-}
-
-.gallery-item:hover { opacity: 1; transform: translateY(-5px); }
-</style>
-
-## Brute Force Attack Evidence (8 Stages)
-*Click a screenshot to analyze the evidence. The background will blur, and a detailed summary will appear below the image.*
-
 <div class="gallery-container">
-  <img class="gallery-item" src="BF_1.png" alt="1. Initial Dashboard Alert" onclick="openModal(0)">
-  <img class="gallery-item" src="BF_2.png" alt="2. Email Header Analysis" onclick="openModal(1)">
-  <img class="gallery-item" src="BF_3.png" alt="3. Source IP Identification" onclick="openModal(2)">
-  <img class="gallery-item" src="BF_4.png" alt="4. Rule 5712 Log Breakdown" onclick="openModal(3)">
-  <img class="gallery-item" src="BF_5.png" alt="5. Authentication Failure Spikes" onclick="openModal(4)">
-  <img class="gallery-item" src="BF_6.png" alt="6. User Account Targeted" onclick="openModal(5)">
-  <img class="gallery-item" src="BF_7.png" alt="7. Persistence Mechanism Identified" onclick="openModal(6)">
-  <img class="gallery-item" src="BF_8.png" alt="8. Successful Mitigation Log" onclick="openModal(7)">
+  <img class="gallery-item" src="01.png" alt="Overview: High-Level Threat Dashboard" onclick="openModal(0)">
+  <img class="gallery-item" src="02.png" alt="Security Posture: Severity & Auth Trends" onclick="openModal(1)">
+  <img class="gallery-item" src="03.png" alt="The Success/Failure Narrative" onclick="openModal(2)">
+  <img class="gallery-item" src="04.png" alt="Simulation: Initiating Terminal Attack" onclick="openModal(3)">
+  <img class="gallery-item" src="06.png" alt="Recovery: Fixing Corrupted ossec.conf" onclick="openModal(4)">
+  <img class="gallery-item" src="07.png" alt="24-Hour Metrics: 1379 Security Events" onclick="openModal(5)">
+  <img class="gallery-item" src="08.png" alt="Rule 5710: Non-Existing User Probing" onclick="openModal(6)">
+  <img class="gallery-item" src="09.png" alt="Rule 5712: Brute Force Threshold Trigger" onclick="openModal(8)">
+  <img class="gallery-item" src="010.png" alt="Attacker Identification: Source IP 141.98.81.37" onclick="openModal(9)">
+  <img class="gallery-item" src="011.png" alt="OSINT: AbuseIPDB Intelligence Check" onclick="openModal(10)">
+  <img class="gallery-item" src="012.png" alt="Mapping: MITRE ATT&CK Framework" onclick="openModal(11)">
+  <img class="gallery-item" src="013.png" alt="Containment: Manual IPTables DROP Rule" onclick="openModal(12)">
+  <img class="gallery-item" src="014.png" alt="Verification: Confirming Blocked Traffic" onclick="openModal(13)">
 </div>
 
 <div id="myModal" class="modal">
@@ -124,16 +31,22 @@ title: SOC Lab Portfolio
 let currentSlideIndex = 0;
 const images = document.getElementsByClassName("gallery-item");
 
-// --- ADD YOUR SUMMARIES HERE ---
+// This array maps exactly to your 14 screenshots
 const summaries = [
-  "Initial spike in failed logins detected on the main Wazuh dashboard. High volume of Rule 5712 alerts observed within a short window.",
-  "Detailed analysis of the phishing email headers reveals the true source IP and the spoofing technique used to bypass filters.",
-  "Isolated the malicious Source IP: 10.48.156.247. Cross-referencing logs confirms this IP is responsible for 100% of the failed SSH attempts.",
-  "Breakdown of Rule ID 5712. This rule triggered 69 times, indicating a sustained brute force attempt against the administrative account.",
-  "Visualizing the timeline of failures. The attacker attempted access every 10 minutes to avoid triggering immediate account lockouts.",
-  "Identified the specific target username: 'root'. The attacker is attempting to gain the highest level of privilege on the system.",
-  "Detection of a successful login followed by a 'useradd' command. The attacker created 'persistence_user' to maintain access.",
-  "Final mitigation logs. Shows the blocking of the attacker's IP at the firewall and the manual deletion of the backdoor account."
+  "STAGE 1: Dashboard overview displaying active security threats and severity levels across the environment.",
+  "STAGE 2: Analyzing the distribution of high-level alerts. This view highlights critical authentication anomalies.",
+  "STAGE 3: The 'Success vs. Failure' story. Note the massive spike in failures compared to zero successful logins.",
+  "STAGE 4: Executing a manual brute force attack from the attacker terminal to verify SIEM detection logic.",
+  "STAGE 5: PROJECT STRUGGLE: Following a VM crash, the ossec.conf was corrupted (0 bytes). This shows the manual restoration of the Wazuh Agent connection.",
+  "STAGE 6: 24-Hour Review: 1,379 total events captured. This includes 129 Level 12+ alerts and 13 successful (authorized) logins.",
+  "STAGE 7: Rule 5710 Analysis. The SIEM detects a scanner attempting to guess usernames that do not exist on the Ubuntu system.",
+  "STAGE 8: Deeper look at Rule 5710. The logs show the sshd service correctly identifying 'Invalid User' attempts.",
+  "STAGE 9: Rule 5712 Alert. The high frequency of failed attempts triggered the 'Brute Force' threshold, escalating to Level 10.",
+  "STAGE 10: Identifying the Adversary. Source IP 141.98.81.37 is flagged as the primary threat actor behind the brute force.",
+  "STAGE 11: OSINT Investigation. AbuseIPDB results confirm the source IP is a known malicious bot with 100% abuse confidence.",
+  "STAGE 12: Tactical Mapping. Applying the MITRE ATT&CK framework: Tactic TA0006 (Credential Access) & Technique T1110 (Brute Force).",
+  "STAGE 13: MITIGATION. Manually implementing a DROP rule in IPTables to sever the attacker's connection to the server.",
+  "STAGE 14: SUCCESS. Final verification in the terminal showing 0 packets reaching the server from the malicious source IP."
 ];
 
 function openModal(index) {
@@ -163,6 +76,7 @@ function updateModal() {
   captionText.innerHTML = summaries[currentSlideIndex];
 }
 
+// Close modal when clicking outside the image
 window.onclick = function(event) {
   let modal = document.getElementById("myModal");
   if (event.target == modal) { closeModal(); }
