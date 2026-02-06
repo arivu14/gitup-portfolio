@@ -29,11 +29,13 @@ title: SOC Lab Portfolio
 <div id="lightbox" class="lightbox-overlay">
     <span class="close-btn" onclick="closeLightbox()">&times;</span>
     
-<a class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</a>
+ <a class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</a>
     <a class="nav-btn next" onclick="changeSlide(1)">&#10095;</a>
 
-<div class="lightbox-container">
-        <img id="activeImg" src="" alt="Incident Evidence">
+ <div class="lightbox-container">
+        <div style="width:100%; background:#000; display:flex; justify-content:center;">
+            <img id="activeImg" src="" alt="Incident Evidence" style="max-width:100%; height:auto; display:block;">
+        </div>
         
 <div class="details-content">
             <h2 id="detailTitle" style="color:#007bff; margin-top:0; border-bottom: 1px solid #333; padding-bottom: 10px;"></h2>
@@ -43,7 +45,6 @@ title: SOC Lab Portfolio
 </div>
 
 <style>
-/* Horizontal Strip Styling */
 .evidence-strip {
     display: flex;
     overflow-x: auto;
@@ -51,27 +52,23 @@ title: SOC Lab Portfolio
     padding: 20px;
     background: #111;
     border-radius: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: #007bff #222;
 }
 .thumb {
     height: 140px;
     border: 2px solid #333;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
-.thumb:hover { border-color: #007bff; transform: translateY(-5px); }
+.thumb:hover { border-color: #007bff; }
 
-/* Lightbox with Blur Background */
 .lightbox-overlay {
     display: none;
     position: fixed;
     z-index: 99999;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background: rgba(0,0,0,0.92);
-    backdrop-filter: blur(12px); /* Blurred background */
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
 
@@ -79,44 +76,17 @@ title: SOC Lab Portfolio
     position: relative;
     margin: 2% auto;
     width: 85%;
-    max-width: 1100px;
+    max-width: 1000px;
     background: #181818;
     border-radius: 12px;
-    border: 1px solid #444;
     overflow: hidden;
     box-shadow: 0 0 50px rgba(0,0,0,1);
 }
 
-#activeImg {
-    display: block;
-    width: 100%;
-    max-height: 60vh;
-    object-fit: contain;
-    background: #000;
-}
-
-.details-content {
-    padding: 25px;
-    background: #181818;
-}
-
-/* UI Elements */
-.close-btn { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 60px; cursor: pointer; z-index: 100; }
-.nav-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 45%;
-    padding: 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 50px;
-    transition: 0.3s;
-    user-select: none;
-    text-decoration: none;
-}
-.next { right: 2%; }
-.prev { left: 2%; }
-.nav-btn:hover { color: #007bff; transform: scale(1.2); }
+.details-content { padding: 25px; background: #181818; }
+.close-btn { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 60px; cursor: pointer; }
+.nav-btn { cursor: pointer; position: absolute; top: 45%; padding: 20px; color: white; font-size: 50px; text-decoration: none; }
+.next { right: 2%; } .prev { left: 2%; }
 </style>
 
 <script>
@@ -157,14 +127,17 @@ function changeSlide(n) {
 
 function updateContent() {
     const imgElement = document.getElementById("activeImg");
-    imgElement.src = "BF_" + (currentIndex + 1) + ".png"; // This pulls BF_1.png, BF_2.png, etc.
     
+    // Using a relative path helper to ensure the image loads from the correct GitHub folder
+    const imgPath = "BF_" + (currentIndex + 1) + ".png";
+    imgElement.src = imgPath;
+    
+    // Debugging: Logging to console if image fails
+    imgElement.onerror = function() {
+        console.error("Failed to load image at: " + imgPath);
+    };
+
     document.getElementById("detailTitle").innerText = reportData[currentIndex].title;
     document.getElementById("detailText").innerText = reportData[currentIndex].text;
 }
-
-// Close on 'Esc' key
-document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") closeLightbox();
-});
 </script>
