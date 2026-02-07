@@ -103,7 +103,7 @@ layout: null
                 </div>
             </div>
  <div class="photo-side">
-                <img src="my-photo.jpg" alt="Arivazhagan">
+                <img src="Screenshot_20260103_200618_Gallery.jpg" alt="Arivazhagan">
             </div>
         </div>
     </div>
