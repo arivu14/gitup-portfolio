@@ -1,16 +1,16 @@
 ---
 layout: null
 ---
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arivazhagan | SOC Analyst Portfolio</title>
+    <title>Arivazhagan | SOC Analyst</title>
     <style>
-        /* FULL BACKGROUND SETUP */
         body {
-            /* This MUST match your file name: cyber-bg.jpg */
-            background: #0a0e14 url('cyber-bg.jpg') no-repeat center center fixed;
+            /* TEST IMAGE: Using an external URL to verify the background logic works */
+            background: #0a0e14 url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -22,8 +22,7 @@ layout: null
             overflow: hidden;
         }
 
-/* Dark professional overlay */
-        body::before {
+ body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -31,7 +30,7 @@ layout: null
             z-index: -1;
         }
 
-.container {
+.main-container {
             width: 85%;
             max-width: 1200px;
             margin: auto;
@@ -40,78 +39,77 @@ layout: null
             align-items: center;
         }
 
-/* Left side: Text Details */
-        .text-content {
+ .info-box {
             flex: 1;
         }
 
- .text-content h1 {
-            font-size: 5rem;
+.info-box h1 {
+            font-size: 5.5rem;
             margin: 0;
-            font-weight: 800;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
+            line-height: 1;
         }
 
-.text-content .role {
+.info-box .role {
             font-size: 2.2rem;
-            color: #38bdf8; 
+            color: #00d4ff; 
             display: block;
-            margin-bottom: 30px;
+            margin: 10px 0 40px 0;
+            font-weight: 300;
         }
 
-.contact-line {
+.contact-details {
             font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            backdrop-filter: blur(5px);
         }
 
-.contact-line span {
-            margin-right: 40px;
+.contact-details span { margin-right: 30px; }
+.contact-details a { color: #00d4ff; text-decoration: none; font-weight: bold; }
+
+/* LARGE PHOTO SECTION */
+        .photo-box {
+            flex: 0 0 320px; 
         }
 
-.contact-line a {
-            color: #38bdf8;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-/* Right side: LARGE Profile Photo */
-        .photo-side {
-            flex: 0 0 300px; 
-        }
-
-.photo-side img {
-            width: 300px; /* Big size as requested */
-            height: 300px;
+.photo-box img {
+            width: 320px; 
+            height: 320px;
             border-radius: 50%;
-            border: 4px solid #38bdf8;
+            border: 4px solid #00d4ff;
             object-fit: cover;
-            box-shadow: 0 0 50px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.3);
         }
 
-/* Mobile responsiveness */
-        @media (max-width: 900px) {
-            .container { flex-direction: column-reverse; text-align: center; }
-            .text-content h1 { font-size: 3.5rem; }
-            .photo-side { margin-bottom: 40px; }
-            .contact-line span { display: block; margin: 10px 0; }
+ @media (max-width: 900px) {
+            .main-container { flex-direction: column-reverse; text-align: center; }
+            .info-box h1 { font-size: 3.5rem; }
+            .photo-box { margin-bottom: 40px; }
+            .contact-details { border-radius: 20px; }
+            .contact-details span { display: block; margin: 10px 0; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-        <div class="text-content">
-            <h1>Arivazhagan</h1>
+<div class="main-container">
+        <div class="info-box">
+            <h1>ARIVAZHAGAN</h1>
             <span class="role">SOC Analyst L1</span>
             
-<div class="contact-line">
+            <div class="contact-details">
                 <span><strong>C.N:</strong> +91 6379944366</span>
                 <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" target="_blank">Click Here</a></span>
             </div>
         </div>
 
- <div class="photo-side">
-            <img src="my-photo.jpg" alt="Arivazhagan Profile">
+<div class="photo-box">
+            <img src="my-photo.jpg" alt="Arivazhagan">
         </div>
     </div>
 
