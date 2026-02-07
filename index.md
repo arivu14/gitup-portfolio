@@ -20,7 +20,7 @@ layout: null
             width: 100%;
             height: 100vh;
             /* Using your file name: cyber-bg.jpg */
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('cyber-bg.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('cc.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
