@@ -3,35 +3,190 @@ layout: default
 title: SOC Lab Portfolio
 ---
 
-<div style="padding: 10px 0; margin-bottom: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-    <h1 style="color: #007bff; margin-bottom: 5px;">Incident Report: SSH Brute Force Analysis</h1>
-    <p style="font-size: 1.1em; margin: 0;"><strong>Analyst:</strong> [Your Name] | <strong>Status:</strong> <span style="color: #28a745; font-weight: bold;">RESOLVED</span></p>
+<style>
+/* 1. Professional Cybersecurity Theme */
+body {
+    background-color: #0a0e14; /* Deep Tech Black */
+    background-image: 
+        linear-gradient(rgba(0, 123, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 123, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px; /* Subtle Grid Pattern */
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. Layout Containers */
+.main-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* 3. Personal Profile Sidebar */
+.profile-sidebar {
+    flex: 1 1 300px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid #1e293b;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    height: fit-content;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #007bff;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+}
+
+.profile-sidebar h2 { color: #007bff; margin-bottom: 5px; }
+.profile-sidebar p { color: #94a3b8; font-size: 0.9em; line-height: 1.5; }
+
+/* 4. Incident Report Content */
+.report-content {
+    flex: 3 1 700px;
+}
+
+.verdict-box {
+    background: rgba(0, 123, 255, 0.1);
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* 5. Horizontal Evidence Strip */
+.evidence-strip {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 20px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #0f172a;
+}
+
+.thumb {
+    height: 140px;
+    border: 2px solid #334155;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.thumb:hover {
+    border-color: #007bff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+/* 6. The Interactive Lightbox (Pop-up) */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(2, 6, 23, 0.98);
+    backdrop-filter: blur(15px);
+}
+
+.lightbox-container {
+    position: relative;
+    margin: 2% auto;
+    width: 90%;
+    max-width: 1100px;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #1e293b;
+    box-shadow: 0 0 50px rgba(0,0,0,1);
+}
+
+#activeImg {
+    display: block;
+    width: 100%;
+    max-height: 65vh;
+    object-fit: contain;
+    background: #000;
+}
+
+.details-content { padding: 30px; background: #0f172a; }
+
+.close-btn { position: absolute; top: 15px; right: 25px; color: #64748b; font-size: 40px; cursor: pointer; transition: 0.3s; }
+.close-btn:hover { color: #fff; }
+
+.nav-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    padding: 20px;
+    color: #64748b;
+    font-size: 50px;
+    transition: 0.3s;
+    text-decoration: none;
+    user-select: none;
+}
+.nav-btn:hover { color: #007bff; transform: scale(1.2); }
+.next { right: 1%; } .prev { left: 1%; }
+
+/* Styling for L2 Escalation logic inside popup */
+.l2-box {
+    background: rgba(30, 41, 59, 0.5);
+    border-left: 4px solid #38bdf8;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+</style>
+
+<div class="main-wrapper">
+    <aside class="profile-sidebar">
+        <img src="my-photo.jpg" alt="Cybersecurity Analyst" class="profile-pic">
+        <h2>[Your Name]</h2>
+        <p style="color: #007bff; font-weight: bold; margin-bottom: 15px;">Junior SOC Analyst</p>
+        <p>Specializing in SIEM monitoring, incident response, and threat hunting. Passionate about securing cloud environments and defending against credential-based attacks.</p>
+        <div style="margin-top: 20px; border-top: 1px solid #334155; padding-top: 15px;">
+            <p><strong>Certifications:</strong> Security+, BTL1 (In Progress)</p>
+            <p><strong>Tools:</strong> Wazuh, Splunk, Wireshark, Nmap</p>
+        </div>
+    </aside>
+
+<main class="report-content">
+        <h1 style="color: #007bff; margin-bottom: 10px;">Incident Report: SSH Brute Force Analysis</h1>
+        <p style="margin-bottom: 25px;"><strong>Status:</strong> <span style="color: #10b981; text-transform: uppercase;">● Resolved</span></p>
+
+<div class="verdict-box">
+            <h3 style="margin-top: 0; color: #38bdf8;">/// Quick Summary & Verdict</h3>
+            <p><strong>Verdict:</strong> Confirmed Malicious Brute Force Attack via automated script.</p>
+            <p><strong>Action Taken:</strong> After identifying a persistent credential harvesting attempt from IP 141.98.81.37, I bypassed a system-level configuration crash to implement a host-based firewall block (IPTables), successfully terminating the threat actor's access.</p>
 </div>
 
-<div style="margin-bottom: 30px; border-left: 4px solid #007bff; padding-left: 15px;">
-    <h3 style="margin-top: 0; color: #eee;">Quick Summary & Verdict</h3>
-    <p style="color: #bbb; line-height: 1.6; max-width: 900px;">
-        <strong>Verdict:</strong> Confirmed Malicious Brute Force Attack. <br>
-        <strong>Action Taken:</strong> After identifying a persistent credential harvesting attempt from IP 141.98.81.37, I manually bypassed a system-level configuration crash to implement a host-based firewall block (IPTables), successfully terminating the threat actor's access.
-    </p>
-</div>
-
-<h3 style="color: #eee; margin-left: 5px; font-size: 1.2em;">/// Evidence Gallery (Click to Investigate)</h3>
+<h3 style="color: #94a3b8; font-size: 1em; letter-spacing: 1px;">EVIDENCE GALLERY (Click to Investigate)</h3>
 <div class="evidence-strip">
-    <img class="thumb" src="01.png" alt="Dashboard Overview" onclick="openLightbox(0)">
-    <img class="thumb" src="02.png" alt="Severity Levels" onclick="openLightbox(1)">
-    <img class="thumb" src="03.png" alt="Auth Patterns" onclick="openLightbox(2)">
-    <img class="thumb" src="04.png" alt="Attack Simulation" onclick="openLightbox(3)">
-    <img class="thumb" src="05.png" alt="Recovery Process" onclick="openLightbox(4)">
-    <img class="thumb" src="06.png" alt="24hr Metrics" onclick="openLightbox(5)">
-    <img class="thumb" src="07.png" alt="User Probing" onclick="openLightbox(6)">
-    <img class="thumb" src="08.png" alt="Log Details" onclick="openLightbox(7)">
-    <img class="thumb" src="09.png" alt="Rule 5712" onclick="openLightbox(8)">
-    <img class="thumb" src="10.png" alt="IP Identification" onclick="openLightbox(9)">
-    <img class="thumb" src="11.png" alt="AbuseIPDB" onclick="openLightbox(10)">
-    <img class="thumb" src="12.png" alt="MITRE Mapping" onclick="openLightbox(11)">
-    <img class="thumb" src="13.png" alt="IP Block" onclick="openLightbox(12)">
-    <img class="thumb" src="14.png" alt="Verification" onclick="openLightbox(13)">
+            <img class="thumb" src="01.png" onclick="openLightbox(0)">
+            <img class="thumb" src="02.png" onclick="openLightbox(1)">
+            <img class="thumb" src="03.png" onclick="openLightbox(2)">
+            <img class="thumb" src="04.png" onclick="openLightbox(3)">
+            <img class="thumb" src="05.png" onclick="openLightbox(4)">
+            <img class="thumb" src="06.png" onclick="openLightbox(5)">
+            <img class="thumb" src="07.png" onclick="openLightbox(6)">
+            <img class="thumb" src="08.png" onclick="openLightbox(7)">
+            <img class="thumb" src="09.png" onclick="openLightbox(8)">
+            <img class="thumb" src="10.png" onclick="openLightbox(9)">
+            <img class="thumb" src="11.png" onclick="openLightbox(10)">
+            <img class="thumb" src="12.png" onclick="openLightbox(11)">
+            <img class="thumb" src="13.png" onclick="openLightbox(12)">
+            <img class="thumb" src="14.png" onclick="openLightbox(13)">
+        </div>
+    </main>
 </div>
 
 <div id="lightbox" class="lightbox-overlay">
@@ -40,36 +195,18 @@ title: SOC Lab Portfolio
     <a class="nav-btn next" onclick="changeSlide(1)">&#10095;</a>
 
 <div class="lightbox-container">
-        <div style="width: 100%; background: #000; display: flex; justify-content: center; min-height: 400px; border-bottom: 1px solid #333;">
-            <img id="activeImg" src="" alt="Incident Evidence" style="max-width: 100%; height: auto; display: block;">
-        </div>
-        
+        <img id="activeImg" src="" alt="Incident Evidence">
 <div class="details-content">
-            <h2 id="detailTitle" style="color: #007bff; margin-top: 0; margin-bottom: 10px;"></h2>
-            <div id="analystNotes" style="margin-bottom: 15px;">
-                <strong style="color: #eee;">Analyst Notes:</strong>
-                <p id="detailText" style="font-size: 15px; color: #ccc; margin-top: 5px; line-height: 1.5;"></p>
-            </div>
-            <div id="l2Section" style="background: rgba(0, 123, 255, 0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #007bff;">
-                <strong style="color: #007bff;">L2 Escalation Logic:</strong>
-                <p id="l2Text" style="font-size: 14px; color: #ddd; margin-top: 5px; margin-bottom: 0; font-style: italic;"></p>
+            <h2 id="detailTitle" style="color: #38bdf8; margin-top: 0;"></h2>
+            <p id="detailText" style="color: #94a3b8; font-size: 1.1em; line-height: 1.6;"></p>
+            
+<div class="l2-box">
+                <strong style="color: #38bdf8;">L2 Escalation Logic:</strong>
+                <p id="l2Text" style="margin-top: 8px; font-style: italic; color: #cbd5e1;"></p>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-.evidence-strip { display: flex; overflow-x: auto; gap: 15px; padding: 15px 5px; scrollbar-width: thin; scrollbar-color: #007bff #222; }
-.thumb { height: 140px; border: 2px solid #333; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-.thumb:hover { border-color: #007bff; transform: translateY(-3px); }
-
-.lightbox-overlay { display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-.lightbox-container { position: relative; margin: 2% auto; width: 85%; max-width: 1000px; background: #181818; border-radius: 12px; overflow: hidden; box-shadow: 0 0 50px rgba(0,0,0,1); border: 1px solid #333; }
-.details-content { padding: 25px; background: #181818; }
-.close-btn { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 60px; cursor: pointer; text-shadow: 0 0 10px #000; }
-.nav-btn { cursor: pointer; position: absolute; top: 45%; padding: 20px; color: white; font-size: 50px; text-decoration: none; user-select: none; }
-.next { right: 1%; } .prev { left: 1%; }
-</style>
 
 <script>
 let currentIndex = 0;
