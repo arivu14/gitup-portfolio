@@ -11,7 +11,7 @@ layout: null
         /* STEP 1: Background and Overlay */
         body {
             /* Replace 'cyber-bg.jpg' with your chosen background image filename */
-            background: #0a0e14 url('cyber-bg.jpg') no-repeat center center fixed;
+            background: #0a0e14 url('backround.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
