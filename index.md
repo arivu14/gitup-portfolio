@@ -1,227 +1,225 @@
 ---
 layout: default
-title: SOC Lab Portfolio
+title: Arivazhagan | SOC Analyst Portfolio
 ---
 
 <style>
-/* 1. Integrated Cybersecurity Background */
+/* 1. GLOBAL PROFESSIONAL STYLING */
 body {
-    background: #0a0e14 url('Pentester.PNG') no-repeat center center fixed;
+    background: #0a0e14 url('Pentester.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #e0e0e0;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* Clean, non-messy professional font */
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    line-height: 1.6;
 }
 
-/* Overlay to ensure text readability over the background image */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 14, 20, 0.85); /* Adjust opacity to make background clearer or darker */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 14, 20, 0.88); 
     z-index: -1;
 }
 
-/* 2. Layout Containers */
-.main-wrapper {
+/* 2. NEW BIO HEADER (Replaces old SOC Lab Portfolio text) */
+.hero-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 20px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 40px 20px;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.bio-text { flex: 2; }
+
+.bio-text h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #fff;
+    letter-spacing: -1px;
+}
+
+.bio-text .role {
+    font-size: 1.2rem;
+    color: #38bdf8;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.bio-summary {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin-bottom: 25px;
+}
+
+/* Contact & LinkedIn Styling */
+.contact-links {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+}
+
+.contact-links a {
+    color: #fff;
+    text-decoration: none;
+    background: rgba(56, 189, 248, 0.1);
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    transition: 0.3s;
+}
+
+.contact-links a:hover {
+    background: #38bdf8;
+    color: #0a0e14;
+}
+
+/* PROFILE PHOTO ON THE RIGHT */
+.profile-photo-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-photo-right img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20%; /* Modern soft-square look */
+    border: 2px solid #38bdf8;
+    object-fit: cover;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+}
+
+/* 3. INCIDENT REPORT AREA (Cleaned) */
+.report-section {
     max-width: 1200px;
     margin: auto;
+    padding: 20px;
 }
 
-/* 3. Profile Sidebar */
-.profile-sidebar {
-    flex: 1 1 300px;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(0, 123, 255, 0.3);
-    border-radius: 15px;
-    padding: 25px;
-    text-align: center;
-    backdrop-filter: blur(8px);
-    height: fit-content;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #007bff;
-    object-fit: cover;
-    margin-bottom: 15px;
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
-}
-
-.profile-sidebar h2 { 
-    color: #ffffff; 
-    margin-bottom: 5px; 
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.profile-sidebar p.title { 
-    color: #38bdf8; 
-    font-weight: bold; 
-    margin-bottom: 15px; 
-    font-size: 1.1em;
-}
-
-/* 4. Incident Report Content */
-.report-content {
-    flex: 3 1 700px;
+.section-title {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #38bdf8;
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
 .verdict-box {
-    background: rgba(0, 123, 255, 0.1);
-    border-left: 5px solid #007bff;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 0 10px 10px 0;
-    backdrop-filter: blur(5px);
+    background: rgba(30, 41, 59, 0.5);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
 }
 
-/* 5. Horizontal Evidence Strip */
+/* Remove slashes from headlines */
+h3 { color: #38bdf8; margin-top: 0; }
+
+/* 4. GALLERY STRIP */
 .evidence-strip {
     display: flex;
     overflow-x: auto;
     gap: 15px;
-    padding: 20px 0;
-    scrollbar-width: thin;
-    scrollbar-color: #007bff #0f172a;
+    padding: 10px 0;
 }
 
 .thumb {
-    height: 140px;
-    border: 2px solid rgba(51, 65, 85, 0.5);
+    height: 120px;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s ease;
+    opacity: 0.7;
+    transition: 0.3s;
 }
 
-.thumb:hover {
-    border-color: #007bff;
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.5);
-}
+.thumb:hover { opacity: 1; transform: scale(1.05); }
 
-/* 6. The Interactive Lightbox (Pop-up) */
+/* LIGHTBOX (Pop-up) Styles remain similar but cleaned */
 .lightbox-overlay {
     display: none;
     position: fixed;
-    z-index: 99999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(2, 6, 23, 0.95);
-    backdrop-filter: blur(15px);
+    z-index: 9999;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(2, 6, 23, 0.98);
+    backdrop-filter: blur(10px);
 }
-
 .lightbox-container {
     position: relative;
-    margin: 2% auto;
-    width: 90%;
-    max-width: 1100px;
+    margin: 5% auto;
+    width: 80%;
     background: #0f172a;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
-    border: 1px solid #1e293b;
 }
-
-#activeImg {
-    display: block;
-    width: 100%;
-    max-height: 65vh;
-    object-fit: contain;
-    background: #000;
-}
-
-.details-content { padding: 30px; background: #0f172a; }
-
-.close-btn { position: absolute; top: 15px; right: 25px; color: #64748b; font-size: 40px; cursor: pointer; }
-.close-btn:hover { color: #fff; }
-
-.nav-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 40%;
-    padding: 20px;
-    color: #64748b;
-    font-size: 50px;
-    transition: 0.3s;
-    text-decoration: none;
-}
-.nav-btn:hover { color: #007bff; transform: scale(1.2); }
-.next { right: 1%; } .prev { left: 1%; }
-
-.l2-box {
-    background: rgba(30, 41, 59, 0.5);
-    border-left: 4px solid #38bdf8;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 4px;
-}
+#activeImg { width: 100%; max-height: 50vh; object-fit: contain; background: #000; }
+.details-content { padding: 30px; }
+.close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 30px; cursor: pointer; }
 </style>
 
-<div class="main-wrapper">
-    <aside class="profile-sidebar">
-        <img src="my-photo.jpg" alt="Arivazhagan" class="profile-pic">
-        <h2>Arivazhagan</h2>
-        <p class="title">SOC Analyst L1</p>
-        <p>Specializing in SIEM monitoring, incident response, and threat hunting. Passionate about securing cloud environments and defending against credential-based attacks.</p>
-        <div style="margin-top: 20px; border-top: 1px solid rgba(51, 65, 85, 0.5); padding-top: 15px;">
-            <p><strong>Certifications:</strong> Security+, BTL1 (In Progress)</p>
-            <p><strong>Tools:</strong> Wazuh, Splunk, Wireshark, Nmap</p>
+<header class="hero-container">
+    <div class="bio-text">
+        <h1>ARIVAZHAGAN</h1>
+        <span class="role">SOC Analyst L1</span>
+        <p class="bio-summary">
+            Dedicated Security Operations Center Analyst focused on threat detection, 
+            incident response, and SIEM optimization. I specialize in identifying 
+            malicious patterns and defending infrastructure from automated brute-force 
+            and credential-harvesting attacks.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:your.email@example.com">Email Me</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a>
         </div>
-    </aside>
+    </div>
+    <div class="profile-photo-right">
+        <img src="my-photo.jpg" alt="Arivazhagan">
+    </div>
+</header>
 
-    <main class="report-content">
-        <h1 style="color: #ffffff; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Incident Report: SSH Brute Force Analysis</h1>
-        <p style="margin-bottom: 25px;"><strong>Status:</strong> <span style="color: #10b981; text-transform: uppercase;">● Resolved</span></p>
+<div class="report-section">
+    <h2 class="section-title">Incident Analysis: SSH Brute Force</h2>
+    
+<div class="verdict-box">
+        <h3>Final Verdict</h3>
+        <p><strong>Status:</strong> Resolved</p>
+        <p><strong>Summary:</strong> Identified a persistent brute force attempt from IP 141.98.81.37. Implemented an immediate IP Tables block to mitigate the threat and secured the system configuration.</p>
+    </div>
 
-        <div class="verdict-box">
-            <h3 style="margin-top: 0; color: #38bdf8;">/// Quick Summary & Verdict</h3>
-            <p><strong>Verdict:</strong> Confirmed Malicious Brute Force Attack via automated script.</p>
-            <p><strong>Action Taken:</strong> After identifying a persistent credential harvesting attempt from IP 141.98.81.37, I bypassed a system-level configuration crash to implement a host-based firewall block (IPTables), successfully terminating the threat actor's access.</p>
-        </div>
-
-        <h3 style="color: #94a3b8; font-size: 1em; letter-spacing: 1px;">EVIDENCE GALLERY (Click to Investigate)</h3>
-        <div class="evidence-strip">
-            <img class="thumb" src="01.png" onclick="openLightbox(0)">
-            <img class="thumb" src="02.png" onclick="openLightbox(1)">
-            <img class="thumb" src="03.png" onclick="openLightbox(2)">
-            <img class="thumb" src="04.png" onclick="openLightbox(3)">
-            <img class="thumb" src="05.png" onclick="openLightbox(4)">
-            <img class="thumb" src="06.png" onclick="openLightbox(5)">
-            <img class="thumb" src="07.png" onclick="openLightbox(6)">
-            <img class="thumb" src="08.png" onclick="openLightbox(7)">
-            <img class="thumb" src="09.png" onclick="openLightbox(8)">
-            <img class="thumb" src="10.png" onclick="openLightbox(9)">
-            <img class="thumb" src="11.png" onclick="openLightbox(10)">
-            <img class="thumb" src="12.png" onclick="openLightbox(11)">
-            <img class="thumb" src="13.png" onclick="openLightbox(12)">
-            <img class="thumb" src="14.png" onclick="openLightbox(13)">
-        </div>
-    </main>
+<h3>Evidence Gallery</h3>
+<div class="evidence-strip">
+        <img class="thumb" src="01.png" onclick="openLightbox(0)">
+        <img class="thumb" src="02.png" onclick="openLightbox(1)">
+        <img class="thumb" src="03.png" onclick="openLightbox(2)">
+        <img class="thumb" src="04.png" onclick="openLightbox(3)">
+        <img class="thumb" src="05.png" onclick="openLightbox(4)">
+        <img class="thumb" src="06.png" onclick="openLightbox(5)">
+        <img class="thumb" src="07.png" onclick="openLightbox(6)">
+        <img class="thumb" src="08.png" onclick="openLightbox(7)">
+        <img class="thumb" src="09.png" onclick="openLightbox(8)">
+        <img class="thumb" src="10.png" onclick="openLightbox(9)">
+        <img class="thumb" src="11.png" onclick="openLightbox(10)">
+        <img class="thumb" src="12.png" onclick="openLightbox(11)">
+        <img class="thumb" src="13.png" onclick="openLightbox(12)">
+        <img class="thumb" src="14.png" onclick="openLightbox(13)">
+    </div>
 </div>
 
 <div id="lightbox" class="lightbox-overlay">
     <span class="close-btn" onclick="closeLightbox()">&times;</span>
-    <a class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</a>
-    <a class="nav-btn next" onclick="changeSlide(1)">&#10095;</a>
-
     <div class="lightbox-container">
-        <img id="activeImg" src="" alt="Incident Evidence">
+        <img id="activeImg" src="">
         <div class="details-content">
-            <h2 id="detailTitle" style="color: #38bdf8; margin-top: 0;"></h2>
-            <p id="detailText" style="color: #94a3b8; font-size: 1.1em; line-height: 1.6;"></p>
-            <div class="l2-box">
-                <strong style="color: #38bdf8;">L2 Escalation Logic:</strong>
-                <p id="l2Text" style="margin-top: 8px; font-style: italic; color: #cbd5e1;"></p>
-            </div>
+            <h2 id="detailTitle" style="color:#38bdf8;"></h2>
+            <p id="detailText" style="color:#94a3b8;"></p>
         </div>
     </div>
 </div>
@@ -229,20 +227,20 @@ body::before {
 <script>
 let currentIndex = 0;
 const reportData = [
-    { title: "01: Dashboard Baseline", text: "Overview of the security posture before the attack began.", l2: "Initial monitoring showed low noise; established baseline for behavioral detection." },
-    { title: "02: Alert Severity Spikes", text: "Wazuh dashboard showing multiple Level 10 Critical alerts appearing in a short time frame.", l2: "Automated alerts alone aren't enough; moved to L2 phase to correlate logs with external threat intel." },
-    { title: "03: Authentication Failures", text: "Heavy volume of Rule 5712 (SSHD Brute Force) events isolated in the SIEM.", l2: "High-frequency failures indicated a scripted attack rather than a human typo." },
-    { title: "04: Attack Simulation", text: "Validating detection rules by simulating a multi-attempt SSH login via terminal.", l2: "Simulation confirmed that Rule 5712 triggers correctly at the 8th failed attempt." },
-    { title: "05: Recovery: Fixing Corrupted Config", text: "VMware crash caused 'ossec.conf' to wipe. Manually rebuilt the manager-agent handshake.", l2: "Escalated to system recovery; restored visibility before the attacker could exploit the blind spot." },
-    { title: "06: 24-Hour Metric Aggregation", text: "Stats show 1379 total events, with 85 critical authentication failures.", l2: "Quantified the scope of the attack to determine if it was a targeted campaign or opportunistic bot." },
-    { title: "07: Rule 5710 Analysis", text: "Detection of SSH attempts for users that do not exist (e.g., 'admin', 'guest').", l2: "User probing confirmed the attacker was scanning for common misconfigurations." },
-    { title: "08: SSHD Log Deep-Dive", text: "Reviewing raw syslogs to identify the specific source IP and timestamp patterns.", l2: "L2 Analysis: Identified 141.98.81.37 as the persistent offender." },
-    { title: "09: Brute Force Escalation", text: "The SIEM successfully aggregated Level 6 events into a high-severity Level 12 incident.", l2: "Escalated from 'noise' to 'active incident' based on sustained attack duration." },
-    { title: "10: Threat Actor Identification", text: "Isolating the source IP 141.98.81.37 for cross-referencing.", l2: "L2 investigation focused on attribution and determining attacker location/intent." },
-    { title: "11: OSINT Verification", text: "Querying AbuseIPDB results in a 100% Abuse Confidence Score for the identified IP.", l2: "Intelligence pivot: Verified the IP belongs to a known malicious botnet." },
-    { title: "12: MITRE ATT&CK Mapping", text: "Categorizing activity under T1110 (Brute Force) for formal reporting.", l2: "Standardized the incident to communicate risk to stakeholders using industry frameworks." },
-    { title: "13: Mitigation (IP Tables)", text: "Manual execution of 'DROP' command on the malicious IP to sever access.", l2: "Active Defense: Proactive containment used to prevent potential credential compromise." },
-    { title: "14: Post-Mitigation Check", text: "Final status check showing zero further logs from the blocked IP address.", l2: "Verification: Confirmed the block is holding and the system is secured." }
+    { title: "Dashboard Baseline", text: "Establishing standard monitoring before the spike." },
+    { title: "Severity Spike", text: "Wazuh alerts showing high-frequency login failures." },
+    { title: "Auth Failures", text: "Isolating Rule 5712 (SSHD Brute Force) events." },
+    { title: "Attack Simulation", text: "Verifying the detection threshold for automated scripts." },
+    { title: "Config Recovery", text: "Manually repairing the OSSEC configuration post-crash." },
+    { title: "Metric Aggregation", text: "Quantifying 1,379 total events over a 24-hour window." },
+    { title: "User Probing", text: "Detection of attempts on non-existent users (Admin/Guest)." },
+    { title: "Log Deep-Dive", text: "Identifying source IP 141.98.81.37 from raw system logs." },
+    { title: "Incident Escalation", text: "Elevating the event to a Level 12 Critical Incident." },
+    { title: "Actor Identification", text: "Isolating the malicious source for attribution." },
+    { title: "OSINT Verification", text: "Confirmed 100% abuse score on AbuseIPDB." },
+    { title: "MITRE Mapping", text: "Mapping to T1110 (Brute Force) framework." },
+    { title: "Mitigation", text: "Executing IPTables DROP command to block the attacker." },
+    { title: "Verification", text: "Confirming zero further traffic from the blocked source." }
 ];
 
 function openLightbox(index) {
@@ -250,24 +248,11 @@ function openLightbox(index) {
     document.getElementById("lightbox").style.display = "block";
     updateContent();
 }
-
 function closeLightbox() { document.getElementById("lightbox").style.display = "none"; }
-
-function changeSlide(n) {
-    currentIndex += n;
-    if (currentIndex >= 14) currentIndex = 0;
-    if (currentIndex < 0) currentIndex = 13;
-    updateContent();
-}
-
 function updateContent() {
-    const imgElement = document.getElementById("activeImg");
-    let fileNumber = currentIndex + 1;
-    let fileName = (fileNumber < 10) ? "0" + fileNumber + ".png" : fileNumber + ".png";
-    imgElement.src = fileName;
-    
+    let file = (currentIndex + 1 < 10) ? "0" + (currentIndex + 1) : (currentIndex + 1);
+    document.getElementById("activeImg").src = file + ".png";
     document.getElementById("detailTitle").innerText = reportData[currentIndex].title;
     document.getElementById("detailText").innerText = reportData[currentIndex].text;
-    document.getElementById("l2Text").innerText = reportData[currentIndex].l2;
 }
 </script>
