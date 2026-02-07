@@ -8,182 +8,149 @@ layout: null
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arivazhagan | SOC Analyst</title>
     <style>
-        /* RESET & BASE */
+        /* BASE & HERO STYLES */
         * { box-sizing: border-box; }
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            background-color: #0a0e14;
-            color: white;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-
- /* THE HERO SECTION */
-        .hero-section {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('cc.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
- .container {
-            width: 85%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 0;
-        }
-.text-side { flex: 1; padding-right: 50px; }
-        .text-side h1 {
-            font-size: 5rem;
-            margin: 0;
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: -2px;
-        }
-
-.text-side .role {
-           font-size: 2rem;
-            color: #38bdf8;
-            display: block;
-            margin: 5px 0 20px 0;
-        }
-
- .contact-info { font-size: 1.1rem; margin-bottom: 30px; }
-        .contact-info span { margin-right: 35px; }
-        .contact-info a { color: #38bdf8; text-decoration: none; font-weight: bold; }
-
- /* NEW: QUICK SUMMARY BOX */
-        .quick-summary {
-            background: rgba(56, 189, 248, 0.1);
-            border-left: 4px solid #38bdf8;
-            padding: 20px;
-            border-radius: 4px;
-            backdrop-filter: blur(10px);
-            max-width: 600px;
-        }
-
- .quick-summary h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.2rem;
-            color: #38bdf8;
-            text-transform: uppercase;
-        }
-
- .quick-summary p {
-            margin: 0;
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #cbd5e1;
-        }
-
-.photo-side img {
-            width: 320px; 
-            height: 320px;
-            border-radius: 50%;
-            border: 5px solid #38bdf8;
-            object-fit: cover;
-            box-shadow: 0 0 50px rgba(56, 189, 248, 0.4);
-        }
-
-/* INCIDENT REPORTS SECTION */
-        .reports-container {
-            background: #0f172a;
-            padding: 80px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-.report-grid {
-            width: 85%;
-            max-width: 1200px;
-        }
-
-.report-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 12px;
-        }
-
-.report-card h2 { color: #38bdf8; margin-top: 0; }
-.report-card .meta { color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px; display: block; }
-.report-card p { line-height: 1.6; color: #cbd5e1; }
+        html, body { margin: 0; padding: 0; width: 100%; background-color: #0a0e14; color: white; font-family: 'Segoe UI', Arial, sans-serif; }
         
-.report-card img {
-            width: 100%;
-            max-width: 850px;
-            margin-top: 25px;
-            border-radius: 8px;
-            border: 1px solid #334155;
+/* Blur class for background when modal is open */
+        .blur { filter: blur(8px); pointer-events: none; transition: 0.3s; }
+        
+.hero-section {
+            width: 100%; min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('cc.jpg');
+            background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
         }
 
-@media (max-width: 900px) {
-            .container { flex-direction: column-reverse; text-align: center; }
-            .text-side { padding-right: 0; }
-            .text-side h1 { font-size: 3.5rem; }
-            .photo-side img { width: 220px; height: 220px; margin-bottom: 30px; }
-            .quick-summary { margin: 0 auto; text-align: left; }
+ /* LIGHTBOX MODAL STYLES */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);
+            align-items: center; justify-content: center; flex-direction: column;
         }
+
+.modal-content {
+            position: relative; max-width: 80%; max-height: 70%;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+.modal-content img {
+            width: 100%; height: auto; border: 2px solid #38bdf8; border-radius: 8px;
+        }
+
+.caption-container {
+            margin-top: 20px; color: #cbd5e1; text-align: center;
+            max-width: 70%; line-height: 1.6; font-size: 1.1rem;
+        }
+
+/* NAVIGATION BUTTONS */
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; width: auto;
+            padding: 16px; margin-top: -50px; color: #38bdf8; font-weight: bold;
+            font-size: 40px; transition: 0.6s ease; border-radius: 0 3px 3px 0;
+            user-select: none; text-decoration: none;
+        }
+.next { right: -100px; border-radius: 3px 0 0 3px; }
+.prev { left: -100px; }
+.prev:hover, .next:hover { color: white; }
+
+ .close {
+            position: absolute; top: 20px; right: 35px; color: #f1f1f1;
+            font-size: 40px; font-weight: bold; cursor: pointer;
+        }
+
+/* REPORT THUMBNAILS */
+        .reports-container { background: #0f172a; padding: 80px 0; text-align: center; }
+        .report-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px; width: 85%; max-width: 1200px; margin: 0 auto;
+        }
+
+.thumb {
+            cursor: pointer; border-radius: 8px; border: 2px solid transparent;
+            transition: 0.3s; width: 100%; height: 150px; object-fit: cover;
+        }
+.thumb:hover { border-color: #38bdf8; transform: scale(1.05); }
+
+/* HEADER TEXT STYLES (Same as before) */
+        .text-side h1 { font-size: 5rem; margin: 0; text-transform: uppercase; font-weight: 900; }
+        .text-side .role { font-size: 2rem; color: #38bdf8; display: block; margin: 5px 0 20px 0; }
+        .contact-info a { color: #38bdf8; text-decoration: none; font-weight: bold; }
+        .photo-side img { width: 320px; height: 320px; border-radius: 50%; border: 5px solid #38bdf8; object-fit: cover; }
     </style>
 </head>
 <body>
 
-<div class="hero-section">
-        <div class="container">
+<div id="main-content">
+    <div class="hero-section">
+        <div class="container" style="display:flex; width:85%; max-width:1200px; justify-content:space-between; align-items:center;">
             <div class="text-side">
                 <h1>ARIVAZHAGAN</h1>
                 <span class="role">SOC Analyst L1</span>
-                
- <div class="contact-info">
-                    <span><strong>C.N:</strong> +91 6379944366</span>
-                    <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" target="_blank">Click Here</a></span>
-                </div>
-
-<div class="quick-summary">
-                    <h3>Latest Incident Response</h3>
-                    <p>
-                        Detected and mitigated a <strong>Level 10 Critical SSH Brute Force attack</strong> using Wazuh SIEM. 
-                        Identified malicious botnet activity via AbuseIPDB and executed emergency containment 
-                        through host-based firewall (IPTables) to secure Ubuntu Agent 004.
-                    </p>
+                <div class="contact-info">
+                    <span><strong>C.N:</strong> +91 6379944366</span> | 
+                    <span><strong>LinkedIn:</strong> <a href="#" target="_blank">Click Here</a></span>
                 </div>
             </div>
-
- <div class="photo-side">
+            <div class="photo-side">
                 <img src="Screenshot_20260103_200618_Gallery.jpg" alt="Arivazhagan">
             </div>
         </div>
     </div>
 
- <div class="reports-container">
+<div class="reports-container">
+        <h1 style="border-bottom: 3px solid #38bdf8; display:inline-block; padding-bottom:10px; margin-bottom:50px;">Incident Report Evidence</h1>
         <div class="report-grid">
-            <h1 style="color:white; border-bottom: 3px solid #38bdf8; padding-bottom: 10px; margin-bottom: 50px;">Incident Report Analysis</h1>
-            
-<div class="report-card">
-                <span class="meta">February 06, 2026 | Target: Ubuntu Linux</span>
-                <h2>SSH Brute Force Detection & Response</h2>
-                <p>
-                    <strong>The Attack:</strong> Malicious source IP (141.98.81.37) attempted to gain access to the system via brute force, triggering Wazuh Rule 5712. <br><br>
-                    <strong>Analysis:</strong> Verified 0 successful logins via SIEM dashboards. PIVOTED to AbuseIPDB which confirmed 100% abuse confidence for the source IP.<br><br>
-                    <strong>The Fix:</strong> Executed emergency containment via IPTables (DROP) and verified Ground Truth via Linux CLI. 
-                    Successfully mapped to <i>MITRE ATT&CK: Brute Force (T1110)</i>.
-                </p>
-                <img src="brute-force-screenshot.jpg" alt="Wazuh Brute Force Alert">
+            <img class="thumb" src="s1.png" onclick="openModal();currentSlide(1)" alt="Report 1: Initial detection of the malicious transaction via SIEM dashboard.">
+            <img class="thumb" src="s2.png" onclick="openModal();currentSlide(2)" alt="Report 2: Full email body text analysis identifying the fake merchant address.">
             </div>
+    </div>
+</div>
 
- </div>
- </div>
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <img id="modal-img">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div class="caption-container">
+        <p id="caption"></p>
+    </div>
+</div>
+
+<script>
+    let slideIndex = 1;
+    const images = document.getElementsByClassName("thumb");
+
+    function openModal() {
+        document.getElementById("myModal").style.display = "flex";
+        document.getElementById("main-content").classList.add("blur");
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+        document.getElementById("main-content").classList.remove("blur");
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        if (n > images.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = images.length}
+        
+        let modalImg = document.getElementById("modal-img");
+        let captionText = document.getElementById("caption");
+        
+        modalImg.src = images[slideIndex-1].src;
+        captionText.innerHTML = images[slideIndex-1].alt;
+    }
+</script>
 
 </body>
 </html>
