@@ -7,47 +7,69 @@ layout: null
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arivazhagan | SOC Portfolio</title>
     <style>
-        /* BASE THEME */
+        /* BASE THEME & BACKGROUND */
         * { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; width: 100%; background-color: #0a0e14; color: white; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
-        
-/* THE BLUR EFFECT: Blurs the main page when the modal is active */
-        .page-wrap.is-blurred { 
-            filter: blur(20px); 
-            pointer-events: none; 
-            transition: filter 0.4s ease; 
+        html, body { 
+            margin: 0; padding: 0; width: 100%; 
+            background: linear-gradient(rgba(10, 14, 20, 0.8), rgba(10, 14, 20, 0.8)), url('cc.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: white; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; 
+            overflow-x: hidden; 
         }
+        
+ /* BLUR EFFECT */
+        .page-wrap.is-blurred { filter: blur(20px); pointer-events: none; transition: 0.4s ease; }
 
  /* HERO SECTION */
-        .hero {
-            width: 100%; min-height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('cc.jpg');
-            background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
-        }
-        .hero-container { width: 85%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; }
-        .text-side h1 { font-size: 4.5rem; margin: 0; font-weight: 900; letter-spacing: -2px; }
-        .text-side .role { font-size: 2rem; color: #38bdf8; display: block; margin: 10px 0 25px 0; }
-        .pfp { width: 280px; height: 280px; border-radius: 50%; border: 4px solid #38bdf8; object-fit: cover; box-shadow: 0 0 40px rgba(56, 189, 248, 0.3); }
+        .hero { width: 100%; padding: 60px 0; display: flex; align-items: center; justify-content: center; }
+        .hero-container { width: 90%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; }
+        .text-side h1 { font-size: 4rem; margin: 0; font-weight: 900; letter-spacing: -2px; color: #fff; }
+        .text-side .role { font-size: 1.8rem; color: #38bdf8; display: block; margin: 5px 0 15px 0; }
+        .contact-info { font-size: 0.95rem; line-height: 1.6; color: #cbd5e1; }
+        .pfp { width: 220px; height: 220px; border-radius: 50%; border: 4px solid #38bdf8; object-fit: cover; box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
 
- /* CENTERED RECTANGLE TRIGGER (400px) */
-        .evidence-section { background: #0f172a; padding: 80px 0; text-align: center; }
+/* LEFT-ALIGNED INVESTIGATION SECTION */
+        .investigation-section { width: 90%; max-width: 1200px; margin: 0 auto; padding-bottom: 80px; text-align: left; }
         
- .trigger-box {
-            max-width: 400px; /* Reduced Size */
-            width: 90%;
-            margin: 0 auto; 
+.report-summary { 
+            background: rgba(15, 23, 42, 0.9); 
+            border: 1px solid #334155; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin-bottom: 30px; 
+            font-size: 0.85rem; 
+            line-height: 1.4; 
+            white-space: pre-wrap;
+            color: #94a3b8;
+        }
+
+.trigger-box {
+            max-width: 400px; /* Medium-small rectangle */
             cursor: pointer; 
             border-radius: 12px; 
             border: 2px solid #334155; 
             overflow: hidden;
             transition: 0.3s ease;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            margin-bottom: 30px;
         }
-        .trigger-box:hover { border-color: #38bdf8; transform: translateY(-8px); }
-        .trigger-box img { width: 100%; display: block; height: auto; }
-        .trigger-footer { padding: 18px; background: #1e293b; color: #38bdf8; font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; }
+        .trigger-box:hover { border-color: #38bdf8; transform: translateY(-5px); }
+        .trigger-box img { width: 100%; display: block; }
+        .trigger-footer { padding: 15px; background: #1e293b; color: #38bdf8; font-weight: bold; font-size: 0.8rem; text-align: center; }
 
- /* MODAL OVERLAY */
+.escalation-brief {
+            background: rgba(56, 189, 248, 0.05);
+            border-left: 4px solid #38bdf8;
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 4px;
+        }
+        .escalation-brief h3 { color: #38bdf8; margin-top: 0; font-size: 1.1rem; }
+        .escalation-brief ul { list-style: none; padding: 0; margin: 0; }
+        .escalation-brief li { margin-bottom: 8px; font-size: 0.9rem; }
+        .escalation-brief b { color: #fff; }
+
+ /* MODAL SLIDESHOW */
         .modal-overlay {
             display: none; position: fixed; z-index: 9999; left: 0; top: 0;
             width: 100%; height: 100%; background: rgba(0,0,0,0.9);
@@ -55,29 +77,19 @@ layout: null
         }
         .modal-content { position: relative; width: 90%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; }
         .modal-img { max-width: 100%; max-height: 65vh; border: 2px solid #38bdf8; border-radius: 8px; }
-        
-/* NAVIGATION */
-        .nav-btn {
-            cursor: pointer; position: absolute; top: 40%; padding: 25px;
-            color: #38bdf8; font-size: 65px; font-weight: bold; transition: 0.3s;
-            user-select: none; text-decoration: none;
-        }
-        .btn-prev { left: -120px; } .btn-next { right: -120px; }
-        .nav-btn:hover { color: white; transform: scale(1.1); }
+        .nav-btn { cursor: pointer; position: absolute; top: 40%; color: #38bdf8; font-size: 60px; transition: 0.3s; user-select: none; }
+        .btn-prev { left: -100px; } .btn-next { right: -100px; }
+        .details-panel { background: #1e293b; padding: 20px; margin-top: 20px; border-radius: 8px; width: 100%; border-left: 5px solid #38bdf8; }
+        .close-btn { position: absolute; top: -60px; right: 0; color: white; font-size: 45px; cursor: pointer; }
 
-/* CAPTION PANEL */
-        .details-panel {
-            background: #1e293b; color: #f1f5f9; padding: 25px; margin-top: 25px;
-            border-radius: 12px; border-left: 6px solid #38bdf8; width: 100%; text-align: left;
-        }
-        .close-btn { position: absolute; top: -70px; right: 0; color: white; font-size: 50px; cursor: pointer; }
+        #data-store { display: none; }
 
-#data-store { display: none; }
-
-  @media (max-width: 1200px) {
-            .btn-prev { left: 0; background: rgba(0,0,0,0.5); }
-            .btn-next { right: 0; background: rgba(0,0,0,0.5); }
+ @media (max-width: 1100px) {
             .hero-container { flex-direction: column-reverse; text-align: center; }
+            .investigation-section { text-align: center; }
+            .trigger-box { margin: 0 auto 30px auto; }
+            .escalation-brief { margin: 0 auto; text-align: left; }
+            .btn-prev { left: 10px; } .btn-next { right: 10px; }
         }
     </style>
 </head>
@@ -89,21 +101,61 @@ layout: null
             <div class="text-side">
                 <h1>ARIVAZHAGAN</h1>
                 <span class="role">SOC Analyst L1</span>
-                <div style="font-size:1.1rem; opacity: 0.9;">
-                    <span><strong>Contact:</strong> +91 6379944366</span> | 
-                    <span><strong>LinkedIn:</strong> <a href="#" style="color:#38bdf8; text-decoration:none;">Profile</a></span>
+                <div class="contact-info">
+                    <strong>C.N:</strong> +91 6379944366<br>
+                    <strong>Email:</strong> arivazhagans1411@gmail.com<br>
+                    <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" target="_blank" style="color:#38bdf8;">Profile</a>
                 </div>
             </div>
             <img src="Screenshot_20260103_200618_Gallery.jpg" class="pfp" alt="Arivazhagan">
         </div>
     </div>
 
-<div class="evidence-section">
-        <h2 style="text-transform:uppercase; letter-spacing:3px; margin-bottom:45px;">Incident Investigation Analysis</h2>
-        
-<div class="trigger-box" onclick="launchGallery(0)">
+<div class="investigation-section">
+        <div class="report-summary">================================================================================
+PROJECT REPORT: SSH BRUTE FORCE DETECTION & INCIDENT RESPONSE
+================================================================================
+
+DATE:         February 06, 2026
+ANALYST:      Arivazhagan
+TARGET SYSTEM: Ubuntu Linux (Agent 004)
+TOOLS USED:   Wazuh SIEM, Linux CLI, IPTables, AbuseIPDB (OSINT)
+
+--------------------------------------------------------------------------------
+1. INITIAL PHASE: AGENT DEPLOYMENT & RECOVERY
+--------------------------------------------------------------------------------
+* STATUS: Manual recovery of corrupted 'ossec.conf' after network crash.
+* FIX: Restored agent handshake with Manager IP (10.48.90.166).
+
+--------------------------------------------------------------------------------
+2. DETECTION & ANALYSIS
+--------------------------------------------------------------------------------
+* ALERT: Rule 5712 - SSH Brute Force attempt detected (Level 10).
+* ATTACKER: Source IP 141.98.81.37 targeting "Administrators".
+* OSINT: AbuseIPDB confirmed malicious botnet with 100% confidence score.
+
+--------------------------------------------------------------------------------
+3. RESPONSE & MITIGATION
+--------------------------------------------------------------------------------
+* ACTION: Emergency containment via IPTables Host Firewall.
+* COMMAND: sudo iptables -I INPUT -s 141.98.81.37 -j DROP
+* MITRE: Credential Access (TA0006) | Brute Force (T1110)
+================================================================================</div>
+
+  <div class="trigger-box" onclick="launchGallery(0)">
             <img src="01.png" alt="Investigation Snapshot">
-            <div class="trigger-footer">OPEN 13-STEP EVIDENCE SLIDESHOW &#10148;</div>
+            <div class="trigger-footer">VIEW 13-STEP EVIDENCE SLIDESHOW ➔</div>
+        </div>
+
+  <div class="escalation-brief">
+            <h3>Tier 2 Escalation Brief (5 W's)</h3>
+            <ul>
+                <li><b>WHO:</b> Malicious Source IP 141.98.81.37 (Confirmed Botnet).</li>
+                <li><b>WHAT:</b> High-frequency SSH Brute Force attack targeting Ubuntu Agent 004.</li>
+                <li><b>WHERE:</b> Target System /var/log/auth.log via Wazuh SIEM monitoring.</li>
+                <li><b>WHEN:</b> Incident identified and mitigated on Feb 06, 2026.</li>
+                <li><b>WHY:</b> Attempted unauthorized credential access (TA0006). L1 mitigated via IPTables.</li>
+            </ul>
         </div>
     </div>
 </div>
@@ -114,28 +166,26 @@ layout: null
         <a class="nav-btn btn-prev" onclick="stepSlide(-1)">&#10094;</a>
         <img id="mainViewer" class="modal-img">
         <a class="nav-btn btn-next" onclick="stepSlide(1)">&#10095;</a>
-        
-<div class="details-panel">
-            <h4 style="margin:0 0 10px 0; color:#38bdf8; text-transform:uppercase; font-size: 0.8rem;">Investigation Evidence Summary</h4>
-            <p id="viewerCap" style="margin:0; font-size:1.1rem; line-height:1.6;"></p>
+        <div class="details-panel">
+            <p id="viewerCap" style="margin:0;"></p>
         </div>
     </div>
 </div>
 
 <div id="data-store">
-    <div data-img="01.png" data-text="<b>Step 1: Dashboard Overview</b> - Initial view showing 173 events and 16 critical alerts."></div>
-    <div data-img="02.png" data-text="<b>Step 2: Metric Analysis</b> - Monitoring baseline patterns before the attack."></div>
-    <div data-img="03.png" data-text="<b>Step 3: Baseline Logs</b> - Log state identifying 8 failures and 1 success."></div>
-    <div data-img="04.png" data-text="<b>Step 4: Active Attack</b> - Capture from the attacker terminal during brute force execution."></div>
-    <div data-img="05.png" data-text="<b>Step 5: Impact Dashboard</b> - Spike to 1379 events and 129 critical alerts post-attack."></div>
-    <div data-img="06.png" data-text="<b>Step 6: Rule 5712</b> - Isolating SSH brute force signatures via specific SIEM rules."></div>
-    <div data-img="07.png" data-text="<b>Step 7: Rule 5710</b> - Filtering authentication logs to correlate the attack timeline."></div>
-    <div data-img="08.png" data-text="<b>Step 8: Deep Correlation</b> - Final filtering to confirm the full scope of the incident."></div>
-    <div data-img="09.png" data-text="<b>Step 9: IP Extraction</b> - Extracting Source IP from logs to check login attempts."></div>
-    <div data-img="10.png" data-text="<b>Step 10: OSINT Verification</b> - IP confirmed malicious on AbuseIPDB; True Positive botnet."></div>
-    <div data-img="11.png" data-text="<b>Step 11: MITRE Mapping</b> - Linking Rule 5712 to Technique T1110 (Brute Force)."></div>
-    <div data-img="12.png" data-text="<b>Step 12: Containment</b> - Identifying malicious IP in terminal for immediate response."></div>
-    <div data-img="13.png" data-text="<b>Step 13: Remediation</b> - Applying IPTables block to drop all traffic from the malicious source."></div>
+    <div data-img="01.png" data-text="<b>Step 1: Dashboard Overview</b> - Initial monitoring setup."></div>
+    <div data-img="02.png" data-text="<b>Step 2: Metric Analysis</b> - Tracking event volume."></div>
+    <div data-img="03.png" data-text="<b>Step 3: Log Review</b> - Identifying baseline failures."></div>
+    <div data-img="04.png" data-text="<b>Step 4: Attack Capture</b> - Attacker terminal during execution."></div>
+    <div data-img="05.png" data-text="<b>Step 5: Alert Spike</b> - Rapid increase in Level 12 alerts."></div>
+    <div data-img="06.png" data-text="<b>Step 6: Filtering Rule 5712</b> - Isolating Brute Force attempts."></div>
+    <div data-img="07.png" data-text="<b>Step 7: Rule 5710 Correlation</b> - Investigating auth logs."></div>
+    <div data-img="08.png" data-text="<b>Step 8: Incident Confirmation</b> - Confirming attack scope."></div>
+    <div data-img="09.png" data-text="<b>Step 9: Source IP Extraction</b> - Pinpointing 141.98.81.37."></div>
+    <div data-img="10.png" data-text="<b>Step 10: OSINT Pivot</b> - 100% Abuse Confidence on AbuseIPDB."></div>
+    <div data-img="11.png" data-text="<b>Step 11: MITRE Mapping</b> - Technique T1110 classification."></div>
+    <div data-img="12.png" data-text="<b>Step 12: Active Containment</b> - Terminal isolation commands."></div>
+    <div data-img="13.png" data-text="<b>Step 13: Mitigation Verified</b> - IPTables DROP policy active."></div>
 </div>
 
 <script>
@@ -147,13 +197,13 @@ layout: null
     function launchGallery(n) {
         activeStep = n;
         modal.style.display = "flex";
-        bgWrap.classList.add('is-blurred'); // Activates blur
+        bgWrap.classList.add('is-blurred');
         render();
     }
 
     function exitGallery() {
         modal.style.display = "none";
-        bgWrap.classList.remove('is-blurred'); // Removes blur
+        bgWrap.classList.remove('is-blurred');
     }
 
     function stepSlide(n) {
