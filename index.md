@@ -89,25 +89,25 @@ layout: null
 <div class="reports-container">
         <h1 style="margin-bottom:50px; text-transform:uppercase; letter-spacing:2px;">Incident Analysis Workflow</h1>
         <div class="report-grid">
-<div class="thumb-wrapper"><img class="thumb" src="s1.png" onclick="openModal();currentSlide(1)" alt="Baseline Security Posture: Initial Wazuh Dashboard showing 173 total events with 16 Level 12+ alerts and 8 authentication failures."><div class="thumb-label">Baseline Dashboard</div></div>
-            <div class="thumb-wrapper"><img class="thumb" src="s2.png" onclick="openModal();currentSlide(2)" alt="Pre-Attack Metrics: Monitoring standard event flow and baseline authentication success/failure ratios."><div class="thumb-label">Metric Overview</div></div>
-            <div class="thumb-wrapper"><img class="thumb" src="s3.png" onclick="openModal();currentSlide(3)" alt="Pre-Attack State: Detailed view of the single successful login vs failure alerts before the brute force attempt."><div class="thumb-label">Security State</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="01.png" onclick="openModal();currentSlide(1)" alt="Baseline Security Posture: Initial Wazuh Dashboard showing 173 total events with 16 Level 12+ alerts and 8 authentication failures."><div class="thumb-label">Baseline Dashboard</div></div>
+            <div class="thumb-wrapper"><img class="thumb" src="02.png" onclick="openModal();currentSlide(2)" alt="Pre-Attack Metrics: Monitoring standard event flow and baseline authentication success/failure ratios."><div class="thumb-label">Metric Overview</div></div>
+            <div class="thumb-wrapper"><img class="thumb" src="03.png" onclick="openModal();currentSlide(3)" alt="Pre-Attack State: Detailed view of the single successful login vs failure alerts before the brute force attempt."><div class="thumb-label">Security State</div></div>
             
-<div class="thumb-wrapper"><img class="thumb" src="s4.png" onclick="openModal();currentSlide(4)" alt="Threat Actor Perspective: Active brute force attack initiated from the attacker's terminal targeting the Ubuntu agent."><div class="thumb-label">Attacker Activity</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="04.png" onclick="openModal();currentSlide(4)" alt="Threat Actor Perspective: Active brute force attack initiated from the attacker's terminal targeting the Ubuntu agent."><div class="thumb-label">Attacker Activity</div></div>
             
- <div class="thumb-wrapper"><img class="thumb" src="s5.png" onclick="openModal();currentSlide(5)" alt="Incident Impact: Wazuh Dashboard spike to 1379 total events, 129 Level 12 alerts, and 85 failures following the attack."><div class="thumb-label">Post-Attack Spike</div></div>
+ <div class="thumb-wrapper"><img class="thumb" src="05.png" onclick="openModal();currentSlide(5)" alt="Incident Impact: Wazuh Dashboard spike to 1379 total events, 129 Level 12 alerts, and 85 failures following the attack."><div class="thumb-label">Post-Attack Spike</div></div>
             
- <div class="thumb-wrapper"><img class="thumb" src="s6.png" onclick="openModal();currentSlide(6)" alt="Log Analysis: Filtering for Rule ID 5712 to isolate and identify the SSH Brute Force signature."><div class="thumb-label">Rule 5712 Filter</div></div>
-<div class="thumb-wrapper"><img class="thumb" src="s7.png" onclick="openModal();currentSlide(7)" alt="Investigation: Filtering for Rule ID 5710 to monitor specific authentication attempts across the network."><div class="thumb-label">Rule 5710 Tracking</div></div>
-<div class="thumb-wrapper"><img class="thumb" src="s8.png" onclick="openModal();currentSlide(8)" alt="Advanced Filtering: Correlating SSH attack patterns to confirm the scope of the brute force attempt."><div class="thumb-label">Pattern Correlation</div></div>
+ <div class="thumb-wrapper"><img class="thumb" src="06.png" onclick="openModal();currentSlide(6)" alt="Log Analysis: Filtering for Rule ID 5712 to isolate and identify the SSH Brute Force signature."><div class="thumb-label">Rule 5712 Filter</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="07.png" onclick="openModal();currentSlide(7)" alt="Investigation: Filtering for Rule ID 5710 to monitor specific authentication attempts across the network."><div class="thumb-label">Rule 5710 Tracking</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="08.png" onclick="openModal();currentSlide(8)" alt="Advanced Filtering: Correlating SSH attack patterns to confirm the scope of the brute force attempt."><div class="thumb-label">Pattern Correlation</div></div>
             
-<div class="thumb-wrapper"><img class="thumb" src="s9.png" onclick="openModal();currentSlide(9)" alt="Event Forensics: Deep dive into Rule 5710 details to extract the source IP and verify login success/failure status."><div class="thumb-label">Source IP Extraction</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="09.png" onclick="openModal();currentSlide(9)" alt="Event Forensics: Deep dive into Rule 5710 details to extract the source IP and verify login success/failure status."><div class="thumb-label">Source IP Extraction</div></div>
             
-<div class="thumb-wrapper"><img class="thumb" src="s10.png" onclick="openModal();currentSlide(10)" alt="OSINT Verification: Cross-referencing source IP with AbuseIPDB, confirming a True Positive malicious botnet."><div class="thumb-label">OSINT Verification</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="10.png" onclick="openModal();currentSlide(10)" alt="OSINT Verification: Cross-referencing source IP with AbuseIPDB, confirming a True Positive malicious botnet."><div class="thumb-label">OSINT Verification</div></div>
             
-<div class="thumb-wrapper"><img class="thumb" src="s11.png" onclick="openModal();currentSlide(11)" alt="MITRE Mapping: Aligning Rule 5712 with Technique T1110 (Brute Force) and Tactics for Credential Access."><div class="thumb-label">MITRE ATT&CK Mapping</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="11.png" onclick="openModal();currentSlide(11)" alt="MITRE Mapping: Aligning Rule 5712 with Technique T1110 (Brute Force) and Tactics for Credential Access."><div class="thumb-label">MITRE ATT&CK Mapping</div></div>
             
-<div class="thumb-wrapper"><img class="thumb" src="s12.png" onclick="openModal();currentSlide(12)" alt="Containment: Identifying and isolating the malicious IP via Linux CLI for immediate firewall response."><div class="thumb-label">Threat Isolation</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="12.png" onclick="openModal();currentSlide(12)" alt="Containment: Identifying and isolating the malicious IP via Linux CLI for immediate firewall response."><div class="thumb-label">Threat Isolation</div></div>
             <div class="thumb-wrapper"><img class="thumb" src="s13.png" onclick="openModal();currentSlide(13)" alt="Remediation: Successful implementation of IPTables block to drop all traffic from the verified malicious source."><div class="thumb-label">Final Remediation</div></div>
         </div>
     </div>
