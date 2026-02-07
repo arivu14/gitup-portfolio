@@ -6,74 +6,73 @@ layout: null
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arivazhagan | SOC Portfolio</title>
+    <title>Arivazhagan | SOC Analyst</title>
     <style>
         /* BASE STYLES */
         * { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; width: 100%; background-color: #0a0e14; color: white; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
+        html, body { margin: 0; padding: 0; width: 100%; background-color: #0a0e14; color: white; font-family: 'Segoe UI', Arial, sans-serif; }
         
-/* Blur trigger - hides background noise when investigating a report */
-        .main-wrapper.blurred { filter: blur(15px); pointer-events: none; transition: filter 0.3s ease; }
+ /* The Blur Effect */
+        .main-wrapper.blurred { filter: blur(20px); pointer-events: none; transition: filter 0.4s ease; }
 
- /* HERO SECTION */
-        .hero-section {
+.hero-section {
             width: 100%; min-height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('cc.jpg');
             background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
         }
         .container { width: 85%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; }
-        .text-side h1 { font-size: 5rem; margin: 0; font-weight: 900; letter-spacing: -2px; }
-        .text-side .role { font-size: 2rem; color: #38bdf8; display: block; margin: 5px 0 20px 0; }
-        .photo-side img { width: 320px; height: 320px; border-radius: 50%; border: 5px solid #38bdf8; object-fit: cover; box-shadow: 0 0 50px rgba(56,189,248,0.4); }
+        .text-side h1 { font-size: 5rem; margin: 0; font-weight: 900; }
+        .text-side .role { font-size: 2rem; color: #38bdf8; display: block; margin-bottom: 20px; }
+        .photo-side img { width: 300px; height: 300px; border-radius: 50%; border: 4px solid #38bdf8; object-fit: cover; }
 
- /* REPORT GRID */
-        .reports-container { background: #0f172a; padding: 80px 0; text-align: center; }
-        .report-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px; width: 85%; max-width: 1200px; margin: 0 auto;
+ /* CENTERED SINGLE THUMBNAIL SECTION */
+        .reports-container { background: #0f172a; padding: 100px 0; text-align: center; }
+        
+.main-evidence-cover {
+            max-width: 600px; margin: 0 auto; cursor: pointer; position: relative;
+            transition: 0.4s; border-radius: 15px; border: 3px solid #1e293b; overflow: hidden;
         }
-        .thumb { 
-            width: 100%; height: 180px; object-fit: cover; cursor: pointer; 
-            border-radius: 12px; border: 2px solid #1e293b; transition: 0.3s;
+.main-evidence-cover:hover { border-color: #38bdf8; transform: scale(1.02); box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
+        .main-evidence-cover img { width: 100%; display: block; }
+        .hover-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(56, 189, 248, 0.2); display: flex; align-items: center;
+            justify-content: center; opacity: 0; transition: 0.3s;
         }
-        .thumb:hover { border-color: #38bdf8; transform: translateY(-5px); }
+        .main-evidence-cover:hover .hover-overlay { opacity: 1; }
+        .hover-overlay span { background: #38bdf8; color: #0a0e14; padding: 10px 20px; font-weight: bold; border-radius: 5px; }
 
- /* SLIDESHOW MODAL */
+/* Hidden data pool for the 13 images */
+        #image-pool { display: none; }
+
+/* MODAL SLIDESHOW */
         .modal {
             display: none; position: fixed; z-index: 9999; left: 0; top: 0;
             width: 100%; height: 100%; background: rgba(0,0,0,0.85);
-            align-items: center; justify-content: center; flex-direction: column;
+            align-items: center; justify-content: center;
         }
-        .modal-content-wrapper { position: relative; width: 85%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; }
+        .modal-wrapper { position: relative; width: 90%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; }
         .modal-img { max-width: 100%; max-height: 65vh; border: 3px solid #38bdf8; border-radius: 8px; }
         
- /* Navigation Arrows */
-        .prev, .next {
-            cursor: pointer; position: absolute; top: 40%; width: auto; padding: 25px;
+.prev, .next {
+            cursor: pointer; position: absolute; top: 45%; padding: 20px;
             color: #38bdf8; font-weight: bold; font-size: 60px; transition: 0.3s;
-            user-select: none; text-decoration: none;
         }
-        .next { right: -120px; } .prev { left: -120px; }
-        .prev:hover, .next:hover { color: white; transform: scale(1.1); }
+        .next { right: -100px; } .prev { left: -100px; }
+        .prev:hover, .next:hover { color: white; }
 
-/* Detail/Summary Box */
-        .details-box {
-            background: #1e293b; color: #cbd5e1; padding: 25px;
-            margin-top: 25px; border-radius: 12px; border-top: 4px solid #38bdf8;
-            width: 100%; text-align: left; font-size: 1.1rem; line-height: 1.6;
+ .details-box {
+            background: #1e293b; color: #cbd5e1; padding: 25px; margin-top: 20px;
+            border-radius: 10px; border-left: 6px solid #38bdf8; width: 100%; text-align: left;
         }
-        .close-btn { position: absolute; top: -70px; right: 0; color: white; font-size: 50px; cursor: pointer; }
+        .close-x { position: absolute; top: -60px; right: 0; color: white; font-size: 45px; cursor: pointer; }
 
-@media (max-width: 1200px) {
-            .next { right: 0; } .prev { left: 0; }
-            .modal-content-wrapper { width: 95%; }
-            .text-side h1 { font-size: 3.5rem; }
-        }
+        @media (max-width: 1200px) { .next { right: 0; } .prev { left: 0; } }
     </style>
 </head>
 <body>
 
-<div class="main-wrapper" id="content">
+<div class="main-wrapper" id="page-content">
     <div class="hero-section">
         <div class="container">
             <div class="text-side">
@@ -91,69 +90,81 @@ layout: null
     </div>
 
 <div class="reports-container">
-        <h1 style="margin-bottom:50px; text-transform:uppercase; letter-spacing:2px;">Incident Report Analysis</h1>
-        <div class="report-grid">
-            <img class="thumb" src="01.png" onclick="openSlide(1)" alt="<b>Dashboard Overview:</b> Baseline monitoring with 173 total events and 16 Level 12+ critical alerts.">
-            <img class="thumb" src="02.png" onclick="openSlide(2)" alt="<b>Metric Analysis:</b> Identifying normal authentication patterns before the brute force anomaly.">
-            <img class="thumb" src="03.png" onclick="openSlide(3)" alt="<b>Access Logs:</b> Initial log state showing 8 authentication failures vs 1 success.">
-            <img class="thumb" src="04.png" onclick="openSlide(4)" alt="<b>Live Attack:</b> Captured view from the attacker terminal during active brute force execution.">
-            <img class="thumb" src="05.png" onclick="openSlide(5)" alt="<b>Incident Spike:</b> Post-attack dashboard showing 1379 events, 129 Level 12 alerts, and 85 failures.">
-            <img class="thumb" src="06.png" onclick="openSlide(6)" alt="<b>SIEM Investigation:</b> Filtering Rule ID 5712 to isolate the SSH Brute Force signature.">
-            <img class="thumb" src="07.png" onclick="openSlide(7)" alt="<b>Advanced Filtering:</b> Tracking Rule ID 5710 to map all authentication attempts.">
-            <img class="thumb" src="08.png" onclick="openSlide(8)" alt="<b>Log Correlation:</b> Final filtering process to confirm the scope of the SSH attack.">
-            <img class="thumb" src="09.png" onclick="openSlide(9)" alt="<b>Source Extraction:</b> Deep dive into event 5710 to extract the Source IP and check login status.">
-            <img class="thumb" src="10.png" onclick="openSlide(10)" alt="<b>OSINT Pivot:</b> Verifying malicious IP on AbuseIPDB - Confirmed True Positive botnet activity.">
-            <img class="thumb" src="11.png" onclick="openSlide(11)" alt="<b>MITRE Mapping:</b> Aligning Rule ID 5712 with Technique T1110 (Brute Force) & Tactic: Credential Access.">
-            <img class="thumb" src="12.png" onclick="openSlide(12)" alt="<b>Containment:</b> Locating and identifying the malicious IP via terminal for emergency response.">
-            <img class="thumb" src="13.png" onclick="openSlide(13)" alt="<b>Remediation:</b> Final block execution using IPTables to DROP all traffic from the malicious source.">
+        <h2 style="text-transform:uppercase; letter-spacing:3px; margin-bottom:10px;">Incident Report Analysis</h2>
+        <p style="color:#94a3b8; margin-bottom:40px;">Click the report below to view the full 13-step investigation evidence.</p>
+        
+ <div class="main-evidence-cover" onclick="openGallery(0)">
+            <img src="s1.png" alt="Investigation Cover">
+            <div class="hover-overlay">
+                <span>VIEW FULL ANALYSIS (13 STEPS)</span>
+            </div>
         </div>
     </div>
 </div>
 
-<div id="slideModal" class="modal">
-    <div class="modal-content-wrapper">
-        <span class="close-btn" onclick="closeSlide()">&times;</span>
-        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-        <img class="modal-img" id="modalImg">
-        <a class="next" onclick="changeSlide(1)">&#10095;</a>
-        <div class="details-box">
-            <h3 style="margin-top:0; color:#38bdf8;">Technical Investigation Detail</h3>
-            <p id="modalCaption"></p>
+<div id="image-pool">
+    <div data-src="01.png" data-cap="<b>Dashboard Overview:</b> Baseline monitoring with 173 total events and 16 Level 12+ critical alerts."></div>
+    <div data-src="02.png" data-cap="<b>Metric Analysis:</b> Identifying normal authentication patterns before the brute force anomaly."></div>
+    <div data-src="03.png" data-cap="<b>Access Logs:</b> Initial log state showing 8 authentication failures vs 1 success."></div>
+    <div data-src="04.png" data-cap="<b>Live Attack:</b> Captured view from the attacker terminal during active brute force execution."></div>
+    <div data-src="05.png" data-cap="<b>Incident Spike:</b> Post-attack dashboard showing 1379 events, 129 Level 12 alerts, and 85 failures."></div>
+    <div data-src="06.png" data-cap="<b>SIEM Investigation:</b> Filtering Rule ID 5712 to isolate the SSH Brute Force signature."></div>
+    <div data-src="07.png" data-cap="<b>Advanced Filtering:</b> Tracking Rule ID 5710 to map all authentication attempts."></div>
+    <div data-src="08.png" data-cap="<b>Log Correlation:</b> Final filtering process to confirm the scope of the SSH attack."></div>
+    <div data-src="09.png" data-cap="<b>Source Extraction:</b> Deep dive into event 5710 to extract the Source IP and check login status."></div>
+    <div data-src="10.png" data-cap="<b>OSINT Pivot:</b> Verifying malicious IP on AbuseIPDB - Confirmed True Positive botnet activity."></div>
+    <div data-src="11.png" data-cap="<b>MITRE Mapping:</b> Aligning Rule ID 5712 with Technique T1110 (Brute Force) & Tactic: Credential Access."></div>
+    <div data-src="12.png" data-cap="<b>Containment:</b> Locating and identifying the malicious IP via terminal for emergency response."></div>
+    <div data-src="13.png" data-cap="<b>Remediation:</b> Final block execution using IPTables to DROP all traffic from the malicious source."></div>
+</div>
+
+<div id="galleryModal" class="modal">
+    <div class="modal-wrapper">
+        <span class="close-x" onclick="closeGallery()">&times;</span>
+        <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+        <img id="displayImg" class="modal-img">
+        <a class="next" onclick="moveSlide(1)">&#10095;</a>
+        
+<div class="details-box">
+            <h3 style="margin:0 0 10px 0; color:#38bdf8;">Investigation Detail</h3>
+            <p id="displayCap" style="margin:0;"></p>
         </div>
     </div>
 </div>
 
 <script>
-    let currentIdx = 0;
-    const thumbs = document.getElementsByClassName("thumb");
-    const modal = document.getElementById("slideModal");
-    const content = document.getElementById("content");
+    let currentStep = 0;
+    const pool = document.querySelectorAll('#image-pool div');
+    const modal = document.getElementById('galleryModal');
+    const mainWrapper = document.getElementById('page-content');
 
-    function openSlide(n) {
-        currentIdx = n - 1;
+    function openGallery(index) {
+        currentStep = index;
         modal.style.display = "flex";
-        content.classList.add("blurred");
-        updateModal();
+        mainWrapper.classList.add('blurred');
+        updateDisplay();
     }
 
-    function closeSlide() {
+    function closeGallery() {
         modal.style.display = "none";
-        content.classList.remove("blurred");
+        mainWrapper.classList.remove('blurred');
     }
 
-    function changeSlide(n) {
-        currentIdx += n;
-        if (currentIdx >= thumbs.length) { currentIdx = 0; }
-        if (currentIdx < 0) { currentIdx = thumbs.length - 1; }
-        updateModal();
+    function moveSlide(direction) {
+        currentStep += direction;
+        if (currentStep >= pool.length) currentStep = 0;
+        if (currentStep < 0) currentStep = pool.length - 1;
+        updateDisplay();
     }
 
-    function updateModal() {
-        document.getElementById("modalImg").src = thumbs[currentIdx].src;
-        document.getElementById("modalCaption").innerHTML = thumbs[currentIdx].alt;
+    function updateDisplay() {
+        const data = pool[currentStep];
+        document.getElementById('displayImg').src = data.getAttribute('data-src');
+        document.getElementById('displayCap').innerHTML = data.getAttribute('data-cap');
     }
 
-    window.onclick = function(event) { if (event.target == modal) { closeSlide(); } }
+    // Close on click outside
+    window.onclick = function(e) { if (e.target == modal) closeGallery(); }
 </script>
 
 </body>
