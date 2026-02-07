@@ -11,7 +11,7 @@ layout: null
         /* STEP 1: Background and Overlay */
         body {
             /* Replace 'cyber-bg.jpg' with your chosen background image filename */
-            background: #0a0e14 url('backround.jpg') no-repeat center center fixed;
+            background: #0a0e14 url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -118,8 +118,8 @@ layout: null
             <span class="role">SOC Analyst L1</span>
             
 <div class="contact-row">
-                <span><strong>C.N:</strong> +91 XXXX XXXX</span>
-                <span><strong>Follow on LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">Click Here</a></span>
+                <span><strong>C.N:</strong> +91 6379944366</span>
+                <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">Click Here</a></span>
             </div>
         </div>
 
