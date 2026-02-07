@@ -120,7 +120,7 @@ layout: null
                 <div class="contact-info">
                     <strong>Contact:</strong> +91 6379944366<br>
                     <strong>Email:</strong> arivazhagans1411@gmail.com<br>
-                    <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" target="_blank" style="color:#38bdf8; text-decoration:none;">Profile Page</a>
+                    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/arivazhagan11/" target="_blank" style="color:#38bdf8; text-decoration:none;">Profile Page</a>
                 </div>
             </div>
             <img src="Screenshot_20260103_200618_Gallery.jpg" class="pfp" alt="Arivazhagan">
@@ -133,10 +133,7 @@ layout: null
             DETECTED AND CONTAINED A HIGH-SEVERITY SSH BRUTE FORCE ATTACK ORIGINATING FROM A KNOWN MALICIOUS BOTNET. UTILIZED WAZUH SIEM FOR DETECTION, OSINT FOR THREAT INTELLIGENCE, AND IPTABLES FOR IMMEDIATE FIREWALL CONTAINMENT.
         </div>
 
- <div class="report-summary">================================================================================
-        
-I detected Rule 5712 alert (Level 10) on Ubuntu Agent 004 targeting "Administrators" from IP 141.98.81.37. AbuseIPDB confirmed malicious botnet activity. Immediate response: iptables -I INPUT -s 141.98.81.37 -j DROP blocked attacker. Maps to MITRE T1110 (Brute Force). Agent recovered from ossec.conf corruption; Manager handshake restored at 10.48.90.166.</div>
-
+ 
 <div class="trigger-box" onclick="launchGallery(0)">
             <img src="01.png" alt="SOC Investigation">
             <div class="trigger-footer">OPEN 13-STEP EVIDENCE SLIDESHOW ➔</div>
