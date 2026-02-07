@@ -28,7 +28,7 @@ layout: null
         .contact-info { font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; font-family: sans-serif; }
         .pfp { width: 200px; height: 200px; border-radius: 50%; border: 3px solid #38bdf8; object-fit: cover; box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
 
-        /* LEFT-ALIGNED INVESTIGATION LAYOUT */
+/* LEFT-ALIGNED INVESTIGATION LAYOUT */
         .investigation-section { width: 90%; max-width: 1200px; margin: 0 auto; padding-bottom: 80px; text-align: left; }
         
  /* SHORT MISSION SUMMARY */
@@ -96,7 +96,7 @@ layout: null
         .details-panel { background: #1e293b; padding: 25px; margin-top: 20px; border-radius: 8px; width: 100%; border-left: 5px solid #38bdf8; font-family: sans-serif; }
         .close-btn { position: absolute; top: -70px; right: 0; color: white; font-size: 50px; cursor: pointer; }
 
-        #data-store { display: none; }
+#data-store { display: none; }
 
  @media (max-width: 1100px) {
             .hero-container { flex-direction: column-reverse; text-align: center; }
