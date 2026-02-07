@@ -7,21 +7,20 @@ layout: null
     <meta charset="UTF-8">
     <title>Arivazhagan | SOC Analyst</title>
     <style>
-        /* This forces the background to cover the screen even if GitHub is being slow */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background-color: #0a0e14; /* Fallback color */
+            background-color: #0a0e14;
         }
 
- .hero-section {
+.hero-section {
             position: relative;
             width: 100%;
             height: 100vh;
-            /* We are using a direct link here to prove the code works */
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');
+            /* Using your file name: cyber-bg.jpg */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('cyber-bg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -34,58 +33,77 @@ layout: null
 
 .container {
             width: 85%;
+            max-width: 1200px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+ .text-side {
+            flex: 1;
+        }
+
 .text-side h1 {
-            font-size: 5rem;
+            font-size: 5.5rem;
             margin: 0;
             text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: -2px;
         }
 
 .text-side .role {
-            font-size: 2rem;
-            color: #00d4ff;
+            font-size: 2.2rem;
+            color: #38bdf8;
             display: block;
-            margin-bottom: 20px;
+            margin: 5px 0 30px 0;
         }
 
 .contact-info {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
-.contact-info span { margin-right: 30px; }
+.contact-info span { 
+            margin-right: 35px; 
+        }
 
-.photo-side img {
-            width: 300px; /* Big photo */
-            height: 300px;
+.contact-info a { 
+            color: #38bdf8; 
+            text-decoration: none; 
+            font-weight: bold; 
+        }
+
+/* BIG PROFILE PHOTO */
+        .photo-side img {
+            width: 320px; 
+            height: 320px;
             border-radius: 50%;
-            border: 4px solid #00d4ff;
+            border: 5px solid #38bdf8;
             object-fit: cover;
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.4);
         }
 
-@media (max-width: 800px) {
-            .container { flex-direction: column-reverse; text-align: center; }
-            .text-side h1 { font-size: 3rem; }
+@media (max-width: 900px) {
+    .container { flex-direction: column-reverse; text-align: center; }
+            .text-side h1 { font-size: 3.5rem; }
+            .photo-side img { width: 200px; height: 200px; margin-bottom: 20px; }
+            .contact-info span { display: block; margin: 10px 0; }
         }
     </style>
 </head>
 <body>
 
- <div class="hero-section">
+<div class="hero-section">
         <div class="container">
             <div class="text-side">
                 <h1>ARIVAZHAGAN</h1>
                 <span class="role">SOC Analyst L1</span>
                 <div class="contact-info">
                     <span><strong>C.N:</strong> +91 6379944366</span>
-                    <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" style="color:#00d4ff;">Click Here</a></span>
+                    <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" target="_blank">Click Here</a></span>
                 </div>
             </div>
-            <div class="photo-side">
-                <img src="my-photo.jpg" alt="Profile Photo">
+ <div class="photo-side">
+                <img src="my-photo.jpg" alt="Arivazhagan">
             </div>
         </div>
     </div>
