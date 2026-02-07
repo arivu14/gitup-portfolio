@@ -6,7 +6,7 @@ title: SOC Lab Portfolio
 <style>
 /* 1. Integrated Cybersecurity Background */
 body {
-    background: #0a0e14 url('Pentester.jpg') no-repeat center center fixed;
+    background: #0a0e14 url('Pentester.PNG') no-repeat center center fixed;
     background-size: cover;
     color: #e0e0e0;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
