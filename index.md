@@ -6,89 +6,78 @@ layout: null
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arivazhagan | SOC Analyst</title>
+    <title>Arivazhagan | SOC Analyst Portfolio</title>
     <style>
-        /* BASE & HERO STYLES */
+        /* BASE STYLES */
         * { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; width: 100%; background-color: #0a0e14; color: white; font-family: 'Segoe UI', Arial, sans-serif; }
+        html, body { margin: 0; padding: 0; width: 100%; background-color: #0a0e14; color: white; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
         
-/* Blur class for background when modal is open */
-        .blur { filter: blur(8px); pointer-events: none; transition: 0.3s; }
-        
-.hero-section {
+ /* Blur effect for modal */
+        .blur-target { transition: filter 0.3s ease; }
+        .modal-active .blur-target { filter: blur(12px); pointer-events: none; }
+
+ /* HERO SECTION */
+        .hero-section {
             width: 100%; min-height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('cc.jpg');
             background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
         }
+        .container { width: 85%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; }
+        .text-side h1 { font-size: 5rem; margin: 0; font-weight: 900; }
+        .text-side .role { font-size: 2rem; color: #38bdf8; display: block; margin-bottom: 20px; }
+        .photo-side img { width: 300px; height: 300px; border-radius: 50%; border: 4px solid #38bdf8; object-fit: cover; }
 
- /* LIGHTBOX MODAL STYLES */
-        .modal {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);
-            align-items: center; justify-content: center; flex-direction: column;
-        }
-
-.modal-content {
-            position: relative; max-width: 80%; max-height: 70%;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-.modal-content img {
-            width: 100%; height: auto; border: 2px solid #38bdf8; border-radius: 8px;
-        }
-
-.caption-container {
-            margin-top: 20px; color: #cbd5e1; text-align: center;
-            max-width: 70%; line-height: 1.6; font-size: 1.1rem;
-        }
-
-/* NAVIGATION BUTTONS */
-        .prev, .next {
-            cursor: pointer; position: absolute; top: 50%; width: auto;
-            padding: 16px; margin-top: -50px; color: #38bdf8; font-weight: bold;
-            font-size: 40px; transition: 0.6s ease; border-radius: 0 3px 3px 0;
-            user-select: none; text-decoration: none;
-        }
-.next { right: -100px; border-radius: 3px 0 0 3px; }
-.prev { left: -100px; }
-.prev:hover, .next:hover { color: white; }
-
- .close {
-            position: absolute; top: 20px; right: 35px; color: #f1f1f1;
-            font-size: 40px; font-weight: bold; cursor: pointer;
-        }
-
-/* REPORT THUMBNAILS */
+ /* GALLERY GRID */
         .reports-container { background: #0f172a; padding: 80px 0; text-align: center; }
         .report-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px; width: 85%; max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px; width: 85%; max-width: 1200px; margin: 0 auto;
         }
+        .thumb-wrapper { position: relative; overflow: hidden; border-radius: 8px; border: 2px solid #1e293b; transition: 0.3s; }
+        .thumb-wrapper:hover { border-color: #38bdf8; transform: translateY(-5px); }
+        .thumb { width: 100%; height: 200px; object-fit: cover; cursor: pointer; }
+        .thumb-label { padding: 10px; background: #1e293b; font-size: 0.9rem; color: #38bdf8; font-weight: bold; }
 
-.thumb {
-            cursor: pointer; border-radius: 8px; border: 2px solid transparent;
-            transition: 0.3s; width: 100%; height: 150px; object-fit: cover;
+ /* MODAL / LIGHTBOX */
+        .modal {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.85);
+            align-items: center; justify-content: center; flex-direction: column;
         }
-.thumb:hover { border-color: #38bdf8; transform: scale(1.05); }
+        .modal-content { position: relative; width: 80%; max-height: 80vh; display: flex; justify-content: center; }
+        .modal-content img { max-width: 100%; max-height: 70vh; border: 2px solid #38bdf8; border-radius: 5px; box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
+        
+.caption-box { width: 80%; background: rgba(15, 23, 42, 0.9); padding: 20px; border-radius: 8px; margin-top: 20px; border-top: 3px solid #38bdf8; text-align: center; }
+        .caption-box p { margin: 0; font-size: 1.1rem; line-height: 1.6; color: #f1f5f9; }
 
-/* HEADER TEXT STYLES (Same as before) */
-        .text-side h1 { font-size: 5rem; margin: 0; text-transform: uppercase; font-weight: 900; }
-        .text-side .role { font-size: 2rem; color: #38bdf8; display: block; margin: 5px 0 20px 0; }
-        .contact-info a { color: #38bdf8; text-decoration: none; font-weight: bold; }
-        .photo-side img { width: 320px; height: 320px; border-radius: 50%; border: 5px solid #38bdf8; object-fit: cover; }
+ /* SLIDER BUTTONS */
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; width: auto; padding: 20px;
+            color: #38bdf8; font-weight: bold; font-size: 50px; transition: 0.3s;
+            user-select: none; text-decoration: none;
+        }
+ .next { right: -80px; } .prev { left: -80px; }
+        .prev:hover, .next:hover { color: white; }
+        .close { position: absolute; top: 30px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
+
+@media (max-width: 1000px) {
+            .next { right: 10px; } .prev { left: 10px; }
+            .container { flex-direction: column-reverse; text-align: center; }
+            .modal-content { width: 95%; }
+        }
     </style>
 </head>
-<body>
+<body id="body-tag">
 
-<div id="main-content">
+<div class="blur-target">
     <div class="hero-section">
-        <div class="container" style="display:flex; width:85%; max-width:1200px; justify-content:space-between; align-items:center;">
+        <div class="container">
             <div class="text-side">
                 <h1>ARIVAZHAGAN</h1>
                 <span class="role">SOC Analyst L1</span>
-                <div class="contact-info">
+                <div style="font-size:1.2rem;">
                     <span><strong>C.N:</strong> +91 6379944366</span> | 
-                    <span><strong>LinkedIn:</strong> <a href="#" target="_blank">Click Here</a></span>
+                    <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" target="_blank" style="color:#38bdf8; text-decoration:none;">Click Here</a></span>
                 </div>
             </div>
             <div class="photo-side">
@@ -98,57 +87,69 @@ layout: null
     </div>
 
 <div class="reports-container">
-        <h1 style="border-bottom: 3px solid #38bdf8; display:inline-block; padding-bottom:10px; margin-bottom:50px;">Incident Report Evidence</h1>
+        <h1 style="margin-bottom:50px; text-transform:uppercase; letter-spacing:2px;">Incident Analysis Workflow</h1>
         <div class="report-grid">
-            <img class="thumb" src="s1.png" onclick="openModal();currentSlide(1)" alt="Report 1: Initial detection of the malicious transaction via SIEM dashboard.">
-            <img class="thumb" src="s2.png" onclick="openModal();currentSlide(2)" alt="Report 2: Full email body text analysis identifying the fake merchant address.">
-            </div>
+<div class="thumb-wrapper"><img class="thumb" src="s1.png" onclick="openModal();currentSlide(1)" alt="Baseline Security Posture: Initial Wazuh Dashboard showing 173 total events with 16 Level 12+ alerts and 8 authentication failures."><div class="thumb-label">Baseline Dashboard</div></div>
+            <div class="thumb-wrapper"><img class="thumb" src="s2.png" onclick="openModal();currentSlide(2)" alt="Pre-Attack Metrics: Monitoring standard event flow and baseline authentication success/failure ratios."><div class="thumb-label">Metric Overview</div></div>
+            <div class="thumb-wrapper"><img class="thumb" src="s3.png" onclick="openModal();currentSlide(3)" alt="Pre-Attack State: Detailed view of the single successful login vs failure alerts before the brute force attempt."><div class="thumb-label">Security State</div></div>
+            
+<div class="thumb-wrapper"><img class="thumb" src="s4.png" onclick="openModal();currentSlide(4)" alt="Threat Actor Perspective: Active brute force attack initiated from the attacker's terminal targeting the Ubuntu agent."><div class="thumb-label">Attacker Activity</div></div>
+            
+ <div class="thumb-wrapper"><img class="thumb" src="s5.png" onclick="openModal();currentSlide(5)" alt="Incident Impact: Wazuh Dashboard spike to 1379 total events, 129 Level 12 alerts, and 85 failures following the attack."><div class="thumb-label">Post-Attack Spike</div></div>
+            
+ <div class="thumb-wrapper"><img class="thumb" src="s6.png" onclick="openModal();currentSlide(6)" alt="Log Analysis: Filtering for Rule ID 5712 to isolate and identify the SSH Brute Force signature."><div class="thumb-label">Rule 5712 Filter</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="s7.png" onclick="openModal();currentSlide(7)" alt="Investigation: Filtering for Rule ID 5710 to monitor specific authentication attempts across the network."><div class="thumb-label">Rule 5710 Tracking</div></div>
+<div class="thumb-wrapper"><img class="thumb" src="s8.png" onclick="openModal();currentSlide(8)" alt="Advanced Filtering: Correlating SSH attack patterns to confirm the scope of the brute force attempt."><div class="thumb-label">Pattern Correlation</div></div>
+            
+<div class="thumb-wrapper"><img class="thumb" src="s9.png" onclick="openModal();currentSlide(9)" alt="Event Forensics: Deep dive into Rule 5710 details to extract the source IP and verify login success/failure status."><div class="thumb-label">Source IP Extraction</div></div>
+            
+<div class="thumb-wrapper"><img class="thumb" src="s10.png" onclick="openModal();currentSlide(10)" alt="OSINT Verification: Cross-referencing source IP with AbuseIPDB, confirming a True Positive malicious botnet."><div class="thumb-label">OSINT Verification</div></div>
+            
+<div class="thumb-wrapper"><img class="thumb" src="s11.png" onclick="openModal();currentSlide(11)" alt="MITRE Mapping: Aligning Rule 5712 with Technique T1110 (Brute Force) and Tactics for Credential Access."><div class="thumb-label">MITRE ATT&CK Mapping</div></div>
+            
+<div class="thumb-wrapper"><img class="thumb" src="s12.png" onclick="openModal();currentSlide(12)" alt="Containment: Identifying and isolating the malicious IP via Linux CLI for immediate firewall response."><div class="thumb-label">Threat Isolation</div></div>
+            <div class="thumb-wrapper"><img class="thumb" src="s13.png" onclick="openModal();currentSlide(13)" alt="Remediation: Successful implementation of IPTables block to drop all traffic from the verified malicious source."><div class="thumb-label">Final Remediation</div></div>
+        </div>
     </div>
 </div>
 
 <div id="myModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-        <img id="modal-img">
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <img id="modal-img">
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    <div class="caption-container">
-        <p id="caption"></p>
-    </div>
+    <div class="caption-box"><p id="caption-text"></p></div>
 </div>
 
 <script>
     let slideIndex = 1;
-    const images = document.getElementsByClassName("thumb");
+    const thumbs = document.getElementsByClassName("thumb");
 
     function openModal() {
         document.getElementById("myModal").style.display = "flex";
-        document.getElementById("main-content").classList.add("blur");
+        document.getElementById("body-tag").classList.add("modal-active");
     }
 
     function closeModal() {
         document.getElementById("myModal").style.display = "none";
-        document.getElementById("main-content").classList.remove("blur");
+        document.getElementById("body-tag").classList.remove("modal-active");
     }
 
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
+    function currentSlide(n) { showSlides(slideIndex = n); }
+    function plusSlides(n) { showSlides(slideIndex += n); }
 
     function showSlides(n) {
-        if (n > images.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = images.length}
-        
-        let modalImg = document.getElementById("modal-img");
-        let captionText = document.getElementById("caption");
-        
-        modalImg.src = images[slideIndex-1].src;
-        captionText.innerHTML = images[slideIndex-1].alt;
+        if (n > thumbs.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = thumbs.length}
+        document.getElementById("modal-img").src = thumbs[slideIndex-1].src;
+        document.getElementById("caption-text").innerHTML = thumbs[slideIndex-1].alt;
+    }
+
+    // Close on background click
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("myModal")) { closeModal(); }
     }
 </script>
 
