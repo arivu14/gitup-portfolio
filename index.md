@@ -1,16 +1,15 @@
 ---
 layout: null
 ---
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arivazhagan | SOC Analyst</title>
+    <title>Arivazhagan | SOC Analyst Portfolio</title>
     <style>
-        /* STEP 1: FIXED FULL BACKGROUND */
+        /* FULL BACKGROUND SETUP */
         body {
-            /* Make sure the image file in your GitHub is exactly named 'cyber-bg.jpg' */
+            /* This MUST match your file name: cyber-bg.jpg */
             background: #0a0e14 url('cyber-bg.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
@@ -18,12 +17,12 @@ layout: null
             height: 100vh;
             display: flex;
             align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             color: white;
             overflow: hidden;
         }
 
- /* Darkening overlay for professional contrast */
+/* Dark professional overlay */
         body::before {
             content: "";
             position: fixed;
@@ -32,8 +31,7 @@ layout: null
             z-index: -1;
         }
 
-/* STEP 2: TWO-STEP LAYOUT */
-        .main-wrapper {
+.container {
             width: 85%;
             max-width: 1200px;
             margin: auto;
@@ -42,90 +40,78 @@ layout: null
             align-items: center;
         }
 
-/* Left Content: Identity */
-        .bio-section {
+/* Left side: Text Details */
+        .text-content {
             flex: 1;
         }
 
-.bio-section h1 {
-            font-size: 4.8rem;
+ .text-content h1 {
+            font-size: 5rem;
             margin: 0;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: -2px;
         }
 
-.bio-section .role-title {
-            font-size: 2rem;
-            color: #38bdf8; /* Cyber Blue */
+.text-content .role {
+            font-size: 2.2rem;
+            color: #38bdf8; 
             display: block;
-            margin-bottom: 35px;
-            font-weight: 500;
+            margin-bottom: 30px;
         }
 
-/* Single Line Contact Info */
-        .contact-details {
+.contact-line {
             font-size: 1.2rem;
-            color: #f1f5f9;
         }
 
-.contact-details span {
+.contact-line span {
             margin-right: 40px;
         }
 
-.contact-details a {
+.contact-line a {
             color: #38bdf8;
             text-decoration: none;
             font-weight: bold;
-            border-bottom: 2px solid transparent;
-            transition: 0.3s;
         }
 
-.contact-details a:hover {
-            border-bottom: 2px solid #38bdf8;
+/* Right side: LARGE Profile Photo */
+        .photo-side {
+            flex: 0 0 300px; 
         }
 
-/* Right Content: Profile Picture (Increased Size) */
-        .photo-box {
-            flex: 0 0 220px; /* Bigger container */
-        }
-
-.photo-box img {
-            width: 220px; /* Larger size as requested */
-            height: 220px;
+.photo-side img {
+            width: 300px; /* Big size as requested */
+            height: 300px;
             border-radius: 50%;
-            border: 3px solid #38bdf8;
+            border: 4px solid #38bdf8;
             object-fit: cover;
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.5);
         }
 
-/* Responsive Fix for Mobile */
-        @media (max-width: 850px) {
-            .main-wrapper {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-.bio-section h1 { font-size: 3.5rem; }
-            .photo-box { margin-bottom: 30px; }
-            .contact-details span { display: block; margin: 15px 0; }
+/* Mobile responsiveness */
+        @media (max-width: 900px) {
+            .container { flex-direction: column-reverse; text-align: center; }
+            .text-content h1 { font-size: 3.5rem; }
+            .photo-side { margin-bottom: 40px; }
+            .contact-line span { display: block; margin: 10px 0; }
         }
     </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-        <div class="bio-section">
+<div class="container">
+        <div class="text-content">
             <h1>Arivazhagan</h1>
-            <span class="role-title">SOC Analyst L1</span>
+            <span class="role">SOC Analyst L1</span>
             
-<div class="contact-details">
+<div class="contact-line">
                 <span><strong>C.N:</strong> +91 6379944366</span>
                 <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" target="_blank">Click Here</a></span>
             </div>
         </div>
 
-<div class="photo-box">
-            <img src="my-photo.jpg" alt="Arivazhagan">
+ <div class="photo-side">
+            <img src="my-photo.jpg" alt="Arivazhagan Profile">
         </div>
     </div>
 
