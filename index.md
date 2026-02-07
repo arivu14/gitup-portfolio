@@ -4,15 +4,26 @@ title: SOC Lab Portfolio
 ---
 
 <style>
-/* 1. Professional Cybersecurity Theme */
+/* 1. Integrated Cybersecurity Background */
 body {
-    background-color: #0a0e14; /* Deep Tech Black */
-    background-image: 
-        linear-gradient(rgba(0, 123, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 123, 255, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px; /* Subtle Grid Pattern */
+    background: #0a0e14 url('Pentester.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: #e0e0e0;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Overlay to ensure text readability over the background image */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 14, 20, 0.85); /* Adjust opacity to make background clearer or darker */
+    z-index: -1;
 }
 
 /* 2. Layout Containers */
@@ -20,20 +31,20 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    padding: 20px;
+    padding: 40px 20px;
     max-width: 1200px;
     margin: auto;
 }
 
-/* 3. Personal Profile Sidebar */
+/* 3. Profile Sidebar */
 .profile-sidebar {
     flex: 1 1 300px;
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid #1e293b;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(0, 123, 255, 0.3);
     border-radius: 15px;
     padding: 25px;
     text-align: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     height: fit-content;
 }
 
@@ -44,11 +55,21 @@ body {
     border: 3px solid #007bff;
     object-fit: cover;
     margin-bottom: 15px;
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
 }
 
-.profile-sidebar h2 { color: #007bff; margin-bottom: 5px; }
-.profile-sidebar p { color: #94a3b8; font-size: 0.9em; line-height: 1.5; }
+.profile-sidebar h2 { 
+    color: #ffffff; 
+    margin-bottom: 5px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.profile-sidebar p.title { 
+    color: #38bdf8; 
+    font-weight: bold; 
+    margin-bottom: 15px; 
+    font-size: 1.1em;
+}
 
 /* 4. Incident Report Content */
 .report-content {
@@ -61,6 +82,7 @@ body {
     padding: 20px;
     margin-bottom: 30px;
     border-radius: 0 10px 10px 0;
+    backdrop-filter: blur(5px);
 }
 
 /* 5. Horizontal Evidence Strip */
@@ -75,7 +97,7 @@ body {
 
 .thumb {
     height: 140px;
-    border: 2px solid #334155;
+    border: 2px solid rgba(51, 65, 85, 0.5);
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s ease;
@@ -84,7 +106,7 @@ body {
 .thumb:hover {
     border-color: #007bff;
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.5);
 }
 
 /* 6. The Interactive Lightbox (Pop-up) */
@@ -94,7 +116,7 @@ body {
     z-index: 99999;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background: rgba(2, 6, 23, 0.98);
+    background: rgba(2, 6, 23, 0.95);
     backdrop-filter: blur(15px);
 }
 
@@ -107,7 +129,6 @@ body {
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #1e293b;
-    box-shadow: 0 0 50px rgba(0,0,0,1);
 }
 
 #activeImg {
@@ -120,7 +141,7 @@ body {
 
 .details-content { padding: 30px; background: #0f172a; }
 
-.close-btn { position: absolute; top: 15px; right: 25px; color: #64748b; font-size: 40px; cursor: pointer; transition: 0.3s; }
+.close-btn { position: absolute; top: 15px; right: 25px; color: #64748b; font-size: 40px; cursor: pointer; }
 .close-btn:hover { color: #fff; }
 
 .nav-btn {
@@ -132,12 +153,10 @@ body {
     font-size: 50px;
     transition: 0.3s;
     text-decoration: none;
-    user-select: none;
 }
 .nav-btn:hover { color: #007bff; transform: scale(1.2); }
 .next { right: 1%; } .prev { left: 1%; }
 
-/* Styling for L2 Escalation logic inside popup */
 .l2-box {
     background: rgba(30, 41, 59, 0.5);
     border-left: 4px solid #38bdf8;
@@ -149,28 +168,28 @@ body {
 
 <div class="main-wrapper">
     <aside class="profile-sidebar">
-        <img src="my-photo.jpg" alt="Cybersecurity Analyst" class="profile-pic">
-        <h2>[Your Name]</h2>
-        <p style="color: #007bff; font-weight: bold; margin-bottom: 15px;">Junior SOC Analyst</p>
+        <img src="my-photo.jpg" alt="Arivazhagan" class="profile-pic">
+        <h2>Arivazhagan</h2>
+        <p class="title">SOC Analyst L1</p>
         <p>Specializing in SIEM monitoring, incident response, and threat hunting. Passionate about securing cloud environments and defending against credential-based attacks.</p>
-        <div style="margin-top: 20px; border-top: 1px solid #334155; padding-top: 15px;">
+        <div style="margin-top: 20px; border-top: 1px solid rgba(51, 65, 85, 0.5); padding-top: 15px;">
             <p><strong>Certifications:</strong> Security+, BTL1 (In Progress)</p>
             <p><strong>Tools:</strong> Wazuh, Splunk, Wireshark, Nmap</p>
         </div>
     </aside>
 
-<main class="report-content">
-        <h1 style="color: #007bff; margin-bottom: 10px;">Incident Report: SSH Brute Force Analysis</h1>
+    <main class="report-content">
+        <h1 style="color: #ffffff; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Incident Report: SSH Brute Force Analysis</h1>
         <p style="margin-bottom: 25px;"><strong>Status:</strong> <span style="color: #10b981; text-transform: uppercase;">● Resolved</span></p>
 
-<div class="verdict-box">
+        <div class="verdict-box">
             <h3 style="margin-top: 0; color: #38bdf8;">/// Quick Summary & Verdict</h3>
             <p><strong>Verdict:</strong> Confirmed Malicious Brute Force Attack via automated script.</p>
             <p><strong>Action Taken:</strong> After identifying a persistent credential harvesting attempt from IP 141.98.81.37, I bypassed a system-level configuration crash to implement a host-based firewall block (IPTables), successfully terminating the threat actor's access.</p>
-</div>
+        </div>
 
-<h3 style="color: #94a3b8; font-size: 1em; letter-spacing: 1px;">EVIDENCE GALLERY (Click to Investigate)</h3>
-<div class="evidence-strip">
+        <h3 style="color: #94a3b8; font-size: 1em; letter-spacing: 1px;">EVIDENCE GALLERY (Click to Investigate)</h3>
+        <div class="evidence-strip">
             <img class="thumb" src="01.png" onclick="openLightbox(0)">
             <img class="thumb" src="02.png" onclick="openLightbox(1)">
             <img class="thumb" src="03.png" onclick="openLightbox(2)">
@@ -194,13 +213,12 @@ body {
     <a class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</a>
     <a class="nav-btn next" onclick="changeSlide(1)">&#10095;</a>
 
-<div class="lightbox-container">
+    <div class="lightbox-container">
         <img id="activeImg" src="" alt="Incident Evidence">
-<div class="details-content">
+        <div class="details-content">
             <h2 id="detailTitle" style="color: #38bdf8; margin-top: 0;"></h2>
             <p id="detailText" style="color: #94a3b8; font-size: 1.1em; line-height: 1.6;"></p>
-            
-<div class="l2-box">
+            <div class="l2-box">
                 <strong style="color: #38bdf8;">L2 Escalation Logic:</strong>
                 <p id="l2Text" style="margin-top: 8px; font-style: italic; color: #cbd5e1;"></p>
             </div>
