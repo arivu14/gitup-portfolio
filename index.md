@@ -8,122 +8,123 @@ layout: null
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arivazhagan | SOC Analyst</title>
     <style>
-        /* STEP 1: Background and Overlay */
+        /* STEP 1: FIXED FULL BACKGROUND */
         body {
-            /* Replace 'cyber-bg.jpg' with your chosen background image filename */
-            background: #0a0e14 url('background.jpg') no-repeat center center fixed;
+            /* Make sure the image file in your GitHub is exactly named 'cyber-bg.jpg' */
+            background: #0a0e14 url('cyber-bg.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
             align-items: center;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
             overflow: hidden;
         }
 
- /* Dark overlay to keep text professional and readable */
+ /* Darkening overlay for professional contrast */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.65); 
+            background: rgba(0, 0, 0, 0.7); 
             z-index: -1;
         }
 
- /* STEP 2: The Two-Step Layout */
-        .portfolio-wrapper {
+/* STEP 2: TWO-STEP LAYOUT */
+        .main-wrapper {
             width: 85%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
- /* Left Side: Identity & Contact */
-        .bio-info {
+/* Left Content: Identity */
+        .bio-section {
             flex: 1;
         }
 
-.bio-info h1 {
-            font-size: 4.5rem;
+.bio-section h1 {
+            font-size: 4.8rem;
             margin: 0;
-            font-weight: 700;
-            letter-spacing: -1px;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: -2px;
         }
 
-.bio-info .role {
-            font-size: 1.8rem;
-            color: #38bdf8; /* Sleek cyber blue */
+.bio-section .role-title {
+            font-size: 2rem;
+            color: #38bdf8; /* Cyber Blue */
             display: block;
-            margin-bottom: 30px;
-            font-weight: 400;
+            margin-bottom: 35px;
+            font-weight: 500;
         }
 
-.contact-row {
-            font-size: 1.1rem;
-            color: #e2e8f0;
+/* Single Line Contact Info */
+        .contact-details {
+            font-size: 1.2rem;
+            color: #f1f5f9;
         }
 
-.contact-row span {
+.contact-details span {
             margin-right: 40px;
         }
 
-.contact-row a {
+.contact-details a {
             color: #38bdf8;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
             transition: 0.3s;
         }
 
-.contact-row a:hover {
-            color: white;
-            text-decoration: underline;
+.contact-details a:hover {
+            border-bottom: 2px solid #38bdf8;
         }
 
-/* Right Side: Small Profile Photo */
-        .profile-container {
-            flex: 0 0 150px;
+/* Right Content: Profile Picture (Increased Size) */
+        .photo-box {
+            flex: 0 0 220px; /* Bigger container */
         }
 
-.profile-container img {
-            width: 150px; /* Small profile photo as requested */
-            height: 150px;
+.photo-box img {
+            width: 220px; /* Larger size as requested */
+            height: 220px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 3px solid #38bdf8;
             object-fit: cover;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
         }
 
- /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .portfolio-wrapper {
+/* Responsive Fix for Mobile */
+        @media (max-width: 850px) {
+            .main-wrapper {
                 flex-direction: column-reverse;
                 text-align: center;
             }
-            .bio-info h1 { font-size: 3rem; }
-            .profile-container { margin-bottom: 20px; }
-            .contact-row span { display: block; margin: 10px 0; }
+.bio-section h1 { font-size: 3.5rem; }
+            .photo-box { margin-bottom: 30px; }
+            .contact-details span { display: block; margin: 15px 0; }
         }
     </style>
 </head>
 <body>
 
-<div class="portfolio-wrapper">
-        <div class="bio-info">
+<div class="main-wrapper">
+        <div class="bio-section">
             <h1>Arivazhagan</h1>
-            <span class="role">SOC Analyst L1</span>
+            <span class="role-title">SOC Analyst L1</span>
             
-<div class="contact-row">
+<div class="contact-details">
                 <span><strong>C.N:</strong> +91 6379944366</span>
-                <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">Click Here</a></span>
+                <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/arivazhagan" target="_blank">Click Here</a></span>
             </div>
         </div>
 
-  <div class="profile-container">
+<div class="photo-box">
             <img src="my-photo.jpg" alt="Arivazhagan">
         </div>
     </div>
