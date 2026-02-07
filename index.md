@@ -4,223 +4,195 @@ title: Arivazhagan | SOC Analyst L1
 ---
 
 <style>
-/* 1. THEME FOUNDATION (Matching virg736 style) */
+/* 1. MERGED CSS FROM GITHUB SOURCE */
 body {
-    background: #0a0c10 url('Pentester.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #c9d1d9; /* GitHub Dark text color */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
     line-height: 1.6;
+    color: #e0e0e0; /* Adjusted for dark theme readability */
+    /* Using the Pentester background you requested */
+    background: #0a0e14 url('Pentester.PNG') no-repeat center center fixed;
+    background-size: cover;
+    padding: 0; /* Navbar handles padding */
+    margin: auto;
 }
 
-/* Glassmorphism Overlay */
+/* Dark overlay to make the GitHub style text pop against the image */
 body::before {
     content: "";
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(13, 17, 23, 0.85); /* Deep dark overlay */
+    background: rgba(10, 14, 20, 0.85); 
     z-index: -1;
 }
 
-/* 2. CUSTOM HEADER (Name & Role + Photo on Right) */
-.header-container {
-    max-width: 1000px;
-    margin: 60px auto 30px;
-    padding: 0 20px;
+.navbar {
+    background-color: #007acc; /* The exact blue from the source */
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    color: #cceeff;
+}
+
+/* Header & Photo Section (New Layout) */
+.header-hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.header-content h1 {
-    font-size: 2.5rem;
-    color: #f0f6fc;
-    margin: 0;
-    font-weight: 600;
-}
+.bio-content { flex: 1; text-align: left; }
+.bio-content h1 { text-align: left; margin-bottom: 5px; color: #fff; }
+.bio-content .role { color: #007acc; font-weight: bold; font-size: 1.2rem; }
 
-.header-content .role {
-    font-size: 1.2rem;
-    color: #58a6ff; /* GitHub Blue */
-    font-weight: 500;
-}
-
-.profile-img-container img {
-    width: 160px;
-    height: 160px;
-    border-radius: 12px; /* Soft square like virg736 style */
-    border: 2px solid #30363d;
-    object-fit: cover;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-}
-
-/* 3. SUMMARY & CONTACT BOX */
-.summary-section {
-    max-width: 1000px;
-    margin: 0 auto 40px;
-    padding: 30px;
-    background: rgba(22, 27, 34, 0.6);
-    border: 1px solid #30363d;
+.profile-photo-right img {
+    width: 180px;
+    height: 180px;
     border-radius: 12px;
+    border: 3px solid #007acc;
+    object-fit: cover;
+    margin: 0; /* Overriding default img margin */
+}
+
+/* The Project Info Box from the source */
+.project-info {
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(247, 247, 247, 0.05); /* Transparent version of source */
+    border-left: 4px solid #4caf50; /* The green border you wanted */
+    max-width: 800px;
+    font-family: sans-serif;
     backdrop-filter: blur(10px);
 }
 
-.contact-bar {
-    margin-top: 15px;
-    display: flex;
-    gap: 15px;
+.project-info h3 {
+    margin-top: 0;
+    color: #4caf50;
+    text-align: left;
 }
 
-.contact-bar a {
-    color: #8b949e;
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 5px 12px;
-    border: 1px solid #30363d;
-    border-radius: 6px;
-    background: #21262d;
-    transition: 0.2s;
-}
+.project-info p { color: #ccc; }
 
-.contact-bar a:hover {
-    background: #30363d;
-    color: #58a6ff;
-}
-
-/* 4. INCIDENT DETAILS (Cleaned - No Slashes) */
-.report-body {
-    max-width: 1000px;
+/* Screenshot Gallery */
+.evidence-gallery {
+    max-width: 900px;
     margin: auto;
-    padding: 0 20px 60px;
-}
-
-.report-body h2 {
-    font-size: 1.5rem;
-    color: #f0f6fc;
-    border-bottom: 1px solid #30363d;
-    padding-bottom: 10px;
-    margin-top: 40px;
-}
-
-/* Quick Summary Box */
-.verdict-card {
-    background: rgba(88, 166, 255, 0.1);
-    border-left: 4px solid #58a6ff;
-    padding: 20px;
-    border-radius: 0 8px 8px 0;
-    margin: 20px 0;
-}
-
-/* 5. EVIDENCE GRID (Modern Grid) */
-.evidence-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 15px;
-    margin-top: 20px;
+    padding: 20px;
 }
 
-.thumb-item {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #30363d;
+.evidence-gallery img {
+    margin: 0; /* Resetting the 30px margin from source */
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.2s;
+    border: 1px solid #444;
 }
 
-.thumb-item:hover {
-    border-color: #58a6ff;
-    transform: scale(1.03);
+.evidence-gallery img:hover {
+    transform: scale(1.05);
+    border-color: #007acc;
 }
 
-/* 6. LIGHTBOX POPUP */
-.lightbox-overlay {
+/* Lightbox Styling */
+#lightbox {
     display: none;
     position: fixed;
-    z-index: 10000;
+    z-index: 9999;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(1, 4, 9, 0.95);
-    backdrop-filter: blur(5px);
+    background: rgba(0,0,0,0.9);
+    padding: 40px;
+    box-sizing: border-box;
 }
 
 .lightbox-content {
-    position: relative;
-    max-width: 900px;
-    margin: 5% auto;
-    background: #0d1117;
-    border: 1px solid #30363d;
-    border-radius: 12px;
+    max-width: 1000px;
+    margin: auto;
+    background: #1a1a1a;
+    border-radius: 8px;
     overflow: hidden;
 }
 
-#activeImg { width: 100%; display: block; background: #000; }
-.info-pane { padding: 25px; }
-.close-x { position: absolute; top: 15px; right: 20px; color: #8b949e; font-size: 28px; cursor: pointer; }
+.close-btn { color: white; float: right; font-size: 30px; cursor: pointer; padding: 10px; }
 </style>
 
-<div class="header-container">
-    <div class="header-content">
+<nav class="navbar">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Incident Report</a></li>
+        <li><a href="mailto:arivazhagan@email.com">Contact</a></li>
+        <li><a href="https://linkedin.com/in/arivazhagan" target="_blank">LinkedIn</a></li>
+    </ul>
+</nav>
+
+<header id="home" class="header-hero">
+    <div class="bio-content">
         <h1>ARIVAZHAGAN</h1>
-        <div class="role">SOC Analyst L1</div>
-        <div class="contact-bar">
-            <a href="mailto:your-email@example.com">Email</a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-        </div>
+        <span class="role">SOC Analyst L1</span>
+        <p style="color: #bbb; max-width: 500px; margin-top: 15px;">
+            Specializing in SIEM monitoring and incident response. Dedicated to protecting 
+            digital assets through vigilant analysis and rapid threat containment.
+        </p>
     </div>
-    <div class="profile-img-container">
+    <div class="profile-photo-right">
         <img src="my-photo.jpg" alt="Arivazhagan">
     </div>
+</header>
+
+<hr>
+
+<div id="projects" class="project-info">
+    <h3>Quick Summary & Verdict</h3>
+    <p><strong>Verdict:</strong> Confirmed Malicious SSH Brute Force Attack.</p>
+    <p><strong>Action Taken:</strong> Identified source IP 141.98.81.37. Restored SIEM configuration after a system crash and implemented a permanent block via IPTables to stop the credential harvesting attempt.</p>
 </div>
 
-<div class="summary-section">
-    <h2>Professional Summary</h2>
-    <p>
-        I am a Junior SOC Analyst specializing in real-time monitoring, incident triaging, and 
-        threat mitigation. My core focus is on securing network endpoints and identifying 
-        unauthorized access patterns using SIEM tools like Wazuh and ELK.
-    </p>
+<h2 style="color: #fff;">Evidence Gallery</h2>
+<div class="evidence-gallery">
+    <img src="01.png" alt="Step 1" onclick="openLightbox(0)">
+    <img src="02.png" alt="Step 2" onclick="openLightbox(1)">
+    <img src="03.png" alt="Step 3" onclick="openLightbox(2)">
+    <img src="04.png" alt="Step 4" onclick="openLightbox(3)">
+    <img src="05.png" alt="Step 5" onclick="openLightbox(4)">
+    <img src="06.png" alt="Step 6" onclick="openLightbox(5)">
+    <img src="07.png" alt="Step 7" onclick="openLightbox(6)">
+    <img src="08.png" alt="Step 8" onclick="openLightbox(7)">
+    <img src="09.png" alt="Step 9" onclick="openLightbox(8)">
+    <img src="10.png" alt="Step 10" onclick="openLightbox(9)">
+    <img src="11.png" alt="Step 11" onclick="openLightbox(10)">
+    <img src="12.png" alt="Step 12" onclick="openLightbox(11)">
+    <img src="13.png" alt="Step 13" onclick="openLightbox(12)">
+    <img src="14.png" alt="Step 14" onclick="openLightbox(13)">
 </div>
 
-<div class="report-body">
-    <h2>Incident Analysis: SSH Brute Force Mitigation</h2>
-    
-<div class="verdict-card">
-        <h3 style="margin-top:0; color:#58a6ff;">Attack Verdict</h3>
-        <p><strong>Status:</strong> RESOLVED</p>
-        <p><strong>Analysis:</strong> Confirmed a high-velocity automated brute force attempt from IP 141.98.81.37. The actor attempted to harvest credentials for 'admin' and 'root' users. I successfully executed an IPTables block and verified system integrity.</p>
-    </div>
-
-    <h2>Evidence & Investigation</h2>
-<div class="evidence-grid">
-        <img class="thumb-item" src="01.png" onclick="openLightbox(0)">
-        <img class="thumb-item" src="02.png" onclick="openLightbox(1)">
-        <img class="thumb-item" src="03.png" onclick="openLightbox(2)">
-        <img class="thumb-item" src="04.png" onclick="openLightbox(3)">
-        <img class="thumb-item" src="05.png" onclick="openLightbox(4)">
-        <img class="thumb-item" src="06.png" onclick="openLightbox(5)">
-        <img class="thumb-item" src="07.png" onclick="openLightbox(6)">
-        <img class="thumb-item" src="08.png" onclick="openLightbox(7)">
-        <img class="thumb-item" src="09.png" onclick="openLightbox(8)">
-        <img class="thumb-item" src="10.png" onclick="openLightbox(9)">
-        <img class="thumb-item" src="11.png" onclick="openLightbox(10)">
-        <img class="thumb-item" src="12.png" onclick="openLightbox(11)">
-        <img class="thumb-item" src="13.png" onclick="openLightbox(12)">
-        <img class="thumb-item" src="14.png" onclick="openLightbox(13)">
-    </div>
-</div>
-
-<div id="lightbox" class="lightbox-overlay">
+<div id="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
     <div class="lightbox-content">
-        <span class="close-x" onclick="closeLightbox()">&times;</span>
-        <img id="activeImg" src="">
-        <div class="info-pane">
-            <h3 id="detailTitle" style="color:#58a6ff; margin-top:0;"></h3>
-            <p id="detailText"></p>
-            <div style="background:#161b22; padding:10px; border-radius:6px; border-left:3px solid #f85149; margin-top:15px;">
-                <strong style="color:#f85149;">L2 Escalation:</strong>
-                <p id="l2Text" style="margin:5px 0 0; font-size:0.9rem; font-style:italic;"></p>
+        <img id="activeImg" src="" style="margin:0; width:100%; border-radius:0;">
+        <div style="padding: 20px; background: #1a1a1a; border-top: 1px solid #333;">
+            <h3 id="detailTitle" style="color:#007acc; text-align:left; margin-bottom:10px;"></h3>
+            <p id="detailText" style="color:#ddd; margin-bottom:15px;"></p>
+            <div style="background: rgba(76, 175, 80, 0.1); border-left: 4px solid #4caf50; padding: 10px;">
+                <strong style="color: #4caf50;">L2 Escalation Reason:</strong>
+                <p id="l2Text" style="margin: 5px 0 0; font-size: 0.9em; font-style: italic;"></p>
             </div>
         </div>
     </div>
@@ -229,20 +201,20 @@ body::before {
 <script>
 let currentIndex = 0;
 const reportData = [
-    { title: "Baseline Monitoring", text: "Dashboard status before the incident began.", l2: "Baseline established to detect anomalies." },
-    { title: "Alert Spike", text: "Wazuh detecting high-frequency Rule 5712 triggers.", l2: "Escalated due to volume exceeding automated thresholds." },
-    { title: "Auth Failures", text: "Log isolation showing focused brute force attempts.", l2: "Moving to L2 for deep packet/log inspection." },
-    { title: "Attack Simulation", text: "Validating SIEM rules via manual attack scripts.", l2: "Confirmed rule integrity for automated blocking." },
-    { title: "System Recovery", text: "Restoring manager-agent communication after a crash.", l2: "L2 intervention required for system-level repair." },
-    { title: "Metric Review", text: "Analysis of 1,379 total security events.", l2: "Quantifying risk for executive reporting." },
-    { title: "Probing Detection", text: "Attempts to access non-existent administrative users.", l2: "Confirmed intent: Credential Harvesting." },
-    { title: "Source Identification", text: "Pinpointing IP 141.98.81.37 as the primary threat.", l2: "IP isolation for external threat intelligence check." },
-    { title: "Incident Escalation", text: "Event promoted to Level 12 Severity.", l2: "Mandatory L2 review for high-severity alerts." },
-    { title: "Actor Profiling", text: "Profiling the source IP location and history.", l2: "Attribution phase: identifying actor origin." },
-    { title: "OSINT Check", text: "AbuseIPDB confirms 100% malicious reputation score.", l2: "Verified threat via global intelligence databases." },
-    { title: "MITRE Mapping", text: "Activity categorized as T1110 (Brute Force).", l2: "Alignment with industry-standard frameworks." },
-    { title: "Containment", text: "Blocking the IP via manual IPTables command.", l2: "Active mitigation performed by L2 analyst." },
-    { title: "Final Verification", text: "Monitoring logs to ensure no further activity.", l2: "Post-incident audit to confirm security posture." }
+    { title: "Baseline Monitoring", text: "Establishing standard monitoring before the spike.", l2: "Baseline required to identify deviation." },
+    { title: "Wazuh Alert Spike", text: "Detection of high-frequency login failures.", l2: "Alert volume indicates automated attack." },
+    { title: "Auth Log Isolation", text: "Identifying Rule 5712 triggers.", l2: "Targeting specific brute force signature." },
+    { title: "Attack Simulation", text: "Testing detection rules with manual scripts.", l2: "Validating rule response before blocking." },
+    { title: "Config Recovery", text: "Repairing corrupted SIEM manager configuration.", l2: "System outage required manual intervention." },
+    { title: "Metric Review", text: "Total of 1,379 authentication events analyzed.", l2: "Quantifying scope for incident severity." },
+    { title: "User Probing", text: "Attempts to access 'admin' and 'guest' users.", l2: "Confirmed malicious intent via user enumeration." },
+    { title: "IP Isolation", text: "Pinpointing 141.98.81.37 as the source.", l2: "Isolating threat actor for mitigation." },
+    { title: "Incident Escalation", text: "Alert elevated to Level 12 Severity.", l2: "Threshold reached for active response." },
+    { title: "Threat Actor Profile", text: "Determining origin and history of the IP.", l2: "Intelligence gathering for the blocklist." },
+    { title: "AbuseIPDB OSINT", text: "Verified 100% confidence abuse score.", l2: "Third-party intel confirms malicious IP." },
+    { title: "MITRE ATT&CK Mapping", text: "Categorized as T1110 (Brute Force).", l2: "Standardizing the incident framework." },
+    { title: "Active Mitigation", text: "Manual execution of IPTables DROP command.", l2: "Direct intervention to sever actor access." },
+    { title: "Final Verification", text: "Confirming zero traffic from blocked IP.", l2: "Post-mitigation audit to ensure safety." }
 ];
 
 function openLightbox(index) {
