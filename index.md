@@ -17,10 +17,22 @@ layout: null
             overflow-x: hidden; 
         }
         
- /* BLUR EFFECT */
-        .page-wrap.is-blurred { filter: blur(20px); pointer-events: none; transition: 0.4s ease; }
+.page-wrap.is-blurred { filter: blur(20px); pointer-events: none; transition: 0.4s ease; }
 
-   /* HERO SECTION */
+ /* TAB NAVIGATION */
+        .tab-nav {
+            display: flex; justify-content: center; background: rgba(15, 23, 42, 0.95);
+            border-bottom: 2px solid #38bdf8; position: sticky; top: 0; z-index: 100;
+        }
+        .tab-btn {
+            padding: 20px 30px; border: none; background: none; color: #94a3b8;
+            cursor: pointer; font-weight: bold; transition: 0.3s; font-family: inherit;
+        }
+        .tab-btn.active { color: #38bdf8; border-bottom: 3px solid #38bdf8; background: rgba(56,189,248,0.1); }
+        .tab-content { display: none; padding-top: 20px; }
+        .tab-content.active { display: block; }
+
+/* HERO SECTION */
         .hero { width: 100%; padding: 50px 0; display: flex; align-items: center; justify-content: center; }
         .hero-container { width: 90%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; }
         .text-side h1 { font-size: 3.5rem; margin: 0; font-weight: 900; letter-spacing: -1px; color: #fff; }
@@ -28,68 +40,32 @@ layout: null
         .contact-info { font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; font-family: sans-serif; }
         .pfp { width: 200px; height: 200px; border-radius: 50%; border: 3px solid #38bdf8; object-fit: cover; box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
 
-/* LEFT-ALIGNED INVESTIGATION LAYOUT */
+/* LAYOUTS */
         .investigation-section { width: 90%; max-width: 1200px; margin: 0 auto; padding-bottom: 80px; text-align: left; }
-        
- /* SHORT MISSION SUMMARY */
-        .mission-summary {
-            max-width: 800px;
-            margin-bottom: 30px;
-            font-family: sans-serif;
-            line-height: 1.6;
-            color: #38bdf8;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+        .mission-summary { max-width: 800px; margin-bottom: 30px; font-family: sans-serif; line-height: 1.6; color: #38bdf8; font-weight: bold; font-size: 1.1rem; }
 
- /* THE TERMINAL PROJECT REPORT */
-        .report-summary { 
-            background: rgba(15, 23, 42, 0.95); 
-            border: 1px solid #334155; 
-            padding: 25px; 
-            border-radius: 8px; 
-            margin-bottom: 40px; 
-            font-size: 0.9rem; 
-            line-height: 1.4; 
-            white-space: pre-wrap;
-            color: #d1d5db;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-  /* THE TRIGGER BOX (REDUCED & LEFT) */
-        .trigger-box {
-            max-width: 400px; 
-            cursor: pointer; 
-            border-radius: 12px; 
-            border: 2px solid #334155; 
-            overflow: hidden;
-            transition: 0.3s ease;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            margin-bottom: 40px;
-        }
+ /* TERMINAL & CARDS */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .card { background: rgba(15, 23, 42, 0.95); border: 1px solid #334155; padding: 25px; border-radius: 8px; }
+        .terminal { background: #000; color: #10b981; padding: 15px; border-radius: 5px; font-size: 0.85rem; line-height: 1.5; white-space: pre-wrap; border: 1px solid #1e293b; }
+
+ .trigger-box { max-width: 400px; cursor: pointer; border-radius: 12px; border: 2px solid #334155; overflow: hidden; transition: 0.3s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 40px; }
         .trigger-box:hover { border-color: #38bdf8; transform: translateY(-5px); }
         .trigger-box img { width: 100%; display: block; height: auto; }
         .trigger-footer { padding: 15px; background: #1e293b; color: #38bdf8; font-weight: bold; font-size: 0.8rem; text-align: center; font-family: sans-serif; }
 
- /* ESCALATION RATIONALE */
-        .escalation-brief {
-            background: rgba(56, 189, 248, 0.05);
-            border-left: 4px solid #38bdf8;
-            padding: 25px;
-            max-width: 800px;
-            border-radius: 4px;
-            font-family: sans-serif;
-        }
-        .escalation-brief h3 { color: #38bdf8; margin-top: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
-        .escalation-brief p { font-size: 1rem; line-height: 1.6; color: #cbd5e1; margin: 0; }
-        .escalation-brief b { color: #fff; }
+ .escalation-brief { background: rgba(56, 189, 248, 0.05); border-left: 4px solid #38bdf8; padding: 25px; max-width: 800px; border-radius: 4px; font-family: sans-serif; }
+ .escalation-brief h3 { color: #38bdf8; margin-top: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
 
- /* MODAL / SLIDESHOW OVERLAY */
-        .modal-overlay {
-            display: none; position: fixed; z-index: 9999; left: 0; top: 0;
-            width: 100%; height: 100%; background: rgba(0,0,0,0.92);
-            align-items: center; justify-content: center;
-        }
-.modal-content { position: relative; width: 90%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; }
+/* ROADMAP */
+        .roadmap-item { display: flex; align-items: center; margin-bottom: 15px; padding: 15px; border-radius: 5px; background: rgba(15, 23, 42, 0.8); border: 1px solid #1e293b; }
+        .status-done { color: #10b981; margin-right: 15px; font-weight: bold; }
+        .status-pending { color: #f59e0b; margin-right: 15px; font-weight: bold; }
+
+
+/* MODAL */
+        .modal-overlay { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; }
+        .modal-content { position: relative; width: 90%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; }
         .modal-img { max-width: 100%; max-height: 65vh; border: 2px solid #38bdf8; border-radius: 8px; }
         .nav-btn { cursor: pointer; position: absolute; top: 40%; color: #38bdf8; font-size: 60px; transition: 0.3s; user-select: none; text-decoration: none; }
         .btn-prev { left: -100px; } .btn-next { right: -100px; }
@@ -100,14 +76,10 @@ layout: null
 
  @media (max-width: 1100px) {
             .hero-container { flex-direction: column-reverse; text-align: center; }
-            .investigation-section { text-align: center; }
-            .report-summary { text-align: left; overflow-x: auto; }
-            .trigger-box { margin: 0 auto 40px auto; }
-            .escalation-brief { margin: 0 auto; text-align: left; }
-            .btn-prev { left: 10px; background: rgba(0,0,0,0.5); } 
-            .btn-next { right: 10px; background: rgba(0,0,0,0.5); }
+            .grid { grid-template-columns: 1fr; }
+            .btn-prev { left: 10px; } .btn-next { right: 10px; }
         }
-    </style>
+ </style>
 </head>
 <body>
 
@@ -127,23 +99,72 @@ layout: null
         </div>
     </div>
 
+<nav class="tab-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'detection')">1. LIVE DETECTION</button>
+        <button class="tab-btn" onclick="openTab(event, 'ai-agent')">2. SENTINEL AI AGENT</button>
+        <button class="tab-btn" onclick="openTab(event, 'roadmap')">3. PROJECT ROADMAP</button>
+    </nav>
+
 <div class="investigation-section">
         
-<div class="mission-summary">
-            DETECTED AND CONTAINED A HIGH-SEVERITY SSH BRUTE FORCE ATTACK ORIGINATING FROM A KNOWN MALICIOUS BOTNET. UTILIZED WAZUH SIEM FOR DETECTION, OSINT FOR THREAT INTELLIGENCE, AND IPTABLES FOR IMMEDIATE FIREWALL CONTAINMENT.
+<div id="detection" class="tab-content active">
+            <div class="mission-summary">
+                DETECTED AND CONTAINED A HIGH-SEVERITY SSH BRUTE FORCE ATTACK ORIGINATING FROM A KNOWN MALICIOUS BOTNET. UTILIZED WAZUH SIEM.
+            </div>
+  <div class="trigger-box" onclick="launchGallery(0)">
+                <img src="01.png" alt="SOC Investigation">
+                <div class="trigger-footer">OPEN 13-STEP EVIDENCE SLIDESHOW ➔</div>
+            </div>
+  <div class="escalation-brief">
+                <h3>Tier 2 Escalation Rationale</h3>
+                <p><b>TECHNICAL JUSTIFICATION:</b> L1 containment (IPTables DROP) applied. Escalation required for source IP 141.98.81.37 due to 100% abuse score. Need cross-network correlation for lateral movement detection.</p>
+            </div>
         </div>
 
- 
-<div class="trigger-box" onclick="launchGallery(0)">
-            <img src="01.png" alt="SOC Investigation">
-            <div class="trigger-footer">OPEN 13-STEP EVIDENCE SLIDESHOW ➔</div>
+  <div id="ai-agent" class="tab-content">
+            <div class="mission-summary">AUTOMATED TRIAGE ENGINE USING GEMINI 2.5-FLASH FOR INSTANT LOG ANALYSIS.</div>
+            <div class="grid">
+                <div class="card">
+                    <h4>📥 Raw Log Input</h4>
+                    <div class="terminal" style="color:#38bdf8">
+{
+  "target_ip": "172.16.17.207",
+  "engine": "Wazuh-Sentinel-Link",
+  "scan_type": "Internal_Asset_Audit"
+}
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>🧠 Sentinel AI Report</h4>
+                    <div class="terminal">
+🕵️ INVESTIGATION REPORT
+Target IP: 172.16.17.207
+VT Malicious Score: 0
+
+FINAL DECISION: Internal private IP. No publicly known threats. Vigilance required for zero-day internal activity. Recommend behavioral log audit.
+                    </div>
+                </div>
+            </div>
         </div>
 
-<div class="escalation-brief">
-            <h3>Tier 2 Escalation Rationale</h3>
-            <p>
-                <b>TECHNICAL JUSTIFICATION:</b> While L1 containment (IPTables DROP) successfully mitigated the immediate threat to Agent 004, this incident requires L2 escalation due to the <b>100% abuse confidence score</b> of Source IP 141.98.81.37. Escalation is necessary to perform a <b>cross-network correlation</b> to ensure this botnet has not attempted lateral movement across other internal assets. Additionally, L2 review is requested for permanent IP blacklisting at the edge firewall/perimeter level.
-            </p>
+ <div id="roadmap" class="tab-content">
+            <div class="mission-summary">CONTINUOUS UPSKILLING & TOOL INTEGRATION PIPELINE.</div>
+            <div class="roadmap-item">
+                <span class="status-done">✔</span>
+                <div><b>SSH Brute Force Suite:</b> Live monitoring and IPTables response.</div>
+            </div>
+            <div class="roadmap-item">
+                <span class="status-done">✔</span>
+                <div><b>Sentinel AI Agent:</b> Gemini 2.5-Flash integration for log triage.</div>
+            </div>
+            <div class="roadmap-item">
+                <span class="status-pending">⚡</span>
+                <div><b>AbuseIPDB API:</b> Real-time automated reputation scoring.</div>
+            </div>
+            <div class="roadmap-item">
+                <span class="status-pending">⚡</span>
+                <div><b>Parent-Process Audit:</b> Process tree analysis for LotL detection.</div>
+            </div>
         </div>
     </div>
 </div>
@@ -181,6 +202,16 @@ layout: null
     const slides = document.querySelectorAll('#data-store div');
     const modal = document.getElementById('modalBox');
     const bgWrap = document.getElementById('main-site');
+
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
 
     function launchGallery(n) {
         activeStep = n;
