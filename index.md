@@ -18,8 +18,8 @@ layout: null
         }
         
 .page-wrap.is-blurred { filter: blur(20px); pointer-events: none; transition: 0.4s ease; }
-
- /* TAB NAVIGATION */
+        
+  /* TAB NAVIGATION */
         .tab-nav {
             display: flex; justify-content: center; background: rgba(15, 23, 42, 0.95);
             border-bottom: 2px solid #38bdf8; position: sticky; top: 0; z-index: 100;
@@ -44,26 +44,22 @@ layout: null
         .investigation-section { width: 90%; max-width: 1200px; margin: 0 auto; padding-bottom: 80px; text-align: left; }
         .mission-summary { max-width: 800px; margin-bottom: 30px; font-family: sans-serif; line-height: 1.6; color: #38bdf8; font-weight: bold; font-size: 1.1rem; }
 
- /* TERMINAL & CARDS */
+/* TERMINAL & CARDS */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
         .card { background: rgba(15, 23, 42, 0.95); border: 1px solid #334155; padding: 25px; border-radius: 8px; }
         .terminal { background: #000; color: #10b981; padding: 15px; border-radius: 5px; font-size: 0.85rem; line-height: 1.5; white-space: pre-wrap; border: 1px solid #1e293b; }
 
- .trigger-box { max-width: 400px; cursor: pointer; border-radius: 12px; border: 2px solid #334155; overflow: hidden; transition: 0.3s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 40px; }
+.trigger-box { max-width: 400px; cursor: pointer; border-radius: 12px; border: 2px solid #334155; overflow: hidden; transition: 0.3s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 40px; }
         .trigger-box:hover { border-color: #38bdf8; transform: translateY(-5px); }
         .trigger-box img { width: 100%; display: block; height: auto; }
         .trigger-footer { padding: 15px; background: #1e293b; color: #38bdf8; font-weight: bold; font-size: 0.8rem; text-align: center; font-family: sans-serif; }
-
- .escalation-brief { background: rgba(56, 189, 248, 0.05); border-left: 4px solid #38bdf8; padding: 25px; max-width: 800px; border-radius: 4px; font-family: sans-serif; }
- .escalation-brief h3 { color: #38bdf8; margin-top: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
 
 /* ROADMAP */
         .roadmap-item { display: flex; align-items: center; margin-bottom: 15px; padding: 15px; border-radius: 5px; background: rgba(15, 23, 42, 0.8); border: 1px solid #1e293b; }
         .status-done { color: #10b981; margin-right: 15px; font-weight: bold; }
         .status-pending { color: #f59e0b; margin-right: 15px; font-weight: bold; }
 
-
-/* MODAL */
+ /* MODAL */
         .modal-overlay { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; }
         .modal-content { position: relative; width: 90%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; }
         .modal-img { max-width: 100%; max-height: 65vh; border: 2px solid #38bdf8; border-radius: 8px; }
@@ -72,14 +68,14 @@ layout: null
         .details-panel { background: #1e293b; padding: 25px; margin-top: 20px; border-radius: 8px; width: 100%; border-left: 5px solid #38bdf8; font-family: sans-serif; }
         .close-btn { position: absolute; top: -70px; right: 0; color: white; font-size: 50px; cursor: pointer; }
 
-#data-store { display: none; }
+ #data-store-ssh, #data-store-agent { display: none; }
 
- @media (max-width: 1100px) {
+@media (max-width: 1100px) {
             .hero-container { flex-direction: column-reverse; text-align: center; }
             .grid { grid-template-columns: 1fr; }
             .btn-prev { left: 10px; } .btn-next { right: 10px; }
         }
- </style>
+    </style>
 </head>
 <body>
 
@@ -109,40 +105,50 @@ layout: null
         
 <div id="detection" class="tab-content active">
             <div class="mission-summary">
-                DETECTED AND CONTAINED A HIGH-SEVERITY SSH BRUTE FORCE ATTACK ORIGINATING FROM A KNOWN MALICIOUS BOTNET. UTILIZED WAZUH SIEM.
+                DETECTED AND CONTAINED A HIGH-SEVERITY SSH BRUTE FORCE ATTACK ORIGINATING FROM A KNOWN MALICIOUS BOTNET.
             </div>
-  <div class="trigger-box" onclick="launchGallery(0)">
+ <div class="trigger-box" onclick="launchGallery('ssh', 0)">
                 <img src="01.png" alt="SOC Investigation">
                 <div class="trigger-footer">OPEN 13-STEP EVIDENCE SLIDESHOW ➔</div>
             </div>
-  <div class="escalation-brief">
-                <h3>Tier 2 Escalation Rationale</h3>
-                <p><b>TECHNICAL JUSTIFICATION:</b> L1 containment (IPTables DROP) applied. Escalation required for source IP 141.98.81.37 due to 100% abuse score. Need cross-network correlation for lateral movement detection.</p>
+<div class="card" style="margin-bottom:20px; border-left: 4px solid #38bdf8;">
+                <h3 style="color:#38bdf8; margin-top:0;">Tier 2 Escalation Rationale</h3>
+                <p style="font-family: sans-serif; line-height:1.6;"><b>TECHNICAL JUSTIFICATION:</b> L1 containment (IPTables DROP) applied. Escalation required for source IP 141.98.81.37 due to 100% abuse score. Need cross-network correlation for lateral movement detection.</p>
             </div>
         </div>
 
-  <div id="ai-agent" class="tab-content">
+ <div id="ai-agent" class="tab-content">
             <div class="mission-summary">AUTOMATED TRIAGE ENGINE USING GEMINI 2.5-FLASH FOR INSTANT LOG ANALYSIS.</div>
-            <div class="grid">
+            
+<div class="card" style="margin-bottom: 30px; border-left: 5px solid #10b981;">
+                <h4 style="margin-top:0; color:#10b981;">🛡️ AGENT CORE LOGIC</h4>
+                <p style="font-family: sans-serif; color:#cbd5e1; font-size: 0.9rem;">
+                    The Sentinel Agent acts as an autonomous Tier-1 Analyst. It performs <b>automated parsing</b> of raw logs, <b>API-based enrichment</b> (VirusTotal/AbuseIPDB), and generates an <b>executive verdict</b> to reduce Mean Time to Respond (MTTR).
+                </p>
+            </div>
+
+
+<div class="trigger-box" onclick="launchGallery('agent', 0)">
+                <img src="Soc_agent_1.png" alt="AI Agent Execution">
+                <div class="trigger-footer">VIEW AGENT LOGIC SLIDESHOW ➔</div>
+            </div>
+
+ <div class="grid">
                 <div class="card">
                     <h4>📥 Raw Log Input</h4>
-                    <div class="terminal" style="color:#38bdf8">
-{
+                    <div class="terminal" style="color:#38bdf8">{
   "target_ip": "172.16.17.207",
   "engine": "Wazuh-Sentinel-Link",
   "scan_type": "Internal_Asset_Audit"
-}
-                    </div>
+}</div>
                 </div>
                 <div class="card">
                     <h4>🧠 Sentinel AI Report</h4>
-                    <div class="terminal">
-🕵️ INVESTIGATION REPORT
+                    <div class="terminal">🕵️ INVESTIGATION REPORT
 Target IP: 172.16.17.207
 VT Malicious Score: 0
 
-FINAL DECISION: Internal private IP. No publicly known threats. Vigilance required for zero-day internal activity. Recommend behavioral log audit.
-                    </div>
+FINAL DECISION: Internal private IP. No publicly known threats. Vigilance required for zero-day internal activity.</div>
                 </div>
             </div>
         </div>
@@ -153,19 +159,20 @@ FINAL DECISION: Internal private IP. No publicly known threats. Vigilance requir
                 <span class="status-done">✔</span>
                 <div><b>SSH Brute Force Suite:</b> Live monitoring and IPTables response.</div>
             </div>
-            <div class="roadmap-item">
+ <div class="roadmap-item">
                 <span class="status-done">✔</span>
                 <div><b>Sentinel AI Agent:</b> Gemini 2.5-Flash integration for log triage.</div>
             </div>
-            <div class="roadmap-item">
+ <div class="roadmap-item">
                 <span class="status-pending">⚡</span>
                 <div><b>AbuseIPDB API:</b> Real-time automated reputation scoring.</div>
             </div>
-            <div class="roadmap-item">
+ <div class="roadmap-item">
                 <span class="status-pending">⚡</span>
                 <div><b>Parent-Process Audit:</b> Process tree analysis for LotL detection.</div>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -181,25 +188,31 @@ FINAL DECISION: Internal private IP. No publicly known threats. Vigilance requir
     </div>
 </div>
 
-<div id="data-store">
-    <div data-img="01.png" data-text="<b>Step 1: Baseline Dashboard</b> - Monitoring initial SIEM state."></div>
-    <div data-img="02.png" data-text="<b>Step 2: Metric Monitoring</b> - Establishing normal traffic flow."></div>
-    <div data-img="03.png" data-text="<b>Step 3: Initial Log State</b> - Recording baseline auth failures."></div>
-    <div data-img="04.png" data-text="<b>Step 4: Active Attack</b> - Attacker terminal during the brute force attempt."></div>
-    <div data-img="05.png" data-text="<b>Step 5: Alert Spike</b> - Wazuh triggering Level 12 critical alerts."></div>
-    <div data-img="06.png" data-text="<b>Step 6: Rule 5712 Filter</b> - Isolating specific Brute Force signatures."></div>
-    <div data-img="07.png" data-text="<b>Step 7: Timeline Correlation</b> - Analyzing auth log sequences."></div>
-    <div data-img="08.png" data-text="<b>Step 8: Deep Dive</b> - Verifying the scope of the SSH attack."></div>
-    <div data-img="09.png" data-text="<b>Step 9: IP Extraction</b> - Identifying malicious source 141.98.81.37."></div>
-    <div data-img="10.png" data-text="<b>Step 10: OSINT Pivot</b> - 100% Abuse score confirmed on AbuseIPDB."></div>
-    <div data-img="11.png" data-text="<b>Step 11: MITRE Mapping</b> - Mapping to Technique T1110 (Brute Force)."></div>
-    <div data-img="12.png" data-text="<b>Step 12: Terminal Response</b> - Locating IP for immediate containment."></div>
-    <div data-img="13.png" data-text="<b>Step 13: Final Remediation</b> - Applying IPTables DROP policy to block actor."></div>
+<div id="data-store-ssh">
+    <div data-img="01.png" data-text="<b>Step 1: Baseline Dashboard</b> - Monitoring SIEM state."></div>
+    <div data-img="02.png" data-text="<b>Step 2: Metric Monitoring</b> - Normal traffic flow."></div>
+    <div data-img="03.png" data-text="<b>Step 3: Initial Log State</b> - Auth failures recorded."></div>
+    <div data-img="04.png" data-text="<b>Step 4: Active Attack</b> - Attacker terminal during attempt."></div>
+    <div data-img="05.png" data-text="<b>Step 5: Alert Spike</b> - Wazuh Level 12 critical alerts."></div>
+    <div data-img="06.png" data-text="<b>Step 6: Rule 5712 Filter</b> - Isolating Brute Force signatures."></div>
+    <div data-img="07.png" data-text="<b>Step 7: Timeline Correlation</b> - Sequence analysis."></div>
+    <div data-img="08.png" data-text="<b>Step 8: Deep Dive</b> - Scope verification."></div>
+    <div data-img="09.png" data-text="<b>Step 9: IP Extraction</b> - ID source 141.98.81.37."></div>
+    <div data-img="10.png" data-text="<b>Step 10: OSINT Pivot</b> - 100% Abuse score confirmed."></div>
+    <div data-img="11.png" data-text="<b>Step 11: MITRE Mapping</b> - Mapping to T1110."></div>
+    <div data-img="12.png" data-text="<b>Step 12: Terminal Response</b> - Containment prep."></div>
+    <div data-img="13.png" data-text="<b>Step 13: Final Remediation</b> - IPTables DROP policy applied."></div>
+</div>
+
+<div id="data-store-agent">
+    <div data-img="Soc_agent_1.png" data-text="<b>Agent Step 1: Initialization</b> - Gemini 2.5-Flash loading security context."></div>
+    <div data-img="Soc_agent_2.png" data-text="<b>Agent Step 2: Enrichment</b> - Querying threat intel for IP reputation."></div>
+    <div data-img="Soc_agent_3.png" data-text="<b>Agent Step 3: Final Triage</b> - Generating autonomous verdict and summary."></div>
 </div>
 
 <script>
     let activeStep = 0;
-    const slides = document.querySelectorAll('#data-store div');
+    let currentStore = [];
     const modal = document.getElementById('modalBox');
     const bgWrap = document.getElementById('main-site');
 
@@ -213,7 +226,8 @@ FINAL DECISION: Internal private IP. No publicly known threats. Vigilance requir
         evt.currentTarget.className += " active";
     }
 
-    function launchGallery(n) {
+    function launchGallery(type, n) {
+        currentStore = document.querySelectorAll('#data-store-' + type + ' div');
         activeStep = n;
         modal.style.display = "flex";
         bgWrap.classList.add('is-blurred');
@@ -227,13 +241,13 @@ FINAL DECISION: Internal private IP. No publicly known threats. Vigilance requir
 
     function stepSlide(n) {
         activeStep += n;
-        if (activeStep >= slides.length) activeStep = 0;
-        if (activeStep < 0) activeStep = slides.length - 1;
+        if (activeStep >= currentStore.length) activeStep = 0;
+        if (activeStep < 0) activeStep = currentStore.length - 1;
         render();
     }
 
     function render() {
-        const item = slides[activeStep];
+        const item = currentStore[activeStep];
         document.getElementById('mainViewer').src = item.getAttribute('data-img');
         document.getElementById('viewerCap').innerHTML = item.getAttribute('data-text');
     }
