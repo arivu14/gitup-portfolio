@@ -41,21 +41,22 @@ layout: null
         .contact-info { font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; font-family: sans-serif; }
         .pfp { width: 200px; height: 200px; border-radius: 50%; border: 3px solid #38bdf8; object-fit: cover; box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
 
- /* INVESTIGATION LAYOUT */
+/* INVESTIGATION LAYOUT */
         .investigation-section { width: 90%; max-width: 1200px; margin: 0 auto; padding-bottom: 80px; text-align: left; }
         .mission-summary { max-width: 800px; margin-bottom: 30px; font-family: sans-serif; line-height: 1.6; color: #38bdf8; font-weight: bold; font-size: 1.1rem; text-transform: uppercase; }
 
- /* TERMINAL & CARDS */
+/* TERMINAL & CARDS */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
         .card { background: rgba(15, 23, 42, 0.95); border: 1px solid #334155; padding: 25px; border-radius: 8px; position: relative; }
         .terminal { background: #000; color: #10b981; padding: 15px; border-radius: 5px; font-size: 0.85rem; line-height: 1.5; white-space: pre-wrap; border: 1px solid #1e293b; min-height: 150px; }
 
-.trigger-box { max-width: 450px; cursor: pointer; border-radius: 12px; border: 2px solid #334155; overflow: hidden; transition: 0.3s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 30px; }
+/* THUMBNAIL BOX FIX */
+        .trigger-box { max-width: 450px; cursor: pointer; border-radius: 12px; border: 2px solid #334155; overflow: hidden; transition: 0.3s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 30px; background: #0f172a; }
         .trigger-box:hover { border-color: #38bdf8; transform: translateY(-5px); }
-        .trigger-box img { width: 100%; display: block; height: auto; }
+        .trigger-box img { width: 100%; display: block; height: auto; aspect-ratio: 16/9; object-fit: cover; }
         .trigger-footer { padding: 15px; background: #1e293b; color: #38bdf8; font-weight: bold; font-size: 0.8rem; text-align: center; font-family: sans-serif; }
 
- /* MODAL */
+/* MODAL */
         .modal-overlay { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
         .modal-content { position: relative; width: 90%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; }
         .modal-img { max-width: 100%; max-height: 70vh; border: 2px solid #38bdf8; border-radius: 8px; box-shadow: 0 0 50px rgba(56,189,248,0.2); }
@@ -64,14 +65,14 @@ layout: null
         .details-panel { background: #1e293b; padding: 25px; margin-top: 20px; border-radius: 8px; width: 100%; border-left: 5px solid #38bdf8; font-family: sans-serif; }
         .close-btn { position: absolute; top: -60px; right: 0; color: white; font-size: 40px; cursor: pointer; }
 
- #data-store-ssh, #data-store-agent, #data-store-malware { display: none; }
-        
- @media (max-width: 1100px) {
+#data-store-ssh, #data-store-agent, #data-store-malware { display: none; }
+
+@media (max-width: 1100px) {
             .hero-container { flex-direction: column-reverse; text-align: center; }
             .grid { grid-template-columns: 1fr; }
             .btn-prev, .btn-next { display: none; }
         }
-</style>
+    </style>
 </head>
 <body>
 
@@ -96,16 +97,15 @@ layout: null
         <button class="tab-btn" onclick="openTab(event, 'ai-agent')">2. CYPHER-SENTINEL (AI AGENT)</button>
         <button class="tab-btn" onclick="openTab(event, 'malware-triage')">3. MALWARE AI TRIAGE</button>
     </nav>
-
  <div class="investigation-section">
-    
-<div id="detection" class="tab-content active">
+        
+  <div id="detection" class="tab-content active">
             <div class="mission-summary">CASE-001: SSH BRUTE FORCE DETECTION & RESPONSE [WAZUH SIEM]</div>
             <div class="trigger-box" onclick="launchGallery('ssh', 0)">
                 <img src="01.png" alt="SOC Investigation">
                 <div class="trigger-footer">OPEN 13-STEP INVESTIGATION GALLERY ➔</div>
             </div>
-<div class="grid">
+            <div class="grid">
                 <div class="card" style="border-left: 4px solid #f87171;">
                     <h3 style="color:#f87171; margin-top:0; font-size:1.1rem;">IMMEDIATE MITIGATION (L1)</h3>
                     <p style="font-family: sans-serif; line-height:1.6; font-size: 0.9rem;">
@@ -113,7 +113,7 @@ layout: null
                         <b>RATIONALE:</b> 100% abuse confidence score on OSINT enrichment. 145+ failed attempts within 5 minutes.
                     </p>
                 </div>
-<div class="card" style="border-left: 4px solid #10b981;">
+                <div class="card" style="border-left: 4px solid #10b981;">
                     <h3 style="color:#10b981; margin-top:0; font-size:1.1rem;">PREVENTION & HARDENING</h3>
                     <p style="font-family: sans-serif; line-height:1.6; font-size: 0.9rem;">
                         <b>RECOMMENDATION:</b> Move to SSH Key-based authentication and disable password logins in <code>sshd_config</code>. Implement Fail2Ban for automated temporary null-routing.
@@ -122,19 +122,19 @@ layout: null
             </div>
         </div>
 
- <div id="ai-agent" class="tab-content">
+  <div id="ai-agent" class="tab-content">
             <div class="mission-summary">AUTOMATING TIER-1 TRIAGE WITH LLM REASONING</div>
             <div class="card" style="margin-bottom: 30px; border-left: 5px solid #10b981; background: rgba(16, 185, 129, 0.05);">
                 <h4 style="margin-top:0; color:#10b981;">🚀 AGENT ARCHITECTURE: "CYPHER-SENTINEL"</h4>
                 <p style="font-family: sans-serif; color:#cbd5e1; font-size: 0.9rem; line-height:1.6;">
                     Built on Google Colab using <b>Gemini 2.5-Flash</b>. This agent automates the "Pivot" phase of an investigation. It takes raw Wazuh JSON data and outputs a human-readable verdict to reduce MTTR.
                 </p>
-                </div>
-<div class="trigger-box" onclick="launchGallery('agent', 0)">
-                <img src="Soc_agent_1.png" alt="AI Agent Execution">
+            </div>
+            <div class="trigger-box" onclick="launchGallery('agent', 0)">
+                <img src="01.png" alt="AI Agent Execution">
                 <div class="trigger-footer">VIEW AGENT LOGIC & EXECUTION ➔</div>
             </div>
- <div class="grid">
+            <div class="grid">
                 <div class="card">
                     <h4>📥 RAW SIEM INPUT</h4>
                     <div class="terminal" style="color:#38bdf8">{ "target_ip": "172.16.17.207", "log_source": "Wazuh_Manager", "event_type": "Internal_Audit" }</div>
@@ -150,21 +150,17 @@ VERDICT: BENIGN. Asset identified as internal management server.</div>
 
  <div id="malware-triage" class="tab-content">
             <div class="mission-summary">CASE-002: AUTOMATED MALWARE TRIAGE & AI FORENSICS</div>
-            
-
-<div class="card" style="margin-bottom: 30px; border-left: 5px solid #38bdf8; background: rgba(56, 189, 248, 0.05);">
+            <div class="card" style="margin-bottom: 30px; border-left: 5px solid #38bdf8; background: rgba(56, 189, 248, 0.05);">
                 <h4 style="margin-top:0; color:#38bdf8;">🔬 THE PROJECT: AUTOMATED REASONING</h4>
                 <p style="font-family: sans-serif; color:#cbd5e1; font-size: 0.9rem; line-height:1.6;">
                     This system automates the analysis of suspicious scripts by calculating <b>Shannon Entropy</b> (detecting hidden/encrypted code) and <b>Shell Funnel Execution</b> logic. It interprets raw forensic math through an AI Agent to provide instant SOC Tier-2 insights.
                 </p>
             </div>
-
- <div class="trigger-box" onclick="launchGallery('malware', 0)">
-                <img src="malware_thumb.png" alt="Malware Analysis Pipeline">
+            <div class="trigger-box" onclick="launchGallery('malware', 0)">
+                <img src="01.png" alt="Malware Analysis Pipeline">
                 <div class="trigger-footer">OPEN 8-STEP FORENSIC GALLERY ➔</div>
             </div>
-
-<div class="grid">
+            <div class="grid">
                 <div class="card">
                     <h4>📥 FORENSIC SCRIPT OUTPUT</h4>
                     <div class="terminal" style="color:#10b981">$ ./triage.sh elite_malware.sh
@@ -180,8 +176,7 @@ RISK: Critical. Attempting to bypass file-based detection via hex-encoding and d
                 </div>
             </div>
         </div>
-
-</div>
+    </div>
 </div>
 
 <div id="modalBox" class="modal-overlay">
@@ -213,17 +208,17 @@ RISK: Critical. Attempting to bypass file-based detection via hex-encoding and d
 </div>
 
 <div id="data-store-agent">
-    <div data-img="Soc_Agent_1.png" data-text="<b>Agent Initialization:</b> Script loading Gemini 2.5-Flash and SOC context. In the first cell, we install the gears of our agent and link your API keys."></div>
-    <div data-img="Soc_Agent_2.png" data-text="<b> In the next cell, we define the agent needs to "remember as it work through the traige."></div>
-    <div data-img="Soc_Agent_3.png" data-text="<b>Now, we draw the map that tells the agent to go from Triage → Research → Verdict."></div>
-    <div data-img="Soc_Agent_4.png" data-text="<b>Finally, give the agent an alert and watch it work!"></div>
-    <div data-img="Soc_Agent_5.png" data-text="<b>Generating automated investigation report and verdict."></div>
-    <div data-img="Soc_Agent_6.png" data-text="<b>This generates a picture of your SOC workflow"></div>
-    <div data-img="Soc_Agent_7.png" data-text="<b>Final Triage:</b> Test cell"></div>
+    <div data-img="Soc_Agent_1.png" data-text="<b>Agent Initialization:</b> Script loading Gemini 2.5-Flash and SOC context."></div>
+    <div data-img="Soc_Agent_2.png" data-text="<b>Memory Configuration:</b> Defining what the agent needs to remember as it works."></div>
+    <div data-img="Soc_Agent_3.png" data-text="<b>Workflow Mapping:</b> Logic flow from Triage → Research → Verdict."></div>
+    <div data-img="Soc_Agent_4.png" data-text="<b>Execution:</b> Processing an active security alert."></div>
+    <div data-img="Soc_Agent_5.png" data-text="<b>Final Report:</b> Generating automated investigation verdict."></div>
+    <div data-img="Soc_Agent_6.png" data-text="<b>SOC Visualization:</b> Graphical mapping of the AI workflow."></div>
+    <div data-img="Soc_Agent_7.png" data-text="<b>Final Triage:</b> Test cell validation."></div>
 </div>
 
 <div id="data-store-malware">
-    <div data-img="malware_1.png" data-text="<b>Step 1: Initial Detection</b> - Wazuh FIM (File Integrity Monitoring) identifies new suspicious script."></div>
+    <div data-img="malware_1.png" data-text="<b>Step 1: Initial Detection</b> - Wazuh FIM identifies new suspicious script."></div>
     <div data-img="malware_2.png" data-text="<b>Step 2: Forensic Execution</b> - Triggering the custom triage.sh bash script."></div>
     <div data-img="malware_3.png" data-text="<b>Step 3: Entropy Check</b> - Calculating Shannon Entropy to identify obfuscation levels."></div>
     <div data-img="malware_4.png" data-text="<b>Step 4: Funnel Analysis</b> - Scanning for direct pipes to shell interpreters (| bash, | sh)."></div>
