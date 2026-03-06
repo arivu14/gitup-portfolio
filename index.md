@@ -213,13 +213,13 @@ RISK: Critical. Attempting to bypass file-based detection via hex-encoding and d
 </div>
 
 <div id="data-store-agent">
-    <div data-img="Soc_agent_1.png" data-text="<b>Agent Initialization:</b> Script loading Gemini 2.5-Flash and SOC context. In the first cell, we install the gears of our agent and link your API keys."></div>
-    <div data-img="Soc_agent_2.png" data-text="<b> In the next cell, we define the agent needs to "remember as it work through the traige."></div>
-    <div data-img="Soc_agent_3.png" data-text="<b>Now, we draw the map that tells the agent to go from Triage → Research → Verdict."></div>
-    <div data-img="Soc_agent_4.png" data-text="<b>Finally, give the agent an alert and watch it work!"></div>
-    <div data-img="Soc_agent_5.png" data-text="<b>Generating automated investigation report and verdict."></div>
-    <div data-img="Soc_agent_6.png" data-text="<b>This generates a picture of your SOC workflow"></div>
-    <div data-img="Soc_agent_7.png" data-text="<b>Final Triage:</b> Test cell"></div>
+    <div data-img="Soc_Agent_1.png" data-text="<b>Agent Initialization:</b> Script loading Gemini 2.5-Flash and SOC context. In the first cell, we install the gears of our agent and link your API keys."></div>
+    <div data-img="Soc_Agent_2.png" data-text="<b> In the next cell, we define the agent needs to "remember as it work through the traige."></div>
+    <div data-img="Soc_Agent_3.png" data-text="<b>Now, we draw the map that tells the agent to go from Triage → Research → Verdict."></div>
+    <div data-img="Soc_Agent_4.png" data-text="<b>Finally, give the agent an alert and watch it work!"></div>
+    <div data-img="Soc_Agent_5.png" data-text="<b>Generating automated investigation report and verdict."></div>
+    <div data-img="Soc_Agent_6.png" data-text="<b>This generates a picture of your SOC workflow"></div>
+    <div data-img="Soc_Agent_7.png" data-text="<b>Final Triage:</b> Test cell"></div>
 </div>
 
 <div id="data-store-malware">
