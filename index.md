@@ -150,6 +150,7 @@ VERDICT: BENIGN. Asset identified as internal management server.</div>
 
  <div id="malware-triage" class="tab-content">
             <div class="mission-summary">CASE-002: AUTOMATED MALWARE TRIAGE & AI FORENSICS</div>
+     <a href="https://github.com/arivu14/Soc-Malware-Triage" target="_blank" style="color:#38bdf8; font-weight:bold;">🔗 GitHub: soc-malware-triage</a>
             <div class="card" style="margin-bottom: 30px; border-left: 5px solid #38bdf8; background: rgba(56, 189, 248, 0.05);">
                 <h4 style="margin-top:0; color:#38bdf8;">🔬 THE PROJECT: AUTOMATED REASONING</h4>
                 <p style="font-family: sans-serif; color:#cbd5e1; font-size: 0.9rem; line-height:1.6;">
